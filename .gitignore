@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+# Duplicate asset directories (src/public/ is canonical)
+src/assets/

@@ -1,0 +1,20 @@
+{
+  "name": "danielacavestany-web",
+  "version": "1.0.0",
+  "description": "Daniela Cavestany — Fotografía editorial portfolio",
+  "type": "module",
+  "scripts": {
+    "dev": "vite src",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliverv/danielacavestany-web.git"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^8.2.3",
+    "terser": "^5.51.2",
+    "vite": "^8.3.0"
+  }
+}

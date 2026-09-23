@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<!--#page page="contacto.html" altUrl="contacto-en.html" altLang="EN" ticker="Barcelona — Bali" -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Daniela Cavestany</title>
+<meta name="description" content="Escríbeme: encargos, colaboraciones y experiencias. Barcelona — Bali.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F5F3EE'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-style='italic' font-size='36' text-anchor='middle' fill='%23111'%3ED%3C/text%3E%3C/svg%3E">
+<script type="module" src="js/main.js"></script>
+<style>
+  /* Contact page extras */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+    padding-block: var(--section-gap);
+  }
+  @media (max-width: 767px) {
+    .contact-grid { grid-template-columns: 1fr; row-gap: var(--sp-8); }
+  }
+  .contact-email-link {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--greige);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+  .contact-email-link:hover { border-color: var(--ink); }
+</style>
+</head>
+<body>
+<!--#include file="components/header.html" -->
+
+<main class="wrap" id="main-content">
+
+  <div style="padding-block: clamp(48px, 6vw, 80px) 0">
+    <p class="meta" style="margin-bottom: var(--sp-5)">Contacto</p>
+    <h1 class="hero-title"><span class="line"><span><em style="font-family:var(--font-display); font-style:italic">Escríbeme.</em></span></span></h1>
+  </div>
+
+  <div class="contact-grid">
+    <div>
+      <div class="prose" style="margin-bottom: var(--sp-7)">
+        <p>Cada encargo, colaboración o experiencia comienza con una mirada atenta. Cuéntame sobre tu proyecto, espacio o idea.</p>
+      </div>
+
+      <p class="meta" style="margin-bottom: var(--sp-2)">Correo directo</p>
+      <p style="margin-bottom: var(--sp-6)">
+        <a class="contact-email-link" href="mailto:daniela@danielacavestany.com">daniela@danielacavestany.com</a>
+      </p>
+
+      <p class="meta" style="margin-bottom: var(--sp-2)">Base</p>
+      <p style="margin-bottom: var(--sp-7); font-size: var(--type-body); color: var(--piedra)">Barcelona — Bali · Respuesta en 24–48 h</p>
+
+      <form class="contact" id="contact-form" novalidate>
+        <div class="form-errors" id="form-errors" role="alert">
+          <strong>Por favor, corrige los siguientes errores:</strong>
+          <ul id="error-list"></ul>
+        </div>
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp">No rellenar</label>
+          <input id="hp" name="hp" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <label for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" required aria-required="true">
+        <span class="field-error" id="err-nombre" role="alert"></span>
+
+        <label for="email">Correo electrónico</label>
+        <input id="email" name="email" type="email" autocomplete="email" required aria-required="true">
+        <span class="field-error" id="err-email" role="alert"></span>
+
+        <label for="tipo">Naturaleza del encargo</label>
+        <select id="tipo" name="tipo">
+          <option>Sesión / Encargo fotográfico</option>
+          <option>Volver a mirar (taller iPhone)</option>
+          <option>Experiencia en lugar especial</option>
+          <option>Estilismo / Dirección de arte</option>
+          <option>Obra / Ediciones</option>
+          <option>Otro</option>
+        </select>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true"></textarea>
+        <span class="field-error" id="err-mensaje" role="alert"></span>
+
+        <div id="obra-notice" role="status"></div>
+
+        <div style="margin-top: var(--sp-6)">
+          <button class="btn btn-solid" type="submit">Enviar mensaje</button>
+        </div>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+    </div>
+
+    <div>
+      <figure class="plate" style="margin-bottom: 0">
+        <img width="1129" height="1600"
+          src="assets/bali/IMG_4491.jpg"
+          alt="Dos palmeras con hamaca en un prado abierto, Bali"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Descanso</span>
+          <span class="meta">BALI-29 · 2026</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+</main>
+
+<!--#include file="components/footer.html" -->
+
+</body>
+</html>

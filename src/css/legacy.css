@@ -1,0 +1,115 @@
+/* ─── 28b. LEGACY COMPATIBILITY ALIASES ─────────────────────── */
+/* Older markup (muestra.html, EN counterpart pages) still use
+   these classes. Aliases map to the new design system. */
+
+/* .stage — full-viewport image container (muestra.html) */
+.stage {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--page-padding);
+  background: var(--blanco);
+}
+@media (max-width: 767px) { .stage { padding: var(--page-padding); } }
+.stage figure { margin: 0; }
+.stage img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 82svh;
+  margin: 0 auto;
+  object-fit: contain;
+}
+.stageref {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  max-width: var(--page-max);
+  width: 100%;
+  margin: var(--sp-4) auto 0;
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--crema);
+}
+.stageref .t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+}
+.stage-open {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--page-padding);
+}
+.interlude {
+  padding-block: clamp(64px, 9vw, 140px);
+}
+.duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--col-gap);
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+@media (max-width: 767px) { .duo { grid-template-columns: 1fr; } }
+.duo img { width: 100%; height: auto; display: block; }
+
+/* Common layout helpers used in EN pages and older markup */
+.lede {
+  max-width: 58ch;
+  font-size: var(--type-body-lg);
+  line-height: 1.65;
+}
+.single-narrow {
+  max-width: 640px;
+  margin-inline: auto;
+}
+.offset-left  { max-width: 75%; }
+.offset-right { max-width: 75%; margin-left: auto; }
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3vw, 48px);
+}
+@media (max-width: 767px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* Old service layout (used in taller page and EN equivalents) */
+.service {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: var(--col-gap);
+  padding-block: clamp(28px, 3.5vw, 48px);
+  border-bottom: 1px solid var(--crema);
+  align-items: baseline;
+}
+@media (max-width: 767px) {
+  .service { grid-template-columns: 1fr; gap: var(--sp-3); }
+}
+.service .num {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--topo);
+  font-size: 20px;
+}
+
+/* ─── 29. REDUCED MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* Portrait and nameplate: show immediately */
+  .stage-full img        { animation: none; opacity: 1; }
+  .nameplate             { animation: none; opacity: 1; transform: none; }
+  /* Hero text: show immediately */
+  .hero-title .line > span { animation: none; transform: none; }
+  .hero-eyebrow, .hero-body, .hero-cta { animation: none; opacity: 1; transform: none; }
+  /* Marquee: stop */
+  .marquee-track { animation: none; }
+  /* Scroll reveals: bypass */
+  .reveal, .reveal-img { opacity: 1; transform: none; transition: none; }
+  /* Image hover: no scale */
+  .obra-img-wrap img { transition: none; }
+  /* Arrow micro-animations: off */
+  .svc-arrow .arr,
+  .link-arrow .arr { transition: none; }
+}

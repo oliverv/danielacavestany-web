@@ -1,0 +1,18 @@
+/* ─── 29. REDUCED MOTION ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* Portrait and nameplate: show immediately */
+  .stage-full img        { animation: none; opacity: 1; }
+  .nameplate             { animation: none; opacity: 1; transform: none; }
+  /* Hero text: show immediately */
+  .hero-title .line > span { animation: none; transform: none; }
+  .hero-eyebrow, .hero-body, .hero-cta { animation: none; opacity: 1; transform: none; }
+  /* Marquee: stop */
+  .marquee-track { animation: none; }
+  /* Scroll reveals: bypass */
+  .reveal, .reveal-img { opacity: 1; transform: none; transition: none; }
+  /* Image hover: no scale */
+  .obra-img-wrap img { transition: none; }
+  /* Arrow micro-animations: off */
+  .svc-arrow .arr,
+  .link-arrow .arr { transition: none; }
+}

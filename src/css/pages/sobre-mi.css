@@ -1,0 +1,185 @@
+/* ─── 19. "LO QUE ME HACE DIFERENTE" MANIFESTO ───────────────── */
+.manifesto-section {
+  padding-block: clamp(64px, 8vw, 128px);
+  border-top: 1px solid var(--crema);
+  text-align: center;
+}
+
+.manifesto-section .quote-lg {
+  max-width: 24ch;
+  margin-inline: auto;
+}
+
+/* Closing sentence beneath the manifesto quote */
+.manifesto-sub {
+  margin-top: var(--sp-6);
+  font-size: var(--type-body-lg);
+  color: var(--piedra);
+  max-width: 52ch;
+  margin-inline: auto;
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.firma {
+  display: block;
+  max-width: 200px;
+  height: auto;
+  margin: var(--sp-6) auto 0;
+  opacity: 0.85;
+}
+
+/* Credentials grid */
+.credentials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--col-gap);
+  margin-top: clamp(48px, 6vw, 80px);
+  padding-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--crema);
+  text-align: left;
+}
+
+.credential-item dt {
+  font-size: var(--type-meta);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--piedra);
+  margin-bottom: var(--sp-2);
+}
+
+.credential-item dd {
+  font-size: var(--type-body);
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+/* ─── 20. SERVICIOS PAGE ─────────────────────────────────────── */
+.servicios-hero {
+  padding-block: clamp(64px, 8vw, 120px);
+}
+.servicios-hero-label {
+  font-size: var(--type-meta);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--piedra);
+  margin-bottom: var(--sp-5);
+}
+.servicios-hero-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: var(--type-display-xl);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  max-width: 14ch;
+}
+.servicios-hero-title em { font-style: italic; }
+.servicios-hero-lede {
+  margin-top: clamp(24px, 3vw, 40px);
+  font-size: var(--type-body-lg);
+  line-height: 1.65;
+  color: var(--piedra);
+  max-width: 46ch;
+}
+
+/* Service detail panels (on servicios.html) */
+.svc-panel {
+  padding-block: clamp(48px, 6vw, 80px);
+  border-top: 1px solid var(--crema);
+}
+
+.svc-panel-grid {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  column-gap: clamp(32px, 4vw, 56px);
+  align-items: start;
+}
+
+.svc-panel-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--topo);
+  padding-top: 6px;
+}
+
+.svc-panel-body { }
+
+.svc-panel-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-3);
+}
+.svc-panel-title em { font-style: italic; }
+
+.svc-panel-tag {
+  font-size: var(--type-meta);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--piedra);
+  margin-bottom: var(--sp-5);
+}
+
+.svc-panel-desc {
+  font-size: var(--type-body-lg);
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 60ch;
+}
+.svc-panel-desc p { margin-bottom: 1.4em; }
+.svc-panel-desc p:last-child { margin-bottom: 0; }
+
+/* Workshop phases — inline editorial steps */
+.workshop-phases {
+  margin-top: var(--sp-6);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--col-gap);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--crema);
+}
+
+.phase-step {
+  padding-right: var(--sp-4);
+}
+
+.phase-step-num {
+  font-size: var(--type-meta);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--salvia);
+  margin-bottom: var(--sp-2);
+}
+
+.phase-step-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink);
+  margin-bottom: var(--sp-2);
+}
+
+.phase-step-desc {
+  font-size: var(--type-body);
+  line-height: 1.6;
+  color: var(--piedra);
+}
+
+.svc-panel-cta {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-5);
+  margin-top: var(--sp-7);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--crema);
+}
+
+.svc-price {
+  font-size: var(--type-meta);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--piedra);
+}

@@ -1,0 +1,67 @@
+/* ============================================================
+   Daniela Cavestany — Master Editorial System
+   One visual coordinate system for all pages.
+
+   Palette: Blanco cálido #F5F3EE · Crema lino #E7E0D2
+            Greige #D5CCBC · Verde salvia #9A9D91
+            Topo #B7A893 · Gris piedra #625D57 · Carbón #2D2E31
+   ============================================================ */
+
+/* ─── 1. DESIGN TOKENS ─────────────────────────────────────── */
+:root {
+  /* Colour */
+  --blanco:      #F5F3EE;
+  --blanco-puro: #FFFFFF;
+  --crema:       #E7E0D2;
+  --greige:      #D5CCBC;
+  --salvia:      #9A9D91;
+  --topo:        #B7A893;
+  --piedra:      #625D57;
+  --carbon:      #2D2E31;
+  --ink:         #111111;
+
+  /* Typography */
+  --font-display: 'EB Garamond', Georgia, serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
+
+  /* Type scale — fluid, optical hierarchy */
+  --type-display-xl: clamp(64px, 8.5vw, 132px);
+  --type-display-lg: clamp(48px, 6vw, 96px);
+  --type-display-md: clamp(36px, 4.5vw, 64px);
+  --type-h3:         clamp(26px, 3vw, 42px);
+  --type-body-lg:    clamp(18px, 1.5vw, 21px);
+  --type-body:       clamp(15px, 1.2vw, 17px);
+  --type-caption:    13px;
+  --type-meta:       10px;
+
+  /* Spacing scale */
+  --sp-1:  8px;
+  --sp-2:  12px;
+  --sp-3:  16px;
+  --sp-4:  24px;
+  --sp-5:  32px;
+  --sp-6:  48px;
+  --sp-7:  64px;
+  --sp-8:  96px;
+  --sp-9:  128px;
+  --sp-10: 160px;
+  --sp-11: 220px;
+
+  /* Section rhythm — three tiers for deliberate pacing */
+  --section-sm:  clamp(72px,  8vw, 120px);
+  --section-md:  clamp(96px,  11vw, 170px);
+  --section-lg:  clamp(128px, 15vw, 230px);
+  --section-gap: var(--section-md);
+
+  /* Grid — the one coordinate system */
+  --page-x:    clamp(22px, 4.2vw, 72px);
+  --page-max:  1520px;
+  --grid-gap:  clamp(18px, 1.8vw, 32px);
+
+  /* Legacy alias — kept so .wrap still works */
+  --page-padding: var(--page-x);
+  --col-gap:      var(--grid-gap);
+
+  /* Header height — used in calc() and sticky filter offset */
+  --header-h: 80px;
+}
