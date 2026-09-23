@@ -261,6 +261,22 @@ form.contact [aria-invalid="true"] { border-bottom-color: #93000a; }
 }
 .stage-label .t { font-family: 'EB Garamond', serif; font-style: italic; font-size: 17px; }
 
+/* Service editorial panels — photograph-led, 70-80svh */
+.panel { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; padding: 4rem 0; border-bottom: 1px solid var(--crema); }
+.panel.flip > figure { order: 2; }
+.panel img { width: 100%; height: auto; max-height: 78svh; object-fit: contain; display: block; margin: 0 auto; }
+.panel .pnum { font-family: 'EB Garamond', serif; font-style: italic; font-size: 22px; color: var(--topo); }
+.panel h3 { font-family: 'EB Garamond', serif; font-weight: 300; font-size: clamp(30px, 3.5vw, 44px); line-height: 1.1; margin: 0.8rem 0 1.2rem; }
+.panel p.one { max-width: 42ch; margin-bottom: 1.6rem; }
+@media (max-width: 900px) { .panel { grid-template-columns: 1fr; gap: 2rem; } .panel.flip > figure { order: 0; } }
+
+/* Portfolio exhibition — monumental rhythm */
+.exhibit section.block { padding: 8rem 0; }
+.exhibit .plate { margin-bottom: 6rem; }
+.exhibit .offset-left, .exhibit .offset-right { max-width: 880px; }
+.exhibit h2.display { font-size: clamp(44px, 5vw, 64px); }
+@media (max-width: 768px) { .exhibit section.block { padding: 5rem 0; } .exhibit .plate { margin-bottom: 4rem; } }
+
 /* Exhibition sample — full-viewport stages, contain (never crop artwork) */
 .stage {
   min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
