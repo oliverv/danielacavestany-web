@@ -1,0 +1,110 @@
+/* Daniela Cavestany — Atelier Gallery Minimalist (original design system)
+   Palette: Blanco cálido #F5F3EE · Crema lino #E7E0D2 · Greige #D5CCBC
+   Verde salvia #9A9D91 · Topo #B7A893 · Gris piedra #625D57 · Carbón #2D2E31 */
+:root {
+  --blanco: #F5F3EE;
+  --blanco-puro: #FFFFFF;
+  --crema: #E7E0D2;
+  --greige: #D5CCBC;
+  --salvia: #9A9D91;
+  --topo: #B7A893;
+  --piedra: #625D57;
+  --carbon: #2D2E31;
+  --ink: #111111;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--blanco);
+  color: var(--ink);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+.serif { font-family: 'EB Garamond', Georgia, serif; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+@media (max-width: 768px) { .wrap { padding: 0 1.5rem; } }
+
+/* Masthead */
+header.masthead {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 4rem; background: var(--blanco);
+  border-bottom: 1px solid var(--crema);
+  position: sticky; top: 0; z-index: 50;
+}
+@media (max-width: 768px) { header.masthead { padding: 1rem 1.5rem; } }
+.wordmark { font-family: 'EB Garamond', serif; font-size: 22px; font-weight: 400; text-decoration: none; color: var(--ink); }
+.wordmark em { font-style: italic; }
+nav.mainnav a {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--piedra); text-decoration: none; margin-left: 2rem;
+}
+nav.mainnav a:hover, nav.mainnav a.active { color: var(--ink); }
+@media (max-width: 768px) { nav.mainnav a { margin-left: 1rem; } }
+
+/* Type */
+h1.display { font-family: 'EB Garamond', serif; font-weight: 300; font-size: 56px; line-height: 1.15; letter-spacing: -0.02em; }
+h2.display { font-family: 'EB Garamond', serif; font-weight: 300; font-size: 40px; line-height: 1.2; letter-spacing: -0.015em; }
+@media (max-width: 768px) { h1.display { font-size: 36px; } h2.display { font-size: 28px; } }
+.meta { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--piedra); }
+.quote { font-family: 'EB Garamond', serif; font-style: italic; font-weight: 300; font-size: 24px; line-height: 1.5; }
+.accent { color: var(--salvia); }
+
+/* Sections */
+section.block { padding: 6rem 0; }
+section.block + section.block { border-top: 1px solid var(--crema); }
+.lede { max-width: 640px; }
+.prose p { margin-bottom: 1.5rem; max-width: 680px; }
+
+/* Plates */
+.plate { margin: 0 0 4rem 0; }
+.plate img { width: 100%; height: auto; display: block; background: var(--crema); }
+.plate figcaption { display: flex; justify-content: space-between; gap: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--crema); margin-top: 0.75rem; }
+.plate .title { font-family: 'EB Garamond', serif; font-style: italic; font-size: 17px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+@media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+.offset-left { max-width: 800px; }
+.offset-right { max-width: 800px; margin-left: auto; }
+.single-narrow { max-width: 640px; margin: 0 auto; }
+
+/* Buttons */
+.btn {
+  display: inline-block; border: 1px solid var(--ink); background: var(--blanco-puro);
+  padding: 0.8rem 2rem; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  text-decoration: none; color: var(--ink); cursor: pointer; font-family: 'Inter', sans-serif;
+}
+.btn:hover { background: var(--ink); color: #fff; }
+.btn-solid { background: var(--ink); color: #fff; }
+.btn-solid:hover { background: var(--carbon); }
+.link-quiet { color: var(--ink); text-underline-offset: 4px; }
+.link-quiet:hover { color: var(--salvia); }
+
+/* Index table */
+table.index { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+table.index th, table.index td { text-align: left; padding: 0.7rem 0.5rem; border-bottom: 1px solid var(--crema); font-size: 12px; }
+table.index th { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--piedra); font-weight: 400; }
+table.index tr:hover td { background: var(--blanco); }
+
+/* Forms */
+form.contact label { display: block; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--piedra); margin: 1.5rem 0 0.4rem; }
+form.contact input, form.contact textarea, form.contact select {
+  width: 100%; border: none; border-bottom: 1px solid var(--greige);
+  background: transparent; padding: 0.6rem 0; font-family: 'Inter', sans-serif;
+  font-size: 15px; font-weight: 300; border-radius: 0; color: var(--ink);
+}
+form.contact input:focus, form.contact textarea:focus { outline: none; border-bottom-color: var(--ink); }
+
+/* Service rows */
+.service { display: grid; grid-template-columns: 80px 1fr auto; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--crema); align-items: baseline; }
+@media (max-width: 768px) { .service { grid-template-columns: 1fr; gap: 0.5rem; } }
+.service .num { font-family: 'EB Garamond', serif; font-style: italic; color: var(--topo); font-size: 20px; }
+
+/* Footer */
+footer.site { border-top: 1px solid var(--crema); padding: 2.5rem 4rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+@media (max-width: 768px) { footer.site { padding: 2rem 1.5rem; } }
+footer.site .foot-quote { font-family: 'EB Garamond', serif; font-style: italic; color: var(--piedra); font-size: 14px; max-width: 420px; }
+.firma { max-width: 220px; height: auto; }
+.hero-portrait { max-width: 420px; width: 100%; height: auto; display: block; }
+.ticker { border-top: 1px solid var(--crema); padding: 0.8rem 4rem; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--salvia); }

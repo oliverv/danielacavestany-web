@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Daniela Cavestany</title>
+<meta name="description" content="Escríbeme: encargos, colaboraciones y experiencias. Barcelona — Bali.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <a class="wordmark" href="index.html">Daniela <em>Cavestany</em></a>
+  <nav class="mainnav">
+    <a href="portfolio.html">Portfolio</a>
+    <a href="sobre-mi.html">Sobre mí</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="contacto.html" class="active">Contacto</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <section class="block">
+    <p class="meta">Contacto</p>
+    <h1 class="display"><em>Escríbeme.</em></h1>
+    <br>
+    <div class="grid-2" style="align-items:start">
+      <div class="prose">
+        <p>Cada encargo, colaboración o experiencia comienza con una mirada atenta. Cuéntame sobre tu proyecto, espacio o idea.</p>
+        <p class="meta">Correo directo</p>
+        <p><a class="link-quiet serif" style="font-size:24px" href="mailto:daniela@danielacavestany.com">daniela@danielacavestany.com</a></p>
+        <p class="meta">Base</p>
+        <p>Barcelona — Bali</p>
+        <form class="contact" action="mailto:daniela@danielacavestany.com" method="post" enctype="text/plain">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" required>
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" required>
+          <label for="tipo">Naturaleza del encargo</label>
+          <select id="tipo" name="tipo">
+            <option>Sesión / Encargo fotográfico</option>
+            <option>Volver a mirar (taller iPhone)</option>
+            <option>Experiencia en lugar especial</option>
+            <option>Estilismo / Dirección de arte</option>
+            <option>Obra / Ediciones</option>
+            <option>Otro</option>
+          </select>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+          <br><br>
+          <button class="btn btn-solid" type="submit">Enviar mensaje</button>
+        </form>
+      </div>
+      <div>
+        <figure class="plate">
+          <img src="assets/bali/IMG_4491.jpg" alt="Dos palmeras con hamaca, Bali" loading="lazy">
+          <figcaption><span class="title">Descanso</span><span class="meta">BALI-29</span></figcaption>
+        </figure>
+        <p class="meta">Atención · Barcelona — Bali</p>
+        <p class="quote" style="font-size:18px">Respuesta en 24–48 horas laborables.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="ticker">Barcelona — Bali · Septiembre 2026</div>
+<footer class="site">
+  <span class="meta">© Daniela Cavestany · Bali 2026</span>
+  <span class="foot-quote">“Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria.”</span>
+  <span class="meta"><a class="link-quiet" href="index.html">Inicio</a></span>
+</footer>
+</body>
+</html>
