@@ -206,7 +206,7 @@
           page envelope, preserving its natural aspect ratio.
           Acts as a visual reset between obra and workshop.
        ══════════════════════════════════════════════════════ -->
-  <div class="threshold-image" role="figure" aria-label="Reflejo — Bali 2026">
+  <div class="threshold-image reveal-img" role="figure" aria-label="Reflejo — Bali 2026">
     <img
       src="assets/bali/IMG_4500.jpg"
       alt="Reflejo invertido de árboles en un charco con lluvia, Bali"
@@ -277,6 +277,25 @@
   window.addEventListener('scroll', function() {
     h.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
+})();
+
+// Portrait: subtle scale on scroll — 1.0 → 1.025 max
+// Feels like the image is breathing, not parallaxing.
+// Stops completely once portrait scrolls out of view.
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var portrait = document.querySelector('.stage-full:first-of-type img');
+  if (!portrait) return;
+  var vh = window.innerHeight;
+  function onScroll() {
+    var y = window.scrollY;
+    if (y > vh) return; // only while portrait is visible
+    // scale from 1.0 at y=0 to 1.025 at y=vh
+    var progress = Math.min(y / vh, 1);
+    var scale = 1 + (progress * 0.025);
+    portrait.style.transform = 'scale(' + scale.toFixed(4) + ')';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
 // Mobile nav

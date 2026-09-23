@@ -42,15 +42,22 @@
   }
 
   /* ---------- scroll reveal ---------- */
+  /*
+    .plate elements (photographs) use the slower .reveal-img class.
+    .reveal elements (text, labels, captions) use the standard .reveal.
+    Both add class "in" when entering viewport — same JS trigger,
+    different CSS transition durations.
+  */
   var plates = Array.prototype.slice.call(document.querySelectorAll("main .plate"));
-  var revealEls = Array.prototype.slice.call(document.querySelectorAll("main .reveal"));
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll("main .reveal, main .reveal-img"));
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
       });
-    }, { rootMargin: "0px 0px -8% 0px" });
-    plates.forEach(function (p) { p.classList.add("reveal"); });
+    }, { rootMargin: "0px 0px -6% 0px" });
+    /* Plates get the slower image reveal class */
+    plates.forEach(function (p) { p.classList.add("reveal-img"); });
     var seen = [];
     plates.concat(revealEls).forEach(function (p) {
       if (seen.indexOf(p) === -1) { seen.push(p); io.observe(p); }

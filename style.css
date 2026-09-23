@@ -354,6 +354,7 @@ section.block.flush { padding-block: 0; }
   position: relative;
   min-height: 100svh;
   overflow: hidden;
+  /* Warm background shows during image load — never a flash of white */
   background: var(--crema);
 }
 
@@ -364,11 +365,24 @@ section.block.flush { padding-block: 0; }
   /* Portrait: keep face/eyes well-framed on desktop */
   object-position: center 18%;
   display: block;
+  /*
+    Portrait entrance: fade in over the warm crema background.
+    1.4s — slow enough to feel deliberate, not a loading artefact.
+    No translateY — the image is full-screen, movement would be jarring.
+  */
+  animation: portrait-arrive 1.4s cubic-bezier(.22,1,.36,1) both;
 }
 
-/* Bali interruption images use landscape crop */
+@keyframes portrait-arrive {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Bali interruption images use landscape crop — no entrance animation
+   (they are below the fold, scroll reveals handle them) */
 .stage-full.bali-image img {
   object-position: center center;
+  animation: none;
 }
 
 /*
@@ -385,7 +399,19 @@ section.block.flush { padding-block: 0; }
   /* Directional shadow preserves legibility without smearing */
   text-shadow: 0 1px 8px rgba(0,0,0,0.55);
   max-width: min(560px, 60vw);
+  /*
+    Nameplate arrives after the portrait is visible.
+    0.7s delay — portrait fades in at 1.4s, nameplate lifts in at ~0.7s
+    to overlap naturally. The text emerges out of the image, not after.
+  */
+  animation: nameplate-arrive 0.9s cubic-bezier(.22,1,.36,1) 0.7s both;
 }
+
+@keyframes nameplate-arrive {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
 .nameplate h1 {
   font-family: var(--font-display);
   font-weight: 300;
@@ -453,14 +479,18 @@ section.block.flush { padding-block: 0; }
   text-transform: uppercase;
   color: var(--piedra);
   margin-bottom: var(--sp-6);
-  animation: fadein 1s ease 0.1s both;
+  /* Eyebrow fades in first — sets the context before the title rises */
+  animation: fadein 0.9s cubic-bezier(.22,1,.36,1) 0.15s both;
 }
 
 /*
   Hero title: 65–75% of usable width at 1440px ≈ cols 1–9.
   Line-height 0.93 makes the stacked lines feel like one mass.
-  max-width in ch units would prevent the natural line breaks,
-  so we use a px max that resolves to ~9 columns at 1440px.
+  max-width in px resolves to ~9 columns at 1480px content width.
+
+  NO fadein on the parent — only the child .line > span elements
+  animate (rise). Adding fadein here creates a brief invisible state
+  while children are mid-rise, producing a flash.
 */
 .hero-title {
   font-family: var(--font-display);
@@ -468,23 +498,26 @@ section.block.flush { padding-block: 0; }
   font-size: var(--type-display-xl);
   line-height: 0.93;
   letter-spacing: -0.028em;
-  max-width: 1060px;   /* ~72% of 1480px content width */
-  animation: fadein 1.1s cubic-bezier(.22,1,.36,1) 0.05s both;
+  max-width: 1060px;
 }
-.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line {
+  display: block;
+  overflow: hidden;  /* clips the rising span during animation */
+}
 .hero-title .line > span {
   display: block;
   transform: translateY(110%);
-  animation: rise 1.1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  animation: rise 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.25s forwards;
 }
-.hero-title .line:nth-child(2) > span { animation-delay: 0.14s; }
+.hero-title .line:nth-child(2) > span {
+  animation-delay: 0.38s;  /* clear stagger — each line feels distinct */
+}
 
 @keyframes rise { to { transform: translateY(0); } }
 
 /*
-  Body: deliberately narrow — approx 420–500px.
-  The width contrast between title (huge) and body (tight)
-  is what reads as editorial rather than generic.
+  Body and CTA: fade in after both title lines have risen.
+  Slow duration (1.1s) — these are supporting elements, not the hero.
 */
 .hero-body {
   margin-top: clamp(28px, 3.5vw, 48px);
@@ -492,16 +525,16 @@ section.block.flush { padding-block: 0; }
   font-size: var(--type-body-lg);
   line-height: 1.62;
   color: var(--piedra);
-  animation: fadein 1s ease 0.45s both;
+  animation: fadein 1.1s cubic-bezier(.22,1,.36,1) 0.72s both;
 }
 
 .hero-cta {
   margin-top: var(--sp-6);
-  animation: fadein 1s ease 0.65s both;
+  animation: fadein 1.1s cubic-bezier(.22,1,.36,1) 0.95s both;
 }
 
 @keyframes fadein {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: none; }
 }
 
@@ -520,7 +553,8 @@ section.block.flush { padding-block: 0; }
   gap: clamp(32px, 5vw, 64px);
   white-space: nowrap;
   width: max-content;
-  animation: slide 40s linear infinite;
+  /* 0.4s delay so the marquee starts from position 0, not mid-scroll */
+  animation: slide 44s linear 0.4s infinite;
   align-items: center;
 }
 
@@ -1484,12 +1518,32 @@ footer.site {
 .link-arrow:hover .arr { transform: translateX(4px); }
 
 /* ─── 23. SCROLL REVEAL ─────────────────────────────────────── */
+
+/*
+  Two reveal speeds:
+  .reveal     — text, labels, captions: quick, 18px rise, 0.75s
+  .reveal-img — photographs, large blocks: slower, 28px rise, 1.1s
+  Both use the same easing — expensive cubic-bezier deceleration.
+*/
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.75s cubic-bezier(.22,1,.36,1), transform 0.75s cubic-bezier(.22,1,.36,1);
+  transition: opacity 0.75s cubic-bezier(.22,1,.36,1),
+              transform 0.75s cubic-bezier(.22,1,.36,1);
 }
 .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Slower reveal for photographs — they are heavier, should feel heavier */
+.reveal-img {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.1s cubic-bezier(.22,1,.36,1),
+              transform 1.1s cubic-bezier(.22,1,.36,1);
+}
+.reveal-img.in {
   opacity: 1;
   transform: none;
 }
@@ -1759,11 +1813,19 @@ form.contact [aria-invalid="true"] { border-bottom-color: #93000a; }
 
 /* ─── 29. REDUCED MOTION ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
+  /* Portrait and nameplate: show immediately */
+  .stage-full img        { animation: none; opacity: 1; }
+  .nameplate             { animation: none; opacity: 1; transform: none; }
+  /* Hero text: show immediately */
   .hero-title .line > span { animation: none; transform: none; }
   .hero-eyebrow, .hero-body, .hero-cta { animation: none; opacity: 1; transform: none; }
+  /* Marquee: stop */
   .marquee-track { animation: none; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  /* Scroll reveals: bypass */
+  .reveal, .reveal-img { opacity: 1; transform: none; transition: none; }
+  /* Image hover: no scale */
   .obra-img-wrap img { transition: none; }
+  /* Arrow micro-animations: off */
   .svc-arrow .arr,
   .link-arrow .arr { transition: none; }
 }
