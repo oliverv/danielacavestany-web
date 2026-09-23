@@ -136,6 +136,39 @@ section.block.dim.showone { display: block; }
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* Landing — minimal, staged motion */
+.hero { min-height: 92vh; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; align-items: end; padding: 4rem 0 3rem; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; min-height: auto; } }
+.hero-title { font-family: 'EB Garamond', serif; font-weight: 300; font-size: clamp(52px, 8.5vw, 124px); line-height: 1.02; letter-spacing: -0.02em; }
+.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line > span { display: block; transform: translateY(110%); animation: rise 1.1s cubic-bezier(0.19, 1, 0.22, 1) forwards; }
+.hero-title .line:nth-child(2) > span { animation-delay: 0.12s; }
+.hero-title .line:nth-child(3) > span { animation-delay: 0.24s; }
+@keyframes rise { to { transform: translateY(0); } }
+.hero-kicker { animation: fadein 1s ease 0.1s both; }
+.hero-sub { animation: fadein 1s ease 0.45s both; max-width: 420px; }
+.hero-cta { animation: fadein 1s ease 0.6s both; }
+.hero-fig { animation: fadein 1.2s ease 0.35s both; }
+@keyframes fadein { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.scroll-cue { display: flex; align-items: center; gap: 1rem; padding: 0 0 2.5rem; animation: fadein 1s ease 0.9s both; }
+.scroll-cue .wire { width: 1px; height: 56px; background: var(--ink); transform-origin: top; animation: cue 2.2s ease-in-out infinite; }
+@keyframes cue { 0%, 100% { transform: scaleY(0.3); opacity: 0.4; } 50% { transform: scaleY(1); opacity: 1; } }
+.marquee { overflow: hidden; border-top: 1px solid var(--crema); border-bottom: 1px solid var(--crema); padding: 1rem 0; }
+.marquee-track { display: flex; gap: 3rem; white-space: nowrap; width: max-content; animation: slide 30s linear infinite; }
+.marquee-track span { font-family: 'EB Garamond', serif; font-style: italic; font-size: 22px; color: var(--piedra); }
+.marquee-track span b { color: var(--salvia); font-weight: 400; font-style: normal; font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.18em; }
+@keyframes slide { to { transform: translateX(-50%); } }
+.worknum { font-family: 'EB Garamond', serif; font-style: italic; font-size: 20px; color: var(--topo); }
+.cta-big { font-family: 'EB Garamond', serif; font-weight: 300; font-size: clamp(44px, 7vw, 96px); line-height: 1.05; letter-spacing: -0.02em; }
+.cta-big a { color: var(--ink); text-decoration: none; background-image: linear-gradient(var(--ink), var(--ink)); background-size: 0% 1px; background-repeat: no-repeat; background-position: left calc(100% - 0.08em); transition: background-size 0.6s cubic-bezier(0.19, 1, 0.22, 1); }
+.cta-big a:hover { background-size: 100% 1px; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .line > span { animation: none; transform: none; }
+  .hero-kicker, .hero-sub, .hero-cta, .hero-fig, .scroll-cue { animation: none; }
+  .marquee-track { animation: none; }
+  .scroll-cue .wire { animation: none; }
+}
 #lightbox {
   position: fixed; inset: 0; z-index: 100; background: var(--blanco);
   display: none; flex-direction: column; padding: 1.5rem 4rem 2rem;

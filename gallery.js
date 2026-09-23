@@ -41,13 +41,18 @@
 
   /* ---------- scroll reveal ---------- */
   var plates = Array.prototype.slice.call(document.querySelectorAll("main .plate"));
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll("main .reveal"));
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
       });
     }, { rootMargin: "0px 0px -8% 0px" });
-    plates.forEach(function (p) { p.classList.add("reveal"); io.observe(p); });
+    plates.forEach(function (p) { p.classList.add("reveal"); });
+    var seen = [];
+    plates.concat(revealEls).forEach(function (p) {
+      if (seen.indexOf(p) === -1) { seen.push(p); io.observe(p); }
+    });
   }
 
   /* ---------- lightbox ---------- */
