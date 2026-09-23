@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F5F3EE'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-style='italic' font-size='36' text-anchor='middle' fill='%23111'%3ED%3C/text%3E%3C/svg%3E">
+<!-- Critical: only the portrait is eagerly loaded -->
 <link rel="preload" as="image" href="assets/site/portrait.jpg" fetchpriority="high">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -36,7 +37,11 @@
 
 <main id="main-content">
 
-  <!-- ── Portrait: full-viewport editorial moment ── -->
+  <!-- ══════════════════════════════════════════════════════
+       1. PORTRAIT — full viewport, identity anchored lower-left.
+          The nameplate left edge aligns to var(--page-x),
+          the same coordinate as all other page content.
+       ══════════════════════════════════════════════════════ -->
   <section class="stage-full" aria-label="Daniela Cavestany, retrato">
     <img
       src="assets/site/portrait.jpg"
@@ -52,29 +57,36 @@
     </div>
   </section>
 
-  <!-- ── Marquee strip ── -->
+  <!-- ══════════════════════════════════════════════════════
+       2. MARQUEE — restrained gallery-caption ticker
+       ══════════════════════════════════════════════════════ -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
       <span>Bali — Tierra y Ofrenda <b>Serie V · 2026</b></span>
-      <span>32 obras <b>Sepia sobre algodón</b></span>
+      <span>32 obras <b>Sepia sobre algodón · Edición de 7</b></span>
       <span>Volver a mirar <b>Taller · Barcelona</b></span>
       <span>La belleza serena <b>de lo sencillo</b></span>
       <span>Barcelona — Bali <b>2026</b></span>
       <span>Bali — Tierra y Ofrenda <b>Serie V · 2026</b></span>
-      <span>32 obras <b>Sepia sobre algodón</b></span>
+      <span>32 obras <b>Sepia sobre algodón · Edición de 7</b></span>
       <span>Volver a mirar <b>Taller · Barcelona</b></span>
       <span>La belleza serena <b>de lo sencillo</b></span>
       <span>Barcelona — Bali <b>2026</b></span>
     </div>
   </div>
 
-  <!-- ── Hero text block ── -->
+  <!-- ══════════════════════════════════════════════════════
+       3. HERO — first editorial spread.
+          Title spans ~72% of content width (≈cols 1–9 at 1440).
+          Body constrained to 480px — the contrast is the point.
+          Left edge of eyebrow/title/body all align to .wrap.
+       ══════════════════════════════════════════════════════ -->
   <div class="wrap" id="editorial">
     <section class="hero-text-section" aria-labelledby="hero-title">
       <p class="hero-eyebrow">Fotógrafa · Dirección de Arte · Barcelona — Bali</p>
       <h2 class="hero-title" id="hero-title">
         <span class="line"><span>La belleza serena</span></span>
-        <span class="line"><span><em style="font-family:var(--font-display); font-style:italic">de lo sencillo.</em></span></span>
+        <span class="line"><span><em>de lo sencillo.</em></span></span>
       </h2>
       <p class="hero-body">Luz, emoción y memoria. Imágenes de carácter poético y atemporal, entre Barcelona y Bali.</p>
       <div class="hero-cta">
@@ -83,28 +95,39 @@
     </section>
   </div>
 
-  <!-- ── Descanso: full-viewport editorial moment ── -->
-  <section class="stage-full" aria-label="Descanso, Bali 2026">
+  <!-- ══════════════════════════════════════════════════════
+       4. DESCANSO — deliberate photographic interruption.
+          Full-bleed. One image. One tiny caption below.
+          Not an accidental image between sections.
+       ══════════════════════════════════════════════════════ -->
+  <section class="stage-full bali-image" aria-label="Descanso — Bali 2026">
     <img
       src="assets/bali/IMG_4491.jpg"
       alt="Dos palmeras con hamaca en un prado abierto, Bali"
       width="1129"
       height="1600"
-      loading="lazy">
-    <div class="stage-label">
-      <span class="t">Descanso</span>
-      <span class="meta">BALI—29 · 2026</span>
-    </div>
+      loading="lazy"
+      fetchpriority="low">
   </section>
+  <div class="stage-label" role="figure" aria-label="Descanso, BALI-29, 2026">
+    <span class="t">Descanso</span>
+    <span class="meta">BALI—29 · 2026</span>
+  </div>
 
-  <!-- ── Obra seleccionada: editorial stagger ── -->
+  <!-- ══════════════════════════════════════════════════════
+       5. OBRA SELECCIONADA — asymmetric editorial hierarchy.
+          Guardián:  7 columns, dominant, left.
+          Nenúfares: 4 columns, supporting, right, pushed down.
+          Helechos:  10 columns wide, closing image.
+          One photograph leads. The others support it.
+       ══════════════════════════════════════════════════════ -->
   <div class="wrap">
     <section class="obras-section" aria-labelledby="obras-heading">
       <p class="obras-label reveal" id="obras-heading">Obra seleccionada</p>
 
       <div class="obras-grid">
 
-        <!-- Work 01: cols 1–8 -->
+        <!-- Guardián: dominant -->
         <article class="obra-01 reveal">
           <div class="obra-img-wrap plate" role="button" tabindex="0"
                aria-label="Abrir obra: Guardián">
@@ -121,7 +144,7 @@
           </div>
         </article>
 
-        <!-- Work 02: cols 7–12, offset down -->
+        <!-- Nenúfares: supporting, smaller, right-offset, pushed down -->
         <article class="obra-02 reveal">
           <div class="obra-img-wrap plate" role="button" tabindex="0"
                aria-label="Abrir obra: Nenúfares">
@@ -138,20 +161,20 @@
           </div>
         </article>
 
-        <!-- Work 03: cols 2–11, cinematic width -->
+        <!-- Helechos: wide closing image -->
         <article class="obra-03 reveal">
           <div class="obra-img-wrap plate" role="button" tabindex="0"
-               aria-label="Abrir obra: Reflejo">
+               aria-label="Abrir obra: Helechos">
             <img
-              src="assets/bali/IMG_4500.jpg"
-              alt="Reflejo invertido de árboles en un charco con lluvia, Bali"
-              width="1146" height="1600"
+              src="assets/bali/IMG_4489.jpg"
+              alt="Helechos en la selva, Bali"
+              width="1126" height="1600"
               loading="lazy">
           </div>
           <div class="obra-caption">
             <p class="obra-num">03</p>
-            <p class="obra-title">Reflejo</p>
-            <p class="obra-meta">BALI-32 · 2026</p>
+            <p class="obra-title">Helechos</p>
+            <p class="obra-meta">BALI-28 · 2026</p>
           </div>
         </article>
 
@@ -163,7 +186,12 @@
     </section>
   </div>
 
-  <!-- ── Quote: typographic pause ── -->
+  <!-- ══════════════════════════════════════════════════════
+       6. QUOTE — typographic pause.
+          160–220px vertical breathing room.
+          No border. No background. No decoration.
+          Just the words and the silence around them.
+       ══════════════════════════════════════════════════════ -->
   <section class="quote-section" aria-label="Declaración">
     <blockquote class="quote-lg reveal">
       "No fotografío lo extraordinario.<br>
@@ -172,75 +200,45 @@
     <a class="quote-link reveal" href="sobre-mi.html">Mi historia <span style="display:inline-block;margin-left:4px">→</span></a>
   </section>
 
-  <!-- ── Reflejo: full-viewport ── -->
-  <section class="stage-full" aria-label="Helechos, Bali 2026">
+  <!-- ══════════════════════════════════════════════════════
+       7. REFLEJO — near-full-width photographic threshold.
+          Not a `stage-full` crop. The image sits within the
+          page envelope, preserving its natural aspect ratio.
+          Acts as a visual reset between obra and workshop.
+       ══════════════════════════════════════════════════════ -->
+  <div class="threshold-image" role="figure" aria-label="Reflejo — Bali 2026">
     <img
-      src="assets/bali/IMG_4489.jpg"
-      alt="Helechos en la selva, Bali"
-      width="1126" height="1600"
+      src="assets/bali/IMG_4500.jpg"
+      alt="Reflejo invertido de árboles en un charco con lluvia, Bali"
+      width="1146" height="1600"
       loading="lazy">
-    <div class="stage-label">
-      <span class="t">Helechos</span>
-      <span class="meta">BALI—28 · 2026</span>
-    </div>
-  </section>
+  </div>
+  <div class="threshold-caption">
+    <span class="t">Reflejo</span>
+    <span class="meta">BALI—32 · 2026</span>
+  </div>
 
-  <!-- ── Services: editorial horizontal rows ── -->
+  <!-- ══════════════════════════════════════════════════════
+       8. VOLVER A MIRAR — editorial announcement.
+          Two-column: left carries the identity, right the CTA.
+          Feels like a press announcement, not a service card.
+       ══════════════════════════════════════════════════════ -->
   <div class="wrap">
-    <section aria-labelledby="services-heading" style="padding-block: var(--section-gap)">
-      <p class="meta reveal" style="margin-bottom: var(--sp-7)" id="services-heading">Servicios</p>
-
-      <div class="services-rows">
-
-        <div class="service-row reveal">
-          <span class="svc-num">01</span>
-          <span class="svc-title">Volver a <em>mirar</em></span>
-          <span class="svc-desc">Taller de fotografía creativa con iPhone · Barcelona</span>
-          <span class="svc-action">
-            <a class="svc-arrow" href="servicios.html">
-              <span class="arr">→</span>
-            </a>
-          </span>
-        </div>
-
-        <div class="service-row reveal">
-          <span class="svc-num">02</span>
-          <span class="svc-title">Lugares <em>especiales</em></span>
-          <span class="svc-desc">Formentera · Bali · Capri</span>
-          <span class="svc-action">
-            <a class="svc-arrow" href="servicios.html">
-              <span class="arr">→</span>
-            </a>
-          </span>
-        </div>
-
-        <div class="service-row reveal">
-          <span class="svc-num">03</span>
-          <span class="svc-title">Dirección <em>de arte</em></span>
-          <span class="svc-desc">Revistas · Marcas · Interiorismo</span>
-          <span class="svc-action">
-            <a class="svc-arrow" href="servicios.html">
-              <span class="arr">→</span>
-            </a>
-          </span>
-        </div>
-
-        <div class="service-row reveal">
-          <span class="svc-num">04</span>
-          <span class="svc-title">Sesiones y <em>encargos</em></span>
-          <span class="svc-desc">Retrato · Interiores · Viaje</span>
-          <span class="svc-action">
-            <a class="svc-arrow" href="contacto.html">
-              <span class="arr">→</span>
-            </a>
-          </span>
-        </div>
-
+    <div class="workshop-announce reveal" aria-label="Taller">
+      <div>
+        <p class="workshop-announce-label">Taller · Barcelona</p>
+        <h2 class="workshop-announce-title">Volver a <em>mirar</em></h2>
+        <p class="workshop-announce-sub">Fotografía creativa con iPhone · 3 horas · 8–10 personas</p>
       </div>
-    </section>
+      <div class="workshop-announce-cta">
+        <a class="link-arrow" href="taller-volver-a-mirar.html">El programa <span class="arr">→</span></a>
+      </div>
+    </div>
 
-    <!-- Contact CTA -->
-    <section style="padding-block: var(--section-gap); border-top: 1px solid var(--crema);"
+    <!-- ══════════════════════════════════════════════════════
+         9. CONTACTO — large ending.
+         ══════════════════════════════════════════════════════ -->
+    <section style="padding-block: var(--section-md); border-top: 1px solid var(--crema);"
              aria-label="Contacto">
       <p class="meta reveal" style="margin-bottom: var(--sp-5)">Contacto</p>
       <p class="cta-big reveal"><a href="contacto.html">Escríbeme —</a></p>
@@ -250,7 +248,10 @@
 
 </main>
 
-<!-- Footer epigraph -->
+<!-- ══════════════════════════════════════════════════════
+     FOOTER EPIGRAPH — the emotional closing.
+     Sits above the operational footer. Large, unhurried.
+     ══════════════════════════════════════════════════════ -->
 <div class="footer-epigraph">
   <p>"Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria."</p>
 </div>
@@ -270,19 +271,15 @@
 </footer>
 
 <script>
-// Header scroll behaviour
+// Header: transparent over portrait, subtle fill on scroll
 (function() {
   var h = document.getElementById('masthead');
-  var lastY = 0;
-  function onScroll() {
-    var y = window.scrollY;
-    if (y > 40) { h.classList.add('scrolled'); } else { h.classList.remove('scrolled'); }
-    lastY = y;
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('scroll', function() {
+    h.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
 })();
 
-// Mobile nav toggle
+// Mobile nav
 (function() {
   var toggle = document.getElementById('nav-toggle');
   var nav    = document.getElementById('main-nav');
@@ -293,7 +290,6 @@
     nav.classList.toggle('open', !expanded);
     document.body.style.overflow = expanded ? '' : 'hidden';
   });
-  // Close on Escape
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && nav.classList.contains('open')) {
       toggle.setAttribute('aria-expanded', 'false');

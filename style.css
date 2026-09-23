@@ -47,15 +47,22 @@
   --sp-10: 160px;
   --sp-11: 220px;
 
-  /* Section rhythm */
-  --section-gap: clamp(80px, 10vw, 160px);
+  /* Section rhythm — three tiers for deliberate pacing */
+  --section-sm:  clamp(72px,  8vw, 120px);
+  --section-md:  clamp(96px,  11vw, 170px);
+  --section-lg:  clamp(128px, 15vw, 230px);
+  --section-gap: var(--section-md);
 
-  /* Grid */
-  --page-padding: clamp(24px, 4vw, 72px);
-  --page-max:     1480px;
-  --col-gap:      clamp(16px, 2vw, 28px);
+  /* Grid — the one coordinate system */
+  --page-x:    clamp(22px, 4.2vw, 72px);
+  --page-max:  1520px;
+  --grid-gap:  clamp(18px, 1.8vw, 32px);
 
-  /* Header height — used in calc() */
+  /* Legacy alias — kept so .wrap still works */
+  --page-padding: var(--page-x);
+  --col-gap:      var(--grid-gap);
+
+  /* Header height — used in calc() and sticky filter offset */
   --header-h: 80px;
 }
 
@@ -91,16 +98,15 @@ button { font-family: inherit; }
 .page-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--col-gap);
-  max-width: var(--page-max);
+  column-gap: var(--grid-gap);
+  width: min(calc(100% - (var(--page-x) * 2)), var(--page-max));
   margin-inline: auto;
-  padding-inline: var(--page-padding);
 }
 
+/* .wrap: same horizontal envelope, no internal grid */
 .wrap {
-  max-width: var(--page-max);
+  width: min(calc(100% - (var(--page-x) * 2)), var(--page-max));
   margin-inline: auto;
-  padding-inline: var(--page-padding);
 }
 
 /* Column-span utilities */
@@ -193,7 +199,8 @@ header.masthead {
   justify-content: space-between;
   gap: var(--sp-4);
   height: var(--header-h);
-  padding-inline: var(--page-padding);
+  /* Use page-x so logo left edge aligns to all content left edges */
+  padding-inline: var(--page-x);
   background: transparent;
   position: sticky;
   top: 0;
@@ -341,7 +348,8 @@ section.block + section.block {
 section.block.flush { padding-block: 0; }
 
 /* ─── 8. FULL-VIEWPORT IMAGE STAGES ─────────────────────────── */
-/* Portrait + hero image fills the full viewport as a visual moment */
+
+/* .stage-full — portrait and full-bleed Bali images */
 .stage-full {
   position: relative;
   min-height: 100svh;
@@ -353,24 +361,37 @@ section.block.flush { padding-block: 0; }
   width: 100%;
   height: 100svh;
   object-fit: cover;
-  object-position: center 20%;
+  /* Portrait: keep face/eyes well-framed on desktop */
+  object-position: center 18%;
   display: block;
 }
 
+/* Bali interruption images use landscape crop */
+.stage-full.bali-image img {
+  object-position: center center;
+}
+
+/*
+  Nameplate: locked to the same left edge as page content.
+  Uses var(--page-x) so logo, hero title, and nameplate
+  all share one left coordinate. Bottom anchored deliberately
+  lower than mathematical center.
+*/
 .nameplate {
   position: absolute;
-  left: var(--page-padding);
-  bottom: clamp(48px, 6vw, 80px);
+  left: var(--page-x);
+  bottom: clamp(48px, 6vw, 72px);
   color: #F5F3EE;
-  text-shadow: 0 1px 16px rgba(0,0,0,0.5);
-  max-width: 640px;
+  /* Directional shadow preserves legibility without smearing */
+  text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+  max-width: min(560px, 60vw);
 }
 .nameplate h1 {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(28px, 4vw, 50px);
-  letter-spacing: 0.06em;
-  line-height: 1.1;
+  font-size: clamp(26px, 3.5vw, 46px);
+  letter-spacing: 0.08em;
+  line-height: 1.08;
   text-transform: uppercase;
 }
 .nameplate p {
@@ -378,42 +399,52 @@ section.block.flush { padding-block: 0; }
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin-top: var(--sp-3);
-  opacity: 0.92;
+  opacity: 0.88;
 }
 .nameplate .cue {
   display: inline-block;
-  margin-top: var(--sp-4);
-  font-size: 10px;
-  letter-spacing: 0.22em;
+  margin-top: var(--sp-5);
+  font-size: 9px;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: #F5F3EE;
   text-decoration: none;
-  opacity: 0.85;
-  transition: opacity 0.2s;
+  opacity: 0.75;
+  transition: opacity 0.3s;
 }
 .nameplate .cue:hover { opacity: 1; }
 
-/* Inline image label (portfolio page stage) */
+/*
+  .stage-label — sits below the image (sibling element).
+  Used on portfolio page stages and Descanso interruption.
+  Left edge matches .wrap / var(--page-x).
+*/
 .stage-label {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: var(--sp-4);
-  max-width: var(--page-max);
+  /* Align to the same grid envelope as all content */
+  width: min(calc(100% - (var(--page-x) * 2)), var(--page-max));
   margin-inline: auto;
-  padding-inline: var(--page-padding);
-  padding-block: var(--sp-4);
-  border-top: 1px solid rgba(215, 207, 196, 0.6);
+  padding-block: var(--sp-3) var(--sp-4);
+  border-top: 1px solid var(--crema);
 }
 .stage-label .t {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 16px;
+  font-size: 15px;
+  color: var(--ink);
+}
+.stage-label .meta {
+  color: var(--piedra);
 }
 
 /* ─── 9. HERO (HOMEPAGE TEXT) ───────────────────────────────── */
 .hero-text-section {
-  padding-block: clamp(64px, 8vw, 120px) clamp(48px, 6vw, 96px);
+  /* Generous but asymmetric: more space below than above */
+  padding-top:    clamp(72px, 9vw, 140px);
+  padding-bottom: clamp(80px, 10vw, 160px);
 }
 
 .hero-eyebrow {
@@ -421,17 +452,23 @@ section.block.flush { padding-block: 0; }
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--piedra);
-  margin-bottom: var(--sp-5);
+  margin-bottom: var(--sp-6);
   animation: fadein 1s ease 0.1s both;
 }
 
+/*
+  Hero title: 65–75% of usable width at 1440px ≈ cols 1–9.
+  Line-height 0.93 makes the stacked lines feel like one mass.
+  max-width in ch units would prevent the natural line breaks,
+  so we use a px max that resolves to ~9 columns at 1440px.
+*/
 .hero-title {
   font-family: var(--font-display);
   font-weight: 300;
   font-size: var(--type-display-xl);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
-  max-width: 11ch;
+  line-height: 0.93;
+  letter-spacing: -0.028em;
+  max-width: 1060px;   /* ~72% of 1480px content width */
   animation: fadein 1.1s cubic-bezier(.22,1,.36,1) 0.05s both;
 }
 .hero-title .line { display: block; overflow: hidden; }
@@ -440,16 +477,20 @@ section.block.flush { padding-block: 0; }
   transform: translateY(110%);
   animation: rise 1.1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
-.hero-title .line:nth-child(2) > span { animation-delay: 0.12s; }
-.hero-title .line:nth-child(3) > span { animation-delay: 0.24s; }
+.hero-title .line:nth-child(2) > span { animation-delay: 0.14s; }
 
 @keyframes rise { to { transform: translateY(0); } }
 
+/*
+  Body: deliberately narrow — approx 420–500px.
+  The width contrast between title (huge) and body (tight)
+  is what reads as editorial rather than generic.
+*/
 .hero-body {
-  margin-top: clamp(24px, 3vw, 40px);
-  max-width: 44ch;
+  margin-top: clamp(28px, 3.5vw, 48px);
+  max-width: 480px;
   font-size: var(--type-body-lg);
-  line-height: 1.6;
+  line-height: 1.62;
   color: var(--piedra);
   animation: fadein 1s ease 0.45s both;
 }
@@ -548,31 +589,42 @@ section.block.flush { padding-block: 0; }
 }
 
 /*
-  Three-work editorial stagger on 12-col grid.
-  Work 01: cols 1–8 (wide), left-anchored
-  Work 02: cols 7–12 (narrower), pushed down via margin
-  Work 03: cols 2–11 (full-width cinematic)
+  Three-work editorial stagger — hierarchy is explicit:
+  Guardián (01): leads at cols 1–8. Dominates.
+  Nenúfares (02): cols 9–12, smaller, pushed down. Supports.
+  Helechos  (03): cols 2–11, wide cinematic. Closes.
+
+  The columns overlap by design: obra-01 ends at col 9,
+  obra-02 starts at col 9 — they share one gutter.
+  This creates proximity without collision.
 */
 .obras-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: var(--col-gap);
+  column-gap: var(--grid-gap);
   row-gap: 0;
 }
 
+/* 01: dominant — 7 of 12 columns */
 .obra-01 {
   grid-column: 1 / 9;
   grid-row: 1;
 }
+
+/* 02: supporting — 4 columns, pushed well down so it reads
+       as a different vertical position, not a peer */
 .obra-02 {
-  grid-column: 7 / 13;
+  grid-column: 9 / 13;
   grid-row: 1;
-  margin-top: clamp(48px, 8vw, 120px);
+  margin-top: clamp(80px, 14vw, 200px);
+  align-self: end;
 }
+
+/* 03: closing wide — cols 2–11, generous breathing above */
 .obra-03 {
   grid-column: 2 / 12;
   grid-row: 2;
-  margin-top: clamp(64px, 9vw, 140px);
+  margin-top: clamp(80px, 10vw, 160px);
 }
 
 .obra-num {
@@ -624,19 +676,29 @@ section.block.flush { padding-block: 0; }
 }
 
 /* ─── 13. QUOTE SECTION ─────────────────────────────────────── */
+/*
+  Quote: requires maximum isolation. The whitespace IS the design.
+  No border, no card, no decorative icon.
+  The link ("Mi historia →") sits far enough below that it
+  reads as a separate thought — not a caption to the quote.
+*/
 .quote-section {
-  padding-block: clamp(80px, 10vw, 160px);
+  padding-block: clamp(160px, 18vw, 220px);
   text-align: center;
 }
 
 .quote-section .quote-lg {
   max-width: 22ch;
   margin-inline: auto;
+  /* Slightly tighter leading for dense italic text */
+  line-height: 1.1;
 }
 
 .quote-section .quote-link {
   display: inline-block;
-  margin-top: var(--sp-6);
+  /* Significant gap below the quote — the link is navigation,
+     not commentary. Push it away from the poetry. */
+  margin-top: clamp(48px, 6vw, 80px);
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -717,6 +779,108 @@ section.block.flush { padding-block: 0; }
 .svc-arrow .arr { display: inline-block; transition: transform 0.3s cubic-bezier(.22,1,.36,1); }
 .service-row:hover .svc-arrow { color: var(--ink); }
 .service-row:hover .svc-arrow .arr { transform: translateX(5px); }
+
+/* ─── 14b. HOMEPAGE THRESHOLD IMAGE (Reflejo) ────────────────── */
+/*
+  Not a full-viewport crop. A near-full-width photograph that
+  allows the image to breathe within the page envelope.
+  Acts as a visual threshold between obra and commerce.
+*/
+.threshold-image {
+  /* Horizontal: page-x inset on both sides */
+  width: min(calc(100% - (var(--page-x) * 2)), var(--page-max));
+  margin-inline: auto;
+  margin-block: 0;
+  overflow: hidden;
+}
+.threshold-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Preserve natural aspect ratio — do not crop */
+}
+.threshold-caption {
+  width: min(calc(100% - (var(--page-x) * 2)), var(--page-max));
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-4);
+  padding-block: var(--sp-3);
+  border-top: 1px solid var(--crema);
+  margin-top: 0;
+}
+.threshold-caption .t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 15px;
+}
+
+/* ─── 14c. HOMEPAGE WORKSHOP ANNOUNCEMENT ────────────────────── */
+/*
+  Two-column editorial announcement.
+  Left: label + title + minimal support line.
+  Right: aligned-right CTA.
+  Shares the same grid envelope as everything else.
+*/
+.workshop-announce {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: var(--grid-gap);
+  align-items: end;
+  padding-block: clamp(56px, 6vw, 88px);
+  border-top: 1px solid var(--crema);
+}
+
+.workshop-announce-label {
+  font-size: var(--type-meta);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--piedra);
+  margin-bottom: var(--sp-3);
+}
+
+.workshop-announce-title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 60px);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+.workshop-announce-title em { font-style: italic; }
+
+.workshop-announce-sub {
+  margin-top: var(--sp-3);
+  font-size: var(--type-body);
+  color: var(--piedra);
+  letter-spacing: 0.06em;
+}
+
+.workshop-announce-cta {
+  padding-bottom: 6px; /* optical baseline alignment with title */
+  text-align: right;
+}
+
+/* ─── 14d. FOOTER EPIGRAPH — large closing statement ─────────── */
+/*
+  Sits above the footer proper. The sentence is the emotional
+  ending; the footer below is operational (copyright, links).
+  Give the sentence generous space and scale.
+*/
+.footer-epigraph {
+  width: min(calc(100% - (var(--page-x) * 2)), var(--page-max));
+  margin-inline: auto;
+  padding-block: clamp(80px, 10vw, 140px) clamp(48px, 5vw, 72px);
+  border-top: 1px solid var(--crema);
+}
+.footer-epigraph p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(18px, 2.5vw, 30px);
+  line-height: 1.45;
+  color: var(--piedra);
+  max-width: 52ch;
+}
 
 /* ─── 15. HOMEPAGE CTA BLOCK ─────────────────────────────────── */
 .cta-big {
@@ -1207,30 +1371,21 @@ table.archive-table tbody tr:hover {
 }
 
 /* ─── 21. FOOTER ─────────────────────────────────────────────── */
-/* Poetic line sits above footer proper */
-.footer-epigraph {
-  padding: clamp(64px, 8vw, 120px) var(--page-padding) clamp(32px, 4vw, 48px);
-  max-width: var(--page-max);
-  margin-inline: auto;
-  border-top: 1px solid var(--crema);
-}
-.footer-epigraph p {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(16px, 2vw, 22px);
-  color: var(--piedra);
-  max-width: 56ch;
-  line-height: 1.5;
-}
+/*
+  footer-epigraph is defined at section 14d above (new location).
+  This block keeps the footer.site operational grid.
+  Both share the same width: min() envelope as .wrap,
+  so their left edges align exactly.
+*/
 
 footer.site {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: end;
   gap: var(--sp-4);
-  padding: var(--sp-6) var(--page-padding) var(--sp-7);
-  max-width: var(--page-max);
+  width: min(calc(100% - (var(--page-x) * 2)), var(--page-max));
   margin-inline: auto;
+  padding-block: var(--sp-6) var(--sp-7);
   border-top: 1px solid var(--crema);
 }
 
@@ -1494,6 +1649,103 @@ form.contact [aria-invalid="true"] { border-bottom-color: #93000a; }
   border-top: 1px solid var(--crema);
 }
 
+/* ─── 28b. LEGACY COMPATIBILITY ALIASES ─────────────────────── */
+/* Older markup (muestra.html, EN counterpart pages) still use
+   these classes. Aliases map to the new design system. */
+
+/* .stage — full-viewport image container (muestra.html) */
+.stage {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--page-padding);
+  background: var(--blanco);
+}
+@media (max-width: 767px) { .stage { padding: var(--page-padding); } }
+.stage figure { margin: 0; }
+.stage img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 82svh;
+  margin: 0 auto;
+  object-fit: contain;
+}
+.stageref {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  max-width: var(--page-max);
+  width: 100%;
+  margin: var(--sp-4) auto 0;
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--crema);
+}
+.stageref .t {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+}
+.stage-open {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--page-padding);
+}
+.interlude {
+  padding-block: clamp(64px, 9vw, 140px);
+}
+.duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--col-gap);
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+@media (max-width: 767px) { .duo { grid-template-columns: 1fr; } }
+.duo img { width: 100%; height: auto; display: block; }
+
+/* Common layout helpers used in EN pages and older markup */
+.lede {
+  max-width: 58ch;
+  font-size: var(--type-body-lg);
+  line-height: 1.65;
+}
+.single-narrow {
+  max-width: 640px;
+  margin-inline: auto;
+}
+.offset-left  { max-width: 75%; }
+.offset-right { max-width: 75%; margin-left: auto; }
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 3vw, 48px);
+}
+@media (max-width: 767px) { .grid-2 { grid-template-columns: 1fr; } }
+
+/* Old service layout (used in taller page and EN equivalents) */
+.service {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: var(--col-gap);
+  padding-block: clamp(28px, 3.5vw, 48px);
+  border-bottom: 1px solid var(--crema);
+  align-items: baseline;
+}
+@media (max-width: 767px) {
+  .service { grid-template-columns: 1fr; gap: var(--sp-3); }
+}
+.service .num {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--topo);
+  font-size: 20px;
+}
+
 /* ─── 29. REDUCED MOTION ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .hero-title .line > span { animation: none; transform: none; }
@@ -1538,10 +1790,13 @@ form.contact [aria-invalid="true"] { border-bottom-color: #93000a; }
   }
   .foot-center { display: none; }
 
-  /* Obras stagger — simplify */
+  /* Obras stagger on tablet — keep hierarchy, reduce complexity */
   .obra-01 { grid-column: 1 / 8; }
-  .obra-02 { grid-column: 6 / 13; margin-top: 60px; }
+  .obra-02 { grid-column: 8 / 13; margin-top: clamp(48px, 8vw, 96px); }
   .obra-03 { grid-column: 1 / 13; }
+
+  /* Workshop announce: shrink title slightly */
+  .workshop-announce-title { font-size: clamp(26px, 3.5vw, 44px); }
 
   /* Workshop phases */
   .workshop-phases { grid-template-columns: 1fr 1fr; gap: var(--sp-5); row-gap: var(--sp-6); }
@@ -1562,16 +1817,52 @@ form.contact [aria-invalid="true"] { border-bottom-color: #93000a; }
 /* ── Mobile: ≤ 767px ── */
 @media (max-width: 767px) {
   :root {
+    --page-x:       22px;
     --page-padding: 22px;
     --header-h:     64px;
-    --section-gap:  clamp(56px, 10vw, 88px);
+    --section-sm:   clamp(56px, 9vw, 80px);
+    --section-md:   clamp(72px, 10vw, 96px);
+    --section-lg:   clamp(88px, 12vw, 120px);
+    --section-gap:  var(--section-md);
+    --grid-gap:     16px;
     --col-gap:      16px;
   }
 
-  /* Stage portrait */
+  /* Stage portrait: eyes in upper-middle third on narrow screens */
   .stage-full img {
     height: 88svh;
-    object-position: center 15%;
+    /* Mobile crop: she looks better with face slightly higher */
+    object-position: center 12%;
+  }
+
+  /* Bali interruption images: center on mobile */
+  .stage-full.bali-image img {
+    object-position: center center;
+  }
+
+  /* Threshold image: full bleed on mobile — no horizontal inset */
+  .threshold-image,
+  .threshold-caption {
+    width: 100%;
+    padding-inline: var(--page-x);
+  }
+  .threshold-image {
+    padding-inline: 0;
+  }
+
+  /* Workshop announce: stack vertically */
+  .workshop-announce {
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
+  .workshop-announce-cta {
+    text-align: left;
+    padding-bottom: 0;
+  }
+
+  /* Quote: reduce isolation slightly for mobile */
+  .quote-section {
+    padding-block: clamp(96px, 14vw, 140px);
   }
 
   /* Hero title */
@@ -1699,6 +1990,9 @@ form.contact [aria-invalid="true"] { border-bottom-color: #93000a; }
 /* ── Large desktop ≥ 1440px — generous spacing ── */
 @media (min-width: 1440px) {
   :root {
-    --section-gap: 160px;
+    --section-sm:  120px;
+    --section-md:  170px;
+    --section-lg:  230px;
+    --section-gap: var(--section-md);
   }
 }
