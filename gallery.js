@@ -56,27 +56,40 @@
   }
 
   /* ---------- lightbox ---------- */
+  var IS_EN = document.documentElement.lang === "en";
   var lb = document.createElement("div");
   lb.id = "lightbox";
   lb.setAttribute("role", "dialog");
-  lb.setAttribute("aria-label", "Visor de obra");
+  lb.setAttribute("aria-modal", "true");
+  lb.setAttribute("aria-label", IS_EN ? "Artwork viewer" : "Visor de obra");
   lb.innerHTML =
     '<div class="lb-top"><span class="meta" id="lb-count"></span>' +
-    '<button class="lb-close" id="lb-close">Cerrar ✕</button></div>' +
-    '<div class="lb-stage"><button class="lb-nav" id="lb-prev" aria-label="Anterior">‹</button>' +
-    '<img id="lb-img" alt=""><button class="lb-nav" id="lb-next" aria-label="Siguiente">›</button></div>' +
-    '<div class="lb-cap"><span class="title" id="lb-title"></span><span class="meta" id="lb-meta"></span></div>';
+    '<button class="lb-close" id="lb-close">' + (IS_EN ? "Close ✕" : "Cerrar ✕") + '</button></div>' +
+    '<div class="lb-stage"><button class="lb-nav" id="lb-prev" aria-label="' + (IS_EN ? "Previous" : "Anterior") + '">‹</button>' +
+    '<img id="lb-img" alt=""><button class="lb-nav" id="lb-next" aria-label="' + (IS_EN ? "Next" : "Siguiente") + '">›</button></div>' +
+    '<div class="lb-cap"><span class="title" id="lb-title"></span><span class="meta" id="lb-meta"></span></div>' +
+    '<div class="lb-meta-row"><span class="meta" id="lb-cat"></span><a class="lb-consult" id="lb-consult" href="#">' +
+    (IS_EN ? "Enquire about this work →" : "Consultar sobre esta obra →") + '</a></div>';
   document.body.appendChild(lb);
 
   var lbImg = lb.querySelector("#lb-img");
   var lbTitle = lb.querySelector("#lb-title");
   var lbMeta = lb.querySelector("#lb-meta");
+  var lbCat = lb.querySelector("#lb-cat");
+  var lbConsult = lb.querySelector("#lb-consult");
   var lbCount = lb.querySelector("#lb-count");
   var current = [];
   var idx = 0;
+  var opener = null;
 
   function visiblePlates() {
     return plates.filter(function (p) { return !p.classList.contains("hide"); });
+  }
+  function catOf(fig) {
+    var m = fig.querySelectorAll(".meta");
+    var txt = m.length ? m[m.length - 1].textContent : "";
+    var found = txt.match(/BALI-\d{2}/);
+    return found ? found[0] : "";
   }
   function openAt(list, i) {
     current = list; idx = (i + list.length) % list.length;
@@ -88,11 +101,31 @@
     var m = fig.querySelectorAll(".meta");
     lbTitle.textContent = t ? t.textContent : "";
     lbMeta.textContent = m.length ? m[m.length - 1].textContent : "";
+    var cat = catOf(fig);
+    var sec = fig.closest("section[id]");
+    var group = "";
+    if (sec) {
+      var h = sec.querySelector("h2.display");
+      group = h ? h.textContent.trim().replace(/\s+/g, " ") : "";
+    }
+    lbCat.textContent = group;
+    if (cat) {
+      lbConsult.style.display = "";
+      lbConsult.href = (IS_EN ? "contacto-en.html" : "contacto.html") + "?obra=" + cat;
+    } else {
+      lbConsult.style.display = "none";
+    }
     lbCount.textContent = (idx + 1) + " / " + current.length;
+    if (!lb.classList.contains("open")) opener = document.activeElement;
     lb.classList.add("open");
     document.body.style.overflow = "hidden";
+    lb.querySelector("#lb-close").focus();
   }
-  function close() { lb.classList.remove("open"); document.body.style.overflow = ""; }
+  function close() {
+    lb.classList.remove("open");
+    document.body.style.overflow = "";
+    if (opener && opener.focus) opener.focus();
+  }
   function step(d) { openAt(current, idx + d); }
 
   document.querySelectorAll("main .plate").forEach(function (fig) {

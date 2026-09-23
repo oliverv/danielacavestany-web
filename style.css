@@ -169,6 +169,89 @@ section.block.dim.showone { display: block; }
   .marquee-track { animation: none; }
   .scroll-cue .wire { animation: none; }
 }
+
+/* Archive index — compact editorial catalogue */
+.archive-list { list-style: none; columns: 2; column-gap: 3rem; margin-top: 2rem; padding: 0; }
+@media (max-width: 768px) { .archive-list { columns: 1; } }
+.archive-list li {
+  break-inside: avoid; display: flex; align-items: baseline; gap: 0.9rem;
+  padding: 0.55rem 0; border-bottom: 1px solid var(--crema); font-size: 13px;
+}
+.archive-list .cat { font-family: 'EB Garamond', serif; font-style: italic; font-size: 15px; min-width: 4.2em; }
+.archive-list .t { flex: 1; }
+.archive-list .meta { white-space: nowrap; }
+
+/* Accessibility base */
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem; z-index: 200; background: var(--ink); color: #fff;
+  padding: 0.7rem 1.2rem; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 1rem; color: #fff; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.prose { max-width: 68ch; }
+.prose p { max-width: 68ch; }
+
+/* Marquee restraint */
+.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+
+/* Mobile nav — contained scroll row, no button needed */
+@media (max-width: 768px) {
+  header.masthead { gap: 1rem; }
+  nav.mainnav {
+    display: flex; gap: 1.1rem; overflow-x: auto; white-space: nowrap;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none; flex: 1; min-width: 0;
+  }
+  nav.mainnav::-webkit-scrollbar { display: none; }
+  nav.mainnav a { margin-left: 0; padding: 0.6rem 0; }
+  .langswitch { flex-shrink: 0; }
+}
+
+/* Forms — states */
+.form-errors {
+  display: none; border: 1px solid #93000a; color: #93000a; background: #ffdad6;
+  padding: 1rem 1.2rem; margin-bottom: 1rem; font-size: 13px;
+}
+.form-errors.show { display: block; }
+.form-errors ul { margin: 0.4rem 0 0 1.1rem; }
+.field-error { font-size: 12px; color: #93000a; margin-top: 0.3rem; min-height: 1.2em; }
+form.contact [aria-invalid="true"] { border-bottom-color: #93000a; }
+.form-status { font-size: 13px; color: var(--piedra); margin-top: 1.2rem; }
+.hp-field { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+#obra-notice {
+  display: none; border-left: 2px solid var(--salvia); padding: 0.8rem 1.1rem;
+  background: var(--blanco-puro); margin-bottom: 0.5rem; font-size: 13px;
+}
+#obra-notice.show { display: block; }
+
+/* Lightbox consult link */
+#lightbox .lb-consult { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+#lightbox .lb-consult:hover { color: var(--salvia); }
+#lightbox .lb-meta-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+
+/* Exhibition sample — full-viewport stages, contain (never crop artwork) */
+.stage {
+  min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem; background: var(--blanco);
+}
+@media (max-width: 768px) { .stage { padding: 1.5rem; } }
+.stage figure { margin: 0; }
+.stage img {
+  display: block; width: auto; height: auto; max-width: 100%; max-height: 82svh;
+  margin: 0 auto; object-fit: contain;
+}
+.stageref {
+  display: flex; justify-content: space-between; gap: 1rem; max-width: 1100px; width: 100%;
+  margin: 1.2rem auto 0; padding-top: 0.8rem; border-top: 1px solid var(--crema);
+}
+.stageref .t { font-family: 'EB Garamond', serif; font-style: italic; font-size: 17px; }
+.stage-open { min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding: 4rem; }
+@media (max-width: 768px) { .stage-open { padding: 1.5rem; } }
+.interlude { padding: 9rem 0; }
+@media (max-width: 768px) { .interlude { padding: 5rem 0; } }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto; }
+@media (max-width: 768px) { .duo { grid-template-columns: 1fr; } }
+.duo img { width: 100%; height: auto; display: block; }
 #lightbox {
   position: fixed; inset: 0; z-index: 100; background: var(--blanco);
   display: none; flex-direction: column; padding: 1.5rem 4rem 2rem;
