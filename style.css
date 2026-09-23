@@ -229,6 +229,38 @@ form.contact [aria-invalid="true"] { border-bottom-color: #93000a; }
 #lightbox .lb-consult:hover { color: var(--salvia); }
 #lightbox .lb-meta-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
 
+/* Homepage exhibition — full-viewport chapters, contain only */
+.stage-full {
+  min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
+  padding: 3rem 4rem 2rem; background: var(--blanco); position: relative;
+}
+@media (max-width: 768px) { .stage-full { padding: 5rem 1.5rem 1.5rem; } }
+.stage-full img {
+  display: block; width: auto; height: auto; max-width: 100%; max-height: 84svh;
+  margin: 0 auto; object-fit: contain;
+}
+.stage-full .stageref { max-width: 1200px; }
+.nameplate {
+  position: absolute; left: 4rem; bottom: 5.5rem; color: #F5F3EE;
+  text-shadow: 0 1px 12px rgba(0,0,0,0.45);
+}
+@media (max-width: 768px) { .nameplate { left: 1.5rem; bottom: 4.5rem; } }
+.nameplate h1 {
+  font-family: 'EB Garamond', serif; font-weight: 300;
+  font-size: clamp(30px, 4.5vw, 54px); letter-spacing: 0.06em; line-height: 1.1;
+}
+.nameplate p { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; margin-top: 0.6rem; opacity: 0.92; }
+.nameplate .cue {
+  display: inline-block; margin-top: 1.2rem; font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: #F5F3EE; text-decoration: none; opacity: 0.85;
+}
+.nameplate .cue:hover { opacity: 1; }
+.stage-label {
+  max-width: 1200px; width: 100%; margin: 1.1rem auto 0; padding-top: 0.8rem;
+  border-top: 1px solid var(--crema); display: flex; justify-content: space-between; gap: 1rem;
+}
+.stage-label .t { font-family: 'EB Garamond', serif; font-style: italic; font-size: 17px; }
+
 /* Exhibition sample — full-viewport stages, contain (never crop artwork) */
 .stage {
   min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
