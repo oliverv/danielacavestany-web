@@ -1207,6 +1207,17 @@ table.archive-table tbody tr:hover {
   margin-inline: auto;
 }
 
+/* Closing sentence beneath the manifesto quote */
+.manifesto-sub {
+  margin-top: var(--sp-6);
+  font-size: var(--type-body-lg);
+  color: var(--piedra);
+  max-width: 52ch;
+  margin-inline: auto;
+  line-height: 1.65;
+  font-style: italic;
+}
+
 .firma {
   display: block;
   max-width: 200px;

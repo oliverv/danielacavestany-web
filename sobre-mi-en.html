@@ -9,9 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F5F3EE'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-style='italic' font-size='36' text-anchor='middle' fill='%23111'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/site/portrait.jpg" fetchpriority="high">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
 <header class="masthead" id="masthead">
   <a class="wordmark" href="index-en.html">Daniela <em>Cavestany</em></a>
   <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
@@ -21,9 +24,9 @@
   </button>
   <div class="masthead-right" id="main-nav">
     <nav class="mainnav" aria-label="Main navigation">
-      <a href="portfolio-en.html" class="active">Portfolio</a>
+      <a href="portfolio-en.html">Portfolio</a>
       <a href="sobre-mi-en.html" class="active">About</a>
-      <a href="servicios-en.html" class="active">Services</a>
+      <a href="servicios-en.html">Services</a>
       <a href="notas-en.html">Notes</a>
       <a href="contacto-en.html">Contact</a>
     </nav>
@@ -31,53 +34,102 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
+
+  <!-- ── Portrait: full-viewport major editorial moment ── -->
   <section class="stage-full" aria-label="Daniela Cavestany, portrait">
-    <img src="assets/site/portrait.jpg" alt="Daniela Cavestany, black and white portrait" width="1024" height="1536" loading="eager">
-    <div class="stage-label"><span class="t">Daniela Cavestany</span><span class="meta">Photographer · Barcelona</span></div>
-  </section>
-
-<div class="wrap">
-  <section class="block">
-      <div class="prose">
-        <p class="meta">Photographer · Art Direction · Interior Styling</p>
-        <br>
-        <p>Graduated in Art Direction and Photography from the London College for the Applied Arts and trained in photography at GrisArt. She began her career in art direction and graphic design, collaborating with various agencies and creative studios. Later she moved into decoration styling, working for some of Europe's leading interiors and lifestyle magazines. Her urge to discover new cultures led her to live for several years in Indonesia, mainly in Bali, where she developed a photographic gaze deeply influenced by the island's landscape, spirituality and everyday life.</p>
-        <p>Her work seeks to capture the serene beauty of places, people and the small details that reveal a story. Through photography she explores the relationship between light, emotion and memory, creating images of a poetic and timeless character.</p>
-      </div>
-  </section>
-
-  <section class="block">
-    <p class="meta">Biography</p>
-    <h2 class="display">My <em>story</em></h2>
-    <br>
-    <div class="prose">
-      <p>My story is deeply bound to my mother and Asia. I was born in Barcelona, in a city that in 1970 was still ruled by Franco's regime. Into a family of the Catalan bourgeoisie, with many rules, sparing in words and affection, and a profoundly authoritarian father. I studied at a convent school and lived in a closed, constrained world. But I was a free-spirited child. From an early age I understood I belonged somewhere else.</p>
-      <p>At my roots lay the answers to my restlessness. A part of me belonged to some islands on the other side of the world: the Philippines. My mother had been born there, into a mixed family —Spanish and Filipino— that had been intertwining origins for generations.</p>
-      <p>I think I was about five the first time I went to the Philippines, and I remember it as if it were today. They say it is impossible to keep such sharp memories from that age, but I believe that when something strikes you deeply, it stays engraved. The smell as I stepped off the plane —that blend of humidity, heat and Asia— has stayed with me ever since. It is a scent that moves me, calms me, makes me feel at home. It doesn't have to be the Philippines: it is Asia. Every time I step off a plane there, I breathe deeply and feel I belong to that place.</p>
-      <p>I discovered new fruits, unknown flowers. I discovered that my hair, on the other side of the world, was gold, and that my very white skin was a treasure. I discovered smiles, serenity, that way of being that Asian people have cultivated for generations. And I felt well. That marked the rest of my life. Nothing was ever the same again. It was a total liberation, because on returning to what was my world, I already knew I could escape whenever I wished. I knew another place existed, and that certainty left a mark on me: the possibility of escape, the possibility of being someone else.</p>
-      <p>That idea accompanied me through childhood, adolescence and youth. Asia was always there, like a promise. I travelled many times, again and again, seeking in each journey that feeling of freedom. Many years later, having found my professional path, had children and fulfilled everything socially expected of me, I escaped. I took my children and went to live for a few years in Bali. There I felt completely free. Everything accompanied me: nature, smiles, the rhythm of life.</p>
-      <p>My photographs are born from there, from that vocation that inhabits me. In the end, I believe I achieved what I had always wished since childhood: to live in Asia, to feel there what I had always felt, and for my children to experience the same, to grow up between two worlds, two continents. Each of my photographs tries to capture the beauty of what I find there: the eyes of those people, so clean, so uncomplicated; their natural smiles; the temples, the palms, the seas, the rains; lives so precarious and, at once, so full.</p>
+    <img
+      src="assets/site/portrait.jpg"
+      alt="Daniela Cavestany, black and white portrait"
+      width="1024"
+      height="1536"
+      loading="eager"
+      fetchpriority="high">
+    <div class="nameplate">
+      <h1>DANIELA CAVESTANY</h1>
+      <p>Photographer · Barcelona / Bali</p>
     </div>
-    <br>
-    <p class="quote">"My mother was Asia, and Asia is my place."</p>
   </section>
 
-  <section class="block single-narrow" style="text-align:center">
-    <p class="meta">What makes me different</p>
-    <br>
-    <p class="quote">"I don't photograph the extraordinary. I photograph what we usually overlook. A gaze, a smile, a flower, light on a landscape. Small instants able to stop us and remind us of what is essential."</p>
-    <br>
-    <img class="firma" src="assets/site/firma-daniela-cavestany.png" alt="Daniela Cavestany's signature" loading="lazy" style="margin:0 auto">
-  </section>
+  <div class="wrap">
 
-  <section class="block">
-    <table class="index">
-      <tr><th>Training</th><th>Based in</th><th>Languages</th></tr>
-      <tr><td>London College for the Applied Arts · GrisArt</td><td>Barcelona / Bali</td><td>ES / EN</td></tr>
-    </table>
-  </section>
-</div>
+    <!-- ── Intro split: location left (cols 1–6), bio right (cols 8–12) ── -->
+    <div class="bio-intro-grid" id="main-content-anchor">
+      <div class="bio-intro-left" style="display:flex; align-items:flex-end;">
+        <p class="meta" style="padding-bottom: 4px">Barcelona · Philippines · Bali</p>
+      </div>
+      <div class="bio-intro-right">
+        <p class="bio-intro-role">Photographer · Art Direction · Interior Styling</p>
+        <div style="font-size: var(--type-body-lg); line-height: 1.72; color: var(--piedra);">
+          <p style="margin-bottom: 1.4em">Graduated in Art Direction and Photography from the London College for the Applied Arts and trained in photography at GrisArt. She began her career in art direction and graphic design, collaborating with various agencies and creative studios. Later she moved into decoration styling, working for some of Europe's leading interiors and lifestyle magazines.</p>
+          <p>Her work seeks to capture the serene beauty of places, people and the small details that reveal a story. Through photography she explores the relationship between light, emotion and memory, creating images of a poetic and timeless character.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Long-form biography ── -->
+    <section class="bio-story" aria-labelledby="bio-heading">
+      <p class="bio-story-label">Biography</p>
+      <h2 class="bio-story-title" id="bio-heading">My <em>story</em></h2>
+
+      <div class="bio-prose">
+        <p>My story is deeply bound to my mother and Asia. I was born in Barcelona, in a city that in 1970 was still ruled by Franco's regime. Into a family of the Catalan bourgeoisie, with many rules, sparing in words and affection, and a profoundly authoritarian father. My great-great-uncle was Enrique Sagnier and that connection to the city was very present in our family. I studied at a convent school and lived in a closed, constrained world. But I was a free-spirited child. From an early age I understood I belonged somewhere else.</p>
+
+        <p>At my roots lay the answers to my restlessness. A part of me belonged to some islands on the other side of the world: the Philippines. My mother had been born there, into a mixed family —Spanish and Filipino— that had been intertwining origins for generations. Her way of being, her spirit, were those of a girl from the colonial era on the islands. When I understood that a world existed that also belonged to me, it felt like a liberation. From that moment I knew I would leave, that one day I would manage to become what they were trying to prevent me from being.</p>
+
+        <p>I think I was about five the first time I went to the Philippines, and I remember it as if it were today. They say it is impossible to keep such clear memories from that age, but I believe that when something strikes you deeply, it stays engraved. The smell as I stepped off the plane —that blend of humidity, heat and Asia— has stayed with me ever since. It is a scent that moves me, calms me, makes me feel at home. It doesn't have to be the Philippines: it is Asia. Every time I step off a plane there, I breathe deeply and feel I belong to that place.</p>
+      </div>
+
+      <!-- Pull quote — first visual pause -->
+      <div class="pull-quote">
+        <blockquote>"My mother was Asia,<br>and Asia is my place."</blockquote>
+      </div>
+
+      <div class="bio-prose">
+        <p>I discovered new fruits, unknown flowers. I discovered that my hair, on the other side of the world, was gold, and that my very white skin was a treasure. I discovered smiles, serenity, that way of being that Asian people have cultivated for generations. And I felt well. That marked the rest of my life. Nothing was ever the same again. It was a total liberation, because on returning to what was my world, I already knew I could escape whenever I wished. I knew another place existed, and that certainty left a mark on me: the possibility of escape, the possibility of being someone else.</p>
+
+        <p>That idea accompanied me through childhood —with parents who had separated, when almost no one had—, through an Spain still waking from dictatorship. It accompanied me through adolescence and later, through youth. Asia was always there, like a promise. I travelled many times, again and again, seeking in each journey that feeling of freedom. Many years later, having found my professional path, had children and fulfilled everything socially expected of me, I escaped. I took my children and went to live for a few years in Bali. There I felt completely free. Everything accompanied me: nature, smiles, the rhythm of life.</p>
+
+        <p>My photographs are born from there, from that vocation that inhabits me. In the end, I believe I achieved what I had always wished since childhood: to live in Asia, to feel there what I had always felt, and for my children to experience the same, to grow up between two worlds, two continents. Each of my photographs tries to capture the beauty of what I find there, what touches my soul, what passes through my gaze and reveals my essence. The eyes of those people, so clear, so uncomplicated; their natural smiles; the children who live in nature and need nothing more than it to feel complete. The temples, the religion, the palms, the seas, the waters, the clouds, the rains; lives so precarious and, at once, so full.</p>
+
+        <p>My mother and Asia, for me, meant the same thing: the place one returns to for comfort, the maternal womb. Her beauty, her smile, her gaze were Asia. She had that serene beauty, like tropical nights. Those deep eyes, that elegance, so innate. Every image I make is a way of returning home: to Asia, to my roots and to the gaze I inherited from her.</p>
+      </div>
+    </section>
+
+    <!-- ── Manifesto: "What makes me different" ── -->
+    <section class="manifesto-section" aria-labelledby="manifesto-heading">
+      <p class="meta" style="margin-bottom: var(--sp-5)" id="manifesto-heading">What makes me different</p>
+      <blockquote class="quote-lg">
+        "I don't photograph the extraordinary.<br>
+        I photograph what we usually overlook.<br>
+        A gaze, a smile, a flower,<br>
+        light on a landscape."
+      </blockquote>
+      <p class="manifesto-sub">In an accelerated and disconnected world, my images seek to be a refuge of beauty, calm and authenticity.</p>
+      <img
+        class="firma"
+        src="assets/site/firma-daniela-cavestany.png"
+        alt="Daniela Cavestany's signature"
+        loading="lazy">
+
+      <!-- Credentials: horizontal info grid -->
+      <dl class="credentials-grid">
+        <div class="credential-item">
+          <dt>Training</dt>
+          <dd>London College for the Applied Arts<br>GrisArt · Barcelona</dd>
+        </div>
+        <div class="credential-item">
+          <dt>Based in</dt>
+          <dd>Barcelona / Bali</dd>
+        </div>
+        <div class="credential-item">
+          <dt>Languages</dt>
+          <dd>ES / EN</dd>
+        </div>
+      </dl>
+    </section>
+
+  </div><!-- /wrap -->
 </main>
 
 <div class="footer-epigraph">
@@ -94,7 +146,7 @@
   </div>
   <div class="foot-right">
     <a class="foot-link" href="contacto-en.html">Contact</a>
-    <span class="langswitch"><a href="index.html">ES</a> · <strong>EN</strong></span>
+    <span class="langswitch"><a href="sobre-mi.html">ES</a> · <strong>EN</strong></span>
   </div>
 </footer>
 
