@@ -12,158 +12,581 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="masthead">
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+<header class="masthead" id="masthead">
   <a class="wordmark" href="index.html">Daniela <em>Cavestany</em></a>
-  <nav class="mainnav">
-    <a href="portfolio.html" class="active">Portfolio</a>
-    <a href="sobre-mi.html">Sobre mí</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="notas.html">Notas</a>
-    <a href="contacto.html">Contacto</a>
-  </nav>
-  <span class="langswitch"><strong>ES</strong> · <a href="portfolio-en.html">EN</a></span>
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <div class="masthead-right" id="main-nav">
+    <nav class="mainnav" aria-label="Navegación principal">
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="notas.html">Notas</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <span class="langswitch"><strong>ES</strong> · <a href="portfolio-en.html">EN</a></span>
+  </div>
 </header>
 
-<main class="wrap">
-  <section class="block" id="bali">
-    <p class="meta">Serie V · 2026 · 32 obras · Sepia sobre algodón · Edición de 7</p>
-    <h1 class="display">Bali — <em>Tierra y Ofrenda</em></h1>
-    <br>
-    <p class="lede">Retratos íntimos, rituales de templo y paisajes de selva y mar. Cada imagen intenta captar la belleza de lo que encuentro allí: los ojos de aquella gente, tan limpios; sus sonrisas naturales; los templos, las palmeras, las lluvias; las vidas tan precarias y, a la vez, tan llenas.</p>
-  </section>
+<main class="wrap" id="main-content">
 
-  <div class="filterbar meta" id="filterbar">
-    <span>Filtrar:</span>
+  <!-- ── Portfolio header: editorial split ── -->
+  <header class="portfolio-header" id="bali">
+    <div class="portfolio-header-grid">
+      <div class="ph-meta-title">
+        <p class="ph-series-meta">Serie V · 2026 · 32 obras · Sepia sobre algodón · Edición de 7</p>
+        <h1 class="ph-title">Bali — <em>Tierra y Ofrenda</em></h1>
+      </div>
+      <div class="ph-desc">
+        <p>Retratos íntimos, rituales de templo y paisajes de selva y mar. Cada imagen intenta captar la belleza de lo que encuentro allí: los ojos de aquella gente, tan limpios; sus sonrisas naturales; los templos, las palmeras, las lluvias; las vidas tan precarias y, a la vez, tan llenas.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Filters ── -->
+  <div class="filterbar" id="filterbar" role="group" aria-label="Filtrar por grupo">
+    <span class="filterbar-label">Filtrar</span>
     <button data-filter="all" class="on">Todas</button>
     <button data-filter="g-retratos">Retratos</button>
     <button data-filter="g-rito">Rito y Templo</button>
     <button data-filter="g-tierra">Tierra y Mar</button>
   </div>
 
-  <section class="block" id="g-retratos">
-    <p class="meta">I · Retratos</p>
-    <h2 class="display">La <em>gente</em></h2>
-    <br>
-    <div class="grid-2">
-      <figure class="plate"><img width="1105" height="1600" src="assets/bali/IMG_4459.jpg" alt="Mujer mayor con niño en brazos, Bali" loading="lazy"><figcaption><span class="title">Abuela y nieto</span><span class="meta">BALI-01 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1129" height="1600" src="assets/bali/IMG_4465.jpg" alt="Niña sonriendo con el pelo mojado" loading="lazy"><figcaption><span class="title">Risa contenida</span><span class="meta">BALI-02 · 2026</span></figcaption></figure>
+  <!-- ════════════════════════════════════
+       I · RETRATOS
+       ════════════════════════════════════ -->
+  <section id="g-retratos" aria-labelledby="heading-retratos">
+    <div class="group-heading">
+      <p class="group-label">I · RETRATOS</p>
+      <h2 class="group-title">La <em>gente</em></h2>
     </div>
-    <figure class="plate offset-left"><img width="1126" height="1600" src="assets/bali/IMG_4466.jpg" alt="Niña pequeña mirando a cámara" loading="lazy"><figcaption><span class="title">Mirada limpia</span><span class="meta">BALI-03 · 2026</span></figcaption></figure>
-    <div class="grid-2">
-      <figure class="plate"><img width="1116" height="1600" src="assets/bali/IMG_4467.jpg" alt="Joven pescador mostrando su captura" loading="lazy"><figcaption><span class="title">Pescador</span><span class="meta">BALI-04 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1125" height="1600" src="assets/bali/IMG_4468.jpg" alt="Niña con su madre sonriendo" loading="lazy"><figcaption><span class="title">Madre e hija</span><span class="meta">BALI-05 · 2026</span></figcaption></figure>
+
+    <div class="exhibit-flow">
+
+      <!-- BALI-01: wide left -->
+      <figure class="plate plate-wide-left reveal">
+        <img width="1105" height="1600"
+          src="assets/bali/IMG_4459.jpg"
+          alt="Mujer mayor con niño en brazos, Bali"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Abuela y nieto</span>
+          <span class="meta">BALI-01 · 2026</span>
+        </figcaption>
+      </figure>
+
+      <!-- BALI-02 & 03: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1129" height="1600"
+            src="assets/bali/IMG_4465.jpg"
+            alt="Niña sonriendo con el pelo mojado"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Risa contenida</span>
+            <span class="meta">BALI-02 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1126" height="1600"
+            src="assets/bali/IMG_4466.jpg"
+            alt="Niña pequeña mirando a cámara"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Mirada limpia</span>
+            <span class="meta">BALI-03 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-04 & 05: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1116" height="1600"
+            src="assets/bali/IMG_4467.jpg"
+            alt="Joven pescador mostrando su captura"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Pescador</span>
+            <span class="meta">BALI-04 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1125" height="1600"
+            src="assets/bali/IMG_4468.jpg"
+            alt="Niña con su madre sonriendo"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Madre e hija</span>
+            <span class="meta">BALI-05 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-06: wide right — major portrait -->
+      <figure class="plate plate-wide-right reveal">
+        <img width="1119" height="1600"
+          src="assets/bali/IMG_4469.jpg"
+          alt="Hombre mayor con pañuelo batik mirando a cámara"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Guardián</span>
+          <span class="meta">BALI-06 · 2026</span>
+        </figcaption>
+      </figure>
+
+      <!-- BALI-07 & 08: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1125" height="1600"
+            src="assets/bali/IMG_4470.jpg"
+            alt="Primer plano de ojos con udeng"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Mirada</span>
+            <span class="meta">BALI-07 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1116" height="1600"
+            src="assets/bali/IMG_4471.jpg"
+            alt="Hombre sonriendo con la mano en la mejilla"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Sonrisa</span>
+            <span class="meta">BALI-08 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-09 & 10: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1116" height="1600"
+            src="assets/bali/IMG_4473.jpg"
+            alt="Joven sonriendo"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Joven</span>
+            <span class="meta">BALI-09 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1116" height="1600"
+            src="assets/bali/IMG_4474.jpg"
+            alt="Hombre en plegaria con anillos"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Plegaria</span>
+            <span class="meta">BALI-10 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-11: narrow centered -->
+      <figure class="plate plate-narrow reveal">
+        <img width="1121" height="1600"
+          src="assets/bali/IMG_4475.jpg"
+          alt="Hombre con udeng blanco sonriendo"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Anfitrión</span>
+          <span class="meta">BALI-11 · 2026</span>
+        </figcaption>
+      </figure>
+
+      <!-- BALI-12 & 13: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1121" height="1600"
+            src="assets/bali/IMG_4476.jpg"
+            alt="Hombre con udeng en oración"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Devoto</span>
+            <span class="meta">BALI-12 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1121" height="1600"
+            src="assets/bali/IMG_4477.jpg"
+            alt="Niño mirando a cámara"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Niño</span>
+            <span class="meta">BALI-13 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-14 & 15: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1121" height="1600"
+            src="assets/bali/IMG_4479.jpg"
+            alt="Niño riendo en la playa"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Playa</span>
+            <span class="meta">BALI-14 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1125" height="1600"
+            src="assets/bali/IMG_4481.jpg"
+            alt="Niña en primer plano"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Niña</span>
+            <span class="meta">BALI-15 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-16 & 17: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1125" height="1600"
+            src="assets/bali/IMG_4484.jpg"
+            alt="Hombre con udeng batik"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Hombre</span>
+            <span class="meta">BALI-16 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1126" height="1600"
+            src="assets/bali/IMG_4490.jpg"
+            alt="Hombre orando con los ojos cerrados"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Oración</span>
+            <span class="meta">BALI-17 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+    </div><!-- /exhibit-flow -->
+  </section>
+
+  <!-- ════════════════════════════════════
+       II · RITO Y TEMPLO
+       ════════════════════════════════════ -->
+  <section id="g-rito" aria-labelledby="heading-rito">
+    <div class="group-heading">
+      <p class="group-label">II · RITO Y TEMPLO</p>
+      <h2 class="group-title">Lo <em>sagrado</em></h2>
     </div>
-    <figure class="plate offset-right"><img width="1119" height="1600" src="assets/bali/IMG_4469.jpg" alt="Hombre mayor con pañuelo batik" loading="lazy"><figcaption><span class="title">Guardián</span><span class="meta">BALI-06 · 2026</span></figcaption></figure>
-    <div class="grid-2">
-      <figure class="plate"><img width="1125" height="1600" src="assets/bali/IMG_4470.jpg" alt="Primer plano de ojos con udeng" loading="lazy"><figcaption><span class="title">Mirada</span><span class="meta">BALI-07 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1116" height="1600" src="assets/bali/IMG_4471.jpg" alt="Hombre sonriendo con la mano en la mejilla" loading="lazy"><figcaption><span class="title">Sonrisa</span><span class="meta">BALI-08 · 2026</span></figcaption></figure>
-    </div>
-    <div class="grid-2">
-      <figure class="plate"><img width="1116" height="1600" src="assets/bali/IMG_4473.jpg" alt="Joven sonriendo" loading="lazy"><figcaption><span class="title">Joven</span><span class="meta">BALI-09 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1116" height="1600" src="assets/bali/IMG_4474.jpg" alt="Hombre en plegaria con anillos" loading="lazy"><figcaption><span class="title">Plegaria</span><span class="meta">BALI-10 · 2026</span></figcaption></figure>
-    </div>
-    <figure class="plate offset-left"><img width="1121" height="1600" src="assets/bali/IMG_4475.jpg" alt="Hombre con udeng blanco sonriendo" loading="lazy"><figcaption><span class="title">Anfitrión</span><span class="meta">BALI-11 · 2026</span></figcaption></figure>
-    <div class="grid-2">
-      <figure class="plate"><img width="1121" height="1600" src="assets/bali/IMG_4476.jpg" alt="Hombre con udeng en oración" loading="lazy"><figcaption><span class="title">Devoto</span><span class="meta">BALI-12 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1121" height="1600" src="assets/bali/IMG_4477.jpg" alt="Niño mirando a cámara" loading="lazy"><figcaption><span class="title">Niño</span><span class="meta">BALI-13 · 2026</span></figcaption></figure>
-    </div>
-    <div class="grid-2">
-      <figure class="plate"><img width="1121" height="1600" src="assets/bali/IMG_4479.jpg" alt="Niño riendo en la playa" loading="lazy"><figcaption><span class="title">Playa</span><span class="meta">BALI-14 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1125" height="1600" src="assets/bali/IMG_4481.jpg" alt="Niña en primer plano" loading="lazy"><figcaption><span class="title">Niña</span><span class="meta">BALI-15 · 2026</span></figcaption></figure>
-    </div>
-    <div class="grid-2">
-      <figure class="plate"><img width="1125" height="1600" src="assets/bali/IMG_4484.jpg" alt="Hombre con udeng batik" loading="lazy"><figcaption><span class="title">Hombre</span><span class="meta">BALI-16 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1126" height="1600" src="assets/bali/IMG_4490.jpg" alt="Hombre orando con los ojos cerrados" loading="lazy"><figcaption><span class="title">Oración</span><span class="meta">BALI-17 · 2026</span></figcaption></figure>
+
+    <div class="exhibit-flow">
+
+      <!-- BALI-18: wide left -->
+      <figure class="plate plate-wide-left reveal">
+        <img width="1105" height="1600"
+          src="assets/bali/IMG_4464.jpg"
+          alt="Estatua de portadora de ofrendas"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Portadora</span>
+          <span class="meta">BALI-18 · 2026</span>
+        </figcaption>
+      </figure>
+
+      <!-- BALI-19 & 20: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1125" height="1600"
+            src="assets/bali/IMG_4480.jpg"
+            alt="Altar en la playa con sombrilla ceremonial"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Ofrenda en la playa</span>
+            <span class="meta">BALI-19 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1125" height="1600"
+            src="assets/bali/IMG_4483.jpg"
+            alt="Familia bajando las escaleras del templo"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Salida del templo</span>
+            <span class="meta">BALI-20 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-21: narrow centered -->
+      <figure class="plate plate-narrow reveal">
+        <img width="1126" height="1600"
+          src="assets/bali/IMG_4494.jpg"
+          alt="Buda cubierto de hojas"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Buda entre hojas</span>
+          <span class="meta">BALI-21 · 2026</span>
+        </figcaption>
+      </figure>
+
     </div>
   </section>
 
-  <section class="block" id="g-rito">
-    <p class="meta">II · Rito y Templo</p>
-    <h2 class="display">Lo <em>sagrado</em></h2>
-    <br>
-    <figure class="plate offset-left"><img width="1105" height="1600" src="assets/bali/IMG_4464.jpg" alt="Estatua de portadora de ofrendas" loading="lazy"><figcaption><span class="title">Portadora</span><span class="meta">BALI-18 · 2026</span></figcaption></figure>
-    <div class="grid-2">
-      <figure class="plate"><img width="1125" height="1600" src="assets/bali/IMG_4480.jpg" alt="Altar en la playa con sombrilla ceremonial" loading="lazy"><figcaption><span class="title">Ofrenda en la playa</span><span class="meta">BALI-19 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1125" height="1600" src="assets/bali/IMG_4483.jpg" alt="Familia bajando las escaleras del templo" loading="lazy"><figcaption><span class="title">Salida del templo</span><span class="meta">BALI-20 · 2026</span></figcaption></figure>
+  <!-- ════════════════════════════════════
+       III · TIERRA Y MAR
+       ════════════════════════════════════ -->
+  <section id="g-tierra" aria-labelledby="heading-tierra">
+    <div class="group-heading">
+      <p class="group-label">III · TIERRA Y MAR</p>
+      <h2 class="group-title">El <em>lugar</em></h2>
     </div>
-    <figure class="plate single-narrow"><img width="1126" height="1600" src="assets/bali/IMG_4494.jpg" alt="Buda cubierto de hojas" loading="lazy"><figcaption><span class="title">Buda entre hojas</span><span class="meta">BALI-21 · 2026</span></figcaption></figure>
+
+    <div class="exhibit-flow">
+
+      <!-- BALI-22 & 23: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1105" height="1600"
+            src="assets/bali/IMG_4461.jpg"
+            alt="Nenúfares vistos desde arriba"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Nenúfares</span>
+            <span class="meta">BALI-22 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1237" height="1600"
+            src="assets/bali/IMG_4462.jpg"
+            alt="Escalera sobre el agua frente a la selva"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Escalera al agua</span>
+            <span class="meta">BALI-23 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-24: wide right -->
+      <figure class="plate plate-wide-right reveal">
+        <img width="1105" height="1600"
+          src="assets/bali/IMG_4463.jpg"
+          alt="Playa de noche"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Noche en la playa</span>
+          <span class="meta">BALI-24 · 2026</span>
+        </figcaption>
+      </figure>
+
+      <!-- BALI-25 & 26: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1125" height="1600"
+            src="assets/bali/IMG_4482.jpg"
+            alt="Escalera de madera del templo"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Subida</span>
+            <span class="meta">BALI-25 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1126" height="1600"
+            src="assets/bali/IMG_4487.jpg"
+            alt="Gotas de lluvia sobre cristal con palmera"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Lluvia</span>
+            <span class="meta">BALI-26 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-27 & 28: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1126" height="1600"
+            src="assets/bali/IMG_4488.jpg"
+            alt="Selva con plataneros"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Selva</span>
+            <span class="meta">BALI-27 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1126" height="1600"
+            src="assets/bali/IMG_4489.jpg"
+            alt="Helechos en la selva"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Helechos</span>
+            <span class="meta">BALI-28 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-29: wide left -->
+      <figure class="plate plate-wide-left reveal">
+        <img width="1129" height="1600"
+          src="assets/bali/IMG_4491.jpg"
+          alt="Dos palmeras con hamaca en un prado abierto"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Descanso</span>
+          <span class="meta">BALI-29 · 2026</span>
+        </figcaption>
+      </figure>
+
+      <!-- BALI-30 & 31: pair -->
+      <div class="plate-pair">
+        <figure class="plate reveal">
+          <img width="1126" height="1600"
+            src="assets/bali/IMG_4493.jpg"
+            alt="Desembocadura del río con bambú"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Desembocadura</span>
+            <span class="meta">BALI-30 · 2026</span>
+          </figcaption>
+        </figure>
+        <figure class="plate reveal">
+          <img width="1126" height="1600"
+            src="assets/bali/IMG_4495.jpg"
+            alt="Orilla rocosa con el mar"
+            loading="lazy">
+          <figcaption>
+            <span class="title">Orilla</span>
+            <span class="meta">BALI-31 · 2026</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- BALI-32: narrow centered — closing image -->
+      <figure class="plate plate-narrow reveal">
+        <img width="1146" height="1600"
+          src="assets/bali/IMG_4500.jpg"
+          alt="Reflejo invertido de árboles en un charco con lluvia"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Reflejo</span>
+          <span class="meta">BALI-32 · 2026</span>
+        </figcaption>
+      </figure>
+
+    </div>
   </section>
 
-  <section class="block" id="g-tierra">
-    <p class="meta">III · Tierra y Mar</p>
-    <h2 class="display">El <em>lugar</em></h2>
-    <br>
-    <div class="grid-2">
-      <figure class="plate"><img width="1105" height="1600" src="assets/bali/IMG_4461.jpg" alt="Nenúfares vistos desde arriba" loading="lazy"><figcaption><span class="title">Nenúfares</span><span class="meta">BALI-22 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1237" height="1600" src="assets/bali/IMG_4462.jpg" alt="Escalera sobre el agua frente a la selva" loading="lazy"><figcaption><span class="title">Escalera al agua</span><span class="meta">BALI-23 · 2026</span></figcaption></figure>
+  <!-- ── Archive catalogue table ── -->
+  <section class="archive-section" aria-labelledby="archive-heading">
+    <div class="archive-header">
+      <p class="meta" style="margin-bottom: var(--sp-2)">Edición · Sepia sobre algodón · Edición de 7</p>
+      <h2 class="group-title" id="archive-heading">Archivo de <em>obra</em></h2>
+      <p style="margin-top: var(--sp-4); font-size: var(--type-body); color: var(--piedra); max-width: 52ch">
+        Índice completo de la serie. Cada obra, una edición de siete ejemplares en sepia sobre algodón.
+        <a class="link-quiet" href="contacto.html" style="margin-left: var(--sp-2)">Consultar disponibilidad →</a>
+      </p>
     </div>
-    <figure class="plate offset-right"><img width="1105" height="1600" src="assets/bali/IMG_4463.jpg" alt="Playa de noche" loading="lazy"><figcaption><span class="title">Noche en la playa</span><span class="meta">BALI-24 · 2026</span></figcaption></figure>
-    <div class="grid-2">
-      <figure class="plate"><img width="1125" height="1600" src="assets/bali/IMG_4482.jpg" alt="Escalera de madera del templo" loading="lazy"><figcaption><span class="title">Subida</span><span class="meta">BALI-25 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1126" height="1600" src="assets/bali/IMG_4487.jpg" alt="Gotas de lluvia sobre cristal con palmera" loading="lazy"><figcaption><span class="title">Lluvia</span><span class="meta">BALI-26 · 2026</span></figcaption></figure>
-    </div>
-    <div class="grid-2">
-      <figure class="plate"><img width="1126" height="1600" src="assets/bali/IMG_4488.jpg" alt="Selva con plataneros" loading="lazy"><figcaption><span class="title">Selva</span><span class="meta">BALI-27 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1126" height="1600" src="assets/bali/IMG_4489.jpg" alt="Helechos en la selva" loading="lazy"><figcaption><span class="title">Helechos</span><span class="meta">BALI-28 · 2026</span></figcaption></figure>
-    </div>
-    <figure class="plate offset-left"><img width="1129" height="1600" src="assets/bali/IMG_4491.jpg" alt="Dos palmeras con hamaca" loading="lazy"><figcaption><span class="title">Descanso</span><span class="meta">BALI-29 · 2026</span></figcaption></figure>
-    <div class="grid-2">
-      <figure class="plate"><img width="1126" height="1600" src="assets/bali/IMG_4493.jpg" alt="Desembocadura del río con bambú" loading="lazy"><figcaption><span class="title">Desembocadura</span><span class="meta">BALI-30 · 2026</span></figcaption></figure>
-      <figure class="plate"><img width="1126" height="1600" src="assets/bali/IMG_4495.jpg" alt="Orilla rocosa con el mar" loading="lazy"><figcaption><span class="title">Orilla</span><span class="meta">BALI-31 · 2026</span></figcaption></figure>
-    </div>
-    <figure class="plate single-narrow"><img width="1146" height="1600" src="assets/bali/IMG_4500.jpg" alt="Reflejo de árboles en un charco con lluvia" loading="lazy"><figcaption><span class="title">Reflejo</span><span class="meta">BALI-32 · 2026</span></figcaption></figure>
+
+    <table class="archive-table" aria-label="Catálogo de obras Bali">
+      <thead>
+        <tr>
+          <th class="col-catalogue" scope="col">Catálogo</th>
+          <th class="col-title" scope="col">Obra</th>
+          <th class="col-group" scope="col">Grupo</th>
+          <th class="col-year" scope="col">Año</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat-num">BALI-01</td><td class="work-title">Abuela y nieto</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-02</td><td class="work-title">Risa contenida</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-03</td><td class="work-title">Mirada limpia</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-04</td><td class="work-title">Pescador</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-05</td><td class="work-title">Madre e hija</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-06</td><td class="work-title">Guardián</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-07</td><td class="work-title">Mirada</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-08</td><td class="work-title">Sonrisa</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-09</td><td class="work-title">Joven</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-10</td><td class="work-title">Plegaria</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-11</td><td class="work-title">Anfitrión</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-12</td><td class="work-title">Devoto</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-13</td><td class="work-title">Niño</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-14</td><td class="work-title">Playa</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-15</td><td class="work-title">Niña</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-16</td><td class="work-title">Hombre</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-17</td><td class="work-title">Oración</td><td class="work-group">Retratos</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-18</td><td class="work-title">Portadora</td><td class="work-group">Rito y Templo</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-19</td><td class="work-title">Ofrenda en la playa</td><td class="work-group">Rito y Templo</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-20</td><td class="work-title">Salida del templo</td><td class="work-group">Rito y Templo</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-21</td><td class="work-title">Buda entre hojas</td><td class="work-group">Rito y Templo</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-22</td><td class="work-title">Nenúfares</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-23</td><td class="work-title">Escalera al agua</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-24</td><td class="work-title">Noche en la playa</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-25</td><td class="work-title">Subida</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-26</td><td class="work-title">Lluvia</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-27</td><td class="work-title">Selva</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-28</td><td class="work-title">Helechos</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-29</td><td class="work-title">Descanso</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-30</td><td class="work-title">Desembocadura</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-31</td><td class="work-title">Orilla</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+        <tr><td class="cat-num">BALI-32</td><td class="work-title">Reflejo</td><td class="work-group">Tierra y Mar</td><td class="work-year">2026</td></tr>
+      </tbody>
+    </table>
   </section>
 
-  <section class="block">
-    <p class="meta">Edición · Sepia sobre algodón · Edición de 7</p>
-    <h2 class="display">Archivo de <em>obra</em></h2>
-    <br>
-    <p class="lede">Índice completo de la serie. Cada obra, una edición de siete ejemplares en sepia sobre algodón. <a class="link-quiet" href="contacto.html">Consultar disponibilidad →</a></p>
-    <ol class="archive-list">
-      <li><span class="cat">BALI-01</span> <span class="t">Abuela y nieto</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-02</span> <span class="t">Risa contenida</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-03</span> <span class="t">Mirada limpia</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-04</span> <span class="t">Pescador</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-05</span> <span class="t">Madre e hija</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-06</span> <span class="t">Guardián</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-07</span> <span class="t">Mirada</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-08</span> <span class="t">Sonrisa</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-09</span> <span class="t">Joven</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-10</span> <span class="t">Plegaria</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-11</span> <span class="t">Anfitrión</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-12</span> <span class="t">Devoto</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-13</span> <span class="t">Niño</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-14</span> <span class="t">Playa</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-15</span> <span class="t">Niña</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-16</span> <span class="t">Hombre</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-17</span> <span class="t">Oración</span> <span class="meta">Retratos · 2026</span></li>
-      <li><span class="cat">BALI-18</span> <span class="t">Portadora</span> <span class="meta">Rito y Templo · 2026</span></li>
-      <li><span class="cat">BALI-19</span> <span class="t">Ofrenda en la playa</span> <span class="meta">Rito y Templo · 2026</span></li>
-      <li><span class="cat">BALI-20</span> <span class="t">Salida del templo</span> <span class="meta">Rito y Templo · 2026</span></li>
-      <li><span class="cat">BALI-21</span> <span class="t">Buda entre hojas</span> <span class="meta">Rito y Templo · 2026</span></li>
-      <li><span class="cat">BALI-22</span> <span class="t">Nenúfares</span> <span class="meta">Tierra y Mar · 2026</span></li>
-      <li><span class="cat">BALI-23</span> <span class="t">Escalera al agua</span> <span class="meta">Tierra y Mar · 2026</span></li>
-      <li><span class="cat">BALI-24</span> <span class="t">Noche en la playa</span> <span class="meta">Tierra y Mar · 2026</span></li>
-      <li><span class="cat">BALI-25</span> <span class="t">Subida</span> <span class="meta">Tierra y Mar · 2026</span></li>
-      <li><span class="cat">BALI-26</span> <span class="t">Lluvia</span> <span class="meta">Tierra y Mar · 2026</span></li>
-      <li><span class="cat">BALI-27</span> <span class="t">Selva</span> <span class="meta">Tierra y Mar · 2026</span></li>
-      <li><span class="cat">BALI-28</span> <span class="t">Helechos</span> <span class="meta">Tierra y Mar · 2026</span></li>
-      <li><span class="cat">BALI-29</span> <span class="t">Descanso</span> <span class="meta">Tierra y Mar · 2026</span></li>
-      <li><span class="cat">BALI-30</span> <span class="t">Desembocadura</span> <span class="meta">Tierra y Mar · 2026</span></li>
-      <li><span class="cat">BALI-31</span> <span class="t">Orilla</span> <span class="meta">Tierra y Mar · 2026</span></li>
-      <li><span class="cat">BALI-32</span> <span class="t">Reflejo</span> <span class="meta">Tierra y Mar · 2026</span></li>
-    </ol>
-    <br>
-    
-  </section>
 </main>
 
-<div class="ticker">Bali — Tierra y Ofrenda · 2026</div>
-<footer class="site">
-  <span class="meta">© Daniela Cavestany · Bali 2026</span>
-  <span class="foot-quote">“Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria.”</span>
-  <span class="meta"><a class="link-quiet" href="contacto.html">Contacto</a></span>
+<div class="footer-epigraph">
+  <p>"Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria."</p>
+</div>
+
+<footer class="site" role="contentinfo">
+  <div class="foot-left">
+    <a class="wordmark-foot" href="index.html">Daniela <em>Cavestany</em></a>
+    <p class="meta">© 2026</p>
+  </div>
+  <div class="foot-center">
+    <p>Bali — Tierra y Ofrenda · 2026</p>
+  </div>
+  <div class="foot-right">
+    <a class="foot-link" href="contacto.html">Contacto</a>
+    <span class="langswitch"><strong>ES</strong> · <a href="portfolio-en.html">EN</a></span>
+  </div>
 </footer>
+
+<script>
+(function() {
+  var h = document.getElementById('masthead');
+  window.addEventListener('scroll', function() {
+    h.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+})();
+(function() {
+  var toggle = document.getElementById('nav-toggle');
+  var nav    = document.getElementById('main-nav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function() {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav.classList.toggle('open', !expanded);
+    document.body.style.overflow = expanded ? '' : 'hidden';
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+    }
+  });
+})();
+</script>
 <script src="gallery.js" defer></script>
 </body>
 </html>

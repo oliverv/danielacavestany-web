@@ -13,22 +13,38 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="skip-link" href="#editorial">Saltar al contenido</a>
-<header class="masthead">
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+<header class="masthead" id="masthead">
   <a class="wordmark" href="index.html">Daniela <em>Cavestany</em></a>
-  <nav class="mainnav">
-    <a href="portfolio.html">Portfolio</a>
-    <a href="sobre-mi.html">Sobre mí</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="notas.html">Notas</a>
-    <a href="contacto.html">Contacto</a>
-  </nav>
-  <span class="langswitch"><strong>ES</strong> · <a href="index-en.html">EN</a></span>
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <div class="masthead-right" id="main-nav">
+    <nav class="mainnav" aria-label="Navegación principal">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="notas.html">Notas</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <span class="langswitch"><strong>ES</strong> · <a href="index-en.html">EN</a></span>
+  </div>
 </header>
 
-<main>
+<main id="main-content">
+
+  <!-- ── Portrait: full-viewport editorial moment ── -->
   <section class="stage-full" aria-label="Daniela Cavestany, retrato">
-    <img src="assets/site/portrait.jpg" alt="Daniela Cavestany, retrato en blanco y negro" width="1024" height="1536" loading="eager" fetchpriority="high">
+    <img
+      src="assets/site/portrait.jpg"
+      alt="Daniela Cavestany, retrato en blanco y negro"
+      width="1024"
+      height="1536"
+      loading="eager"
+      fetchpriority="high">
     <div class="nameplate">
       <h1>DANIELA CAVESTANY</h1>
       <p>Fotografía · Dirección de Arte<br>Barcelona — Bali</p>
@@ -36,76 +52,258 @@
     </div>
   </section>
 
-  <div class="wrap">
-    <section class="block single-narrow" id="editorial">
-      <h2 class="display reveal">La belleza serena<br><em>de lo sencillo.</em></h2>
-      <br>
-      <div class="prose reveal">
-        <p>Luz, emoción y memoria. Imágenes de carácter poético y atemporal, entre Barcelona y Bali.</p>
+  <!-- ── Marquee strip ── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Bali — Tierra y Ofrenda <b>Serie V · 2026</b></span>
+      <span>32 obras <b>Sepia sobre algodón</b></span>
+      <span>Volver a mirar <b>Taller · Barcelona</b></span>
+      <span>La belleza serena <b>de lo sencillo</b></span>
+      <span>Barcelona — Bali <b>2026</b></span>
+      <span>Bali — Tierra y Ofrenda <b>Serie V · 2026</b></span>
+      <span>32 obras <b>Sepia sobre algodón</b></span>
+      <span>Volver a mirar <b>Taller · Barcelona</b></span>
+      <span>La belleza serena <b>de lo sencillo</b></span>
+      <span>Barcelona — Bali <b>2026</b></span>
+    </div>
+  </div>
+
+  <!-- ── Hero text block ── -->
+  <div class="wrap" id="editorial">
+    <section class="hero-text-section" aria-labelledby="hero-title">
+      <p class="hero-eyebrow">Fotógrafa · Dirección de Arte · Barcelona — Bali</p>
+      <h2 class="hero-title" id="hero-title">
+        <span class="line"><span>La belleza serena</span></span>
+        <span class="line"><span><em style="font-family:var(--font-display); font-style:italic">de lo sencillo.</em></span></span>
+      </h2>
+      <p class="hero-body">Luz, emoción y memoria. Imágenes de carácter poético y atemporal, entre Barcelona y Bali.</p>
+      <div class="hero-cta">
+        <a class="link-arrow" href="portfolio.html">Ver la serie Bali <span class="arr">→</span></a>
       </div>
     </section>
   </div>
 
+  <!-- ── Descanso: full-viewport editorial moment ── -->
   <section class="stage-full" aria-label="Descanso, Bali 2026">
-    <img src="assets/bali/IMG_4491.jpg" alt="Dos palmeras con hamaca en un prado abierto, Bali" width="1129" height="1600" loading="lazy">
-    <div class="stage-label"><span class="t">Descanso</span><span class="meta">BALI—29 · 2026</span></div>
+    <img
+      src="assets/bali/IMG_4491.jpg"
+      alt="Dos palmeras con hamaca en un prado abierto, Bali"
+      width="1129"
+      height="1600"
+      loading="lazy">
+    <div class="stage-label">
+      <span class="t">Descanso</span>
+      <span class="meta">BALI—29 · 2026</span>
+    </div>
   </section>
 
+  <!-- ── Obra seleccionada: editorial stagger ── -->
   <div class="wrap">
-    <section class="block">
-      <p class="meta reveal">Obra seleccionada</p>
-      <br>
-      <figure class="plate offset-left reveal">
-        <img src="assets/bali/IMG_4469.jpg" alt="Hombre mayor con pañuelo batik mirando a cámara, Bali" width="1119" height="1600" loading="lazy">
-        <figcaption><span class="title">Guardián</span><span class="meta">BALI—06 · 2026</span></figcaption>
-      </figure>
-      <div class="grid-2">
-        <figure class="plate reveal">
-          <img src="assets/bali/IMG_4461.jpg" alt="Nenúfares vistos desde arriba, Bali" width="1105" height="1600" loading="lazy">
-          <figcaption><span class="title">Nenúfares</span><span class="meta">BALI—22 · 2026</span></figcaption>
-        </figure>
-        <figure class="plate reveal">
-          <img src="assets/bali/IMG_4489.jpg" alt="Helechos en la selva, Bali" width="1126" height="1600" loading="lazy">
-          <figcaption><span class="title">Helechos</span><span class="meta">BALI—28 · 2026</span></figcaption>
-        </figure>
+    <section class="obras-section" aria-labelledby="obras-heading">
+      <p class="obras-label reveal" id="obras-heading">Obra seleccionada</p>
+
+      <div class="obras-grid">
+
+        <!-- Work 01: cols 1–8 -->
+        <article class="obra-01 reveal">
+          <div class="obra-img-wrap plate" role="button" tabindex="0"
+               aria-label="Abrir obra: Guardián">
+            <img
+              src="assets/bali/IMG_4469.jpg"
+              alt="Hombre mayor con pañuelo batik mirando a cámara, Bali"
+              width="1119" height="1600"
+              loading="lazy">
+          </div>
+          <div class="obra-caption">
+            <p class="obra-num">01</p>
+            <p class="obra-title">Guardián</p>
+            <p class="obra-meta">BALI-06 · 2026</p>
+          </div>
+        </article>
+
+        <!-- Work 02: cols 7–12, offset down -->
+        <article class="obra-02 reveal">
+          <div class="obra-img-wrap plate" role="button" tabindex="0"
+               aria-label="Abrir obra: Nenúfares">
+            <img
+              src="assets/bali/IMG_4461.jpg"
+              alt="Nenúfares vistos desde arriba, Bali"
+              width="1105" height="1600"
+              loading="lazy">
+          </div>
+          <div class="obra-caption">
+            <p class="obra-num">02</p>
+            <p class="obra-title">Nenúfares</p>
+            <p class="obra-meta">BALI-22 · 2026</p>
+          </div>
+        </article>
+
+        <!-- Work 03: cols 2–11, cinematic width -->
+        <article class="obra-03 reveal">
+          <div class="obra-img-wrap plate" role="button" tabindex="0"
+               aria-label="Abrir obra: Reflejo">
+            <img
+              src="assets/bali/IMG_4500.jpg"
+              alt="Reflejo invertido de árboles en un charco con lluvia, Bali"
+              width="1146" height="1600"
+              loading="lazy">
+          </div>
+          <div class="obra-caption">
+            <p class="obra-num">03</p>
+            <p class="obra-title">Reflejo</p>
+            <p class="obra-meta">BALI-32 · 2026</p>
+          </div>
+        </article>
+
+      </div><!-- /obras-grid -->
+
+      <div class="obras-cta reveal">
+        <a class="link-arrow" href="portfolio.html">Portfolio completo <span class="arr">→</span></a>
       </div>
-      <a class="btn" href="portfolio.html">Portfolio completo →</a>
-    </section>
-
-    <section class="block single-narrow" style="text-align:center">
-      <p class="quote reveal">“No fotografío lo extraordinario. Fotografío aquello que solemos pasar por alto.”</p>
     </section>
   </div>
 
-  <section class="stage-full" aria-label="Reflejo, Bali 2026">
-    <img src="assets/bali/IMG_4500.jpg" alt="Reflejo invertido de árboles en un charco con lluvia, Bali" width="1146" height="1600" loading="lazy">
-    <div class="stage-label"><span class="t">Reflejo</span><span class="meta">BALI—32 · 2026</span></div>
+  <!-- ── Quote: typographic pause ── -->
+  <section class="quote-section" aria-label="Declaración">
+    <blockquote class="quote-lg reveal">
+      "No fotografío lo extraordinario.<br>
+      Fotografío aquello que solemos pasar por alto."
+    </blockquote>
+    <a class="quote-link reveal" href="sobre-mi.html">Mi historia <span style="display:inline-block;margin-left:4px">→</span></a>
   </section>
 
+  <!-- ── Reflejo: full-viewport ── -->
+  <section class="stage-full" aria-label="Helechos, Bali 2026">
+    <img
+      src="assets/bali/IMG_4489.jpg"
+      alt="Helechos en la selva, Bali"
+      width="1126" height="1600"
+      loading="lazy">
+    <div class="stage-label">
+      <span class="t">Helechos</span>
+      <span class="meta">BALI—28 · 2026</span>
+    </div>
+  </section>
+
+  <!-- ── Services: editorial horizontal rows ── -->
   <div class="wrap">
-    <section class="block single-narrow" style="text-align:center">
-      <p class="meta reveal">Volver a mirar</p>
-      <h2 class="display reveal">Taller · <em>Barcelona</em></h2>
-      <br>
-      <p><a class="link-quiet meta" href="taller-volver-a-mirar.html">El programa →</a></p>
+    <section aria-labelledby="services-heading" style="padding-block: var(--section-gap)">
+      <p class="meta reveal" style="margin-bottom: var(--sp-7)" id="services-heading">Servicios</p>
+
+      <div class="services-rows">
+
+        <div class="service-row reveal">
+          <span class="svc-num">01</span>
+          <span class="svc-title">Volver a <em>mirar</em></span>
+          <span class="svc-desc">Taller de fotografía creativa con iPhone · Barcelona</span>
+          <span class="svc-action">
+            <a class="svc-arrow" href="servicios.html">
+              <span class="arr">→</span>
+            </a>
+          </span>
+        </div>
+
+        <div class="service-row reveal">
+          <span class="svc-num">02</span>
+          <span class="svc-title">Lugares <em>especiales</em></span>
+          <span class="svc-desc">Formentera · Bali · Capri</span>
+          <span class="svc-action">
+            <a class="svc-arrow" href="servicios.html">
+              <span class="arr">→</span>
+            </a>
+          </span>
+        </div>
+
+        <div class="service-row reveal">
+          <span class="svc-num">03</span>
+          <span class="svc-title">Dirección <em>de arte</em></span>
+          <span class="svc-desc">Revistas · Marcas · Interiorismo</span>
+          <span class="svc-action">
+            <a class="svc-arrow" href="servicios.html">
+              <span class="arr">→</span>
+            </a>
+          </span>
+        </div>
+
+        <div class="service-row reveal">
+          <span class="svc-num">04</span>
+          <span class="svc-title">Sesiones y <em>encargos</em></span>
+          <span class="svc-desc">Retrato · Interiores · Viaje</span>
+          <span class="svc-action">
+            <a class="svc-arrow" href="contacto.html">
+              <span class="arr">→</span>
+            </a>
+          </span>
+        </div>
+
+      </div>
     </section>
 
-    <section class="block" style="text-align:center">
-      <p class="meta">Contacto</p>
-      <br>
-      <p class="cta-big"><a href="contacto.html">Escríbeme —</a></p>
-      <br>
-      <p class="meta">Barcelona — Bali · Respuesta en 24–48 h</p>
+    <!-- Contact CTA -->
+    <section style="padding-block: var(--section-gap); border-top: 1px solid var(--crema);"
+             aria-label="Contacto">
+      <p class="meta reveal" style="margin-bottom: var(--sp-5)">Contacto</p>
+      <p class="cta-big reveal"><a href="contacto.html">Escríbeme —</a></p>
+      <p class="meta reveal" style="margin-top: var(--sp-4)">Barcelona — Bali · Respuesta en 24–48 h</p>
     </section>
   </div>
+
 </main>
 
-<div class="ticker">Barcelona — Bali · Septiembre 2026</div>
-<footer class="site">
-  <span class="meta">© Daniela Cavestany · Bali 2026</span>
-  <span class="foot-quote">“Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria.”</span>
-  <span class="meta"><a class="link-quiet" href="contacto.html">Contacto</a></span>
+<!-- Footer epigraph -->
+<div class="footer-epigraph">
+  <p>"Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria."</p>
+</div>
+
+<footer class="site" role="contentinfo">
+  <div class="foot-left">
+    <a class="wordmark-foot" href="index.html">Daniela <em>Cavestany</em></a>
+    <p class="meta">© 2026</p>
+  </div>
+  <div class="foot-center">
+    <p>Barcelona — Bali</p>
+  </div>
+  <div class="foot-right">
+    <a class="foot-link" href="contacto.html">Contacto</a>
+    <span class="langswitch"><strong>ES</strong> · <a href="index-en.html">EN</a></span>
+  </div>
 </footer>
+
+<script>
+// Header scroll behaviour
+(function() {
+  var h = document.getElementById('masthead');
+  var lastY = 0;
+  function onScroll() {
+    var y = window.scrollY;
+    if (y > 40) { h.classList.add('scrolled'); } else { h.classList.remove('scrolled'); }
+    lastY = y;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+// Mobile nav toggle
+(function() {
+  var toggle = document.getElementById('nav-toggle');
+  var nav    = document.getElementById('main-nav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function() {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav.classList.toggle('open', !expanded);
+    document.body.style.overflow = expanded ? '' : 'hidden';
+  });
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+    }
+  });
+})();
+</script>
 <script src="gallery.js" defer></script>
 </body>
 </html>

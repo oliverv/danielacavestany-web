@@ -12,75 +12,109 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="masthead">
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+<header class="masthead" id="masthead">
   <a class="wordmark" href="index.html">Daniela <em>Cavestany</em></a>
-  <nav class="mainnav">
-    <a href="portfolio.html">Portfolio</a>
-    <a href="sobre-mi.html">Sobre mí</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="notas.html">Notas</a>
-    <a href="contacto.html">Contacto</a>
-  </nav>
-  <span class="langswitch"><strong>ES</strong> · <a href="taller-volver-a-mirar-en.html">EN</a></span>
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <div class="masthead-right" id="main-nav">
+    <nav class="mainnav" aria-label="Navegación principal">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="servicios.html" class="active">Servicios</a>
+      <a href="notas.html">Notas</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <span class="langswitch"><strong>ES</strong> · <a href="taller-volver-a-mirar-en.html">EN</a></span>
+  </div>
 </header>
 
-<main class="wrap">
-  <section class="block">
-    <p class="meta">Taller · Experiencia de fotografía creativa con iPhone</p>
-    <h1 class="display">Volver a <em>mirar</em></h1>
-    <br>
-    <p class="lede">Una invitación a detenerse, observar y descubrir la belleza escondida en lo cotidiano. No necesitas una cámara profesional. La herramienta es el iPhone; la verdadera cámara es la mirada.</p>
-    <br>
-    <table class="index">
-      <tr><th>Formato</th><th>Detalle</th></tr>
-      <tr><td>Duración</td><td>3 horas</td></tr>
-      <tr><td>Grupo</td><td>Máximo 8–10 personas</td></tr>
-      <tr><td>Lugar</td><td>Barcelona — Born, Gràcia, Poblenou, Montjuïc, Barceloneta</td></tr>
-      <tr><td>Precio</td><td>60–120 € por persona según duración y propuesta</td></tr>
-    </table>
+<main class="wrap" id="main-content">
+
+  <section class="servicios-hero" aria-labelledby="taller-title">
+    <p class="servicios-hero-label">Taller · Experiencia de fotografía creativa con iPhone</p>
+    <h1 class="servicios-hero-title" id="taller-title">Volver a <em>mirar</em></h1>
+    <p class="servicios-hero-lede">Una invitación a detenerse, observar y descubrir la belleza escondida en lo cotidiano. No necesitas una cámara profesional. La herramienta es el iPhone; la verdadera cámara es la mirada.</p>
   </section>
 
-  <section class="block">
-    <p class="meta">Programa</p>
-    <div class="service">
-      <span class="num">I</span>
+  <!-- Practical info -->
+  <section style="padding-block: var(--sp-8); border-top: 1px solid var(--crema)">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); column-gap: var(--col-gap)">
       <div>
-        <h2 class="display" style="font-size:32px">Abrir los <em>ojos</em></h2>
-        <p class="meta">30 min · Café de bienvenida</p>
-        <br>
-        <p class="lede">¿Qué hace que una imagen nos emocione? La diferencia entre mirar y ver. La fotografía como una forma de presencia.</p>
-        <p class="lede"><em>Ejercicio: fotografía algo que normalmente pasarías por alto.</em></p>
+        <p class="meta" style="margin-bottom: var(--sp-2)">Duración</p>
+        <p style="font-size: var(--type-body-lg)">3 horas</p>
+      </div>
+      <div>
+        <p class="meta" style="margin-bottom: var(--sp-2)">Grupo</p>
+        <p style="font-size: var(--type-body-lg)">8–10 personas</p>
+      </div>
+      <div>
+        <p class="meta" style="margin-bottom: var(--sp-2)">Lugar</p>
+        <p style="font-size: var(--type-body-lg)">Barcelona</p>
+      </div>
+      <div>
+        <p class="meta" style="margin-bottom: var(--sp-2)">Precio</p>
+        <p style="font-size: var(--type-body-lg)">60–120 €</p>
       </div>
     </div>
-    <div class="service">
-      <span class="num">II</span>
-      <div>
-        <h2 class="display" style="font-size:32px">El paseo de la <em>mirada</em></h2>
-        <p class="meta">1 h 30 min · Ejercicios fotográficos</p>
-        <br>
-        <div class="prose">
-          <p><strong>1. La luz.</strong> Buscar cómo la luz transforma lo sencillo: una pared, una ventana, una sombra, una flor.</p>
-          <p><strong>2. Los detalles invisibles.</strong> Crear una colección: texturas, colores, pequeños gestos, objetos con historia.</p>
-          <p><strong>3. La emoción.</strong> Una fotografía que responda: ¿qué quiero que sienta alguien al verla?</p>
+  </section>
+
+  <!-- Programme -->
+  <section style="padding-block: var(--section-gap); border-top: 1px solid var(--crema)" aria-label="Programa">
+    <p class="meta" style="margin-bottom: var(--sp-7)">Programa</p>
+
+    <div class="svc-panel" style="padding-top: 0; border-top: none">
+      <div class="svc-panel-grid">
+        <span class="svc-panel-num">I</span>
+        <div class="svc-panel-body">
+          <h2 class="svc-panel-title">Abrir los <em>ojos</em></h2>
+          <p class="svc-panel-tag">30 min · Café de bienvenida</p>
+          <div class="svc-panel-desc">
+            <p>¿Qué hace que una imagen nos emocione? La diferencia entre mirar y ver. La fotografía como una forma de presencia.</p>
+            <p><em>Ejercicio: fotografía algo que normalmente pasarías por alto.</em></p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="service">
-      <span class="num">III</span>
-      <div>
-        <h2 class="display" style="font-size:32px">Una pequeña <em>historia</em></h2>
-        <p class="meta">45 min · Selección y relato</p>
-        <br>
-        <p class="lede">Cada persona selecciona 5 imágenes: <em>mi pequeño relato de Barcelona</em>. Trabajar el orden de las fotos, el ritmo y la conexión entre imágenes. Compartirlas en grupo.</p>
+
+    <div class="svc-panel">
+      <div class="svc-panel-grid">
+        <span class="svc-panel-num">II</span>
+        <div class="svc-panel-body">
+          <h2 class="svc-panel-title">El paseo de la <em>mirada</em></h2>
+          <p class="svc-panel-tag">1 h 30 min · Ejercicios fotográficos en la calle</p>
+          <div class="svc-panel-desc">
+            <p><strong>La luz.</strong> Buscar cómo la luz transforma lo sencillo: una pared, una ventana, una sombra, una flor.</p>
+            <p><strong>Los detalles invisibles.</strong> Crear una colección: texturas, colores, pequeños gestos, objetos con historia.</p>
+            <p><strong>La emoción.</strong> Una fotografía que responda: ¿qué quiero que sienta alguien al verla?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="svc-panel">
+      <div class="svc-panel-grid">
+        <span class="svc-panel-num">III</span>
+        <div class="svc-panel-body">
+          <h2 class="svc-panel-title">Una pequeña <em>historia</em></h2>
+          <p class="svc-panel-tag">45 min · Selección y relato</p>
+          <div class="svc-panel-desc">
+            <p>Cada persona selecciona 5 imágenes: <em>mi pequeño relato de Barcelona</em>. Trabajar el orden de las fotos, el ritmo y la conexión entre imágenes. Compartirlas en grupo.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="block">
-    <p class="meta">Metodología</p>
-    <h2 class="display">Aprender a mirar <em>antes</em> que a fotografiar</h2>
-    <br>
-    <div class="prose">
+  <!-- Methodology -->
+  <section style="padding-block: var(--section-gap); border-top: 1px solid var(--crema)" aria-label="Metodología">
+    <p class="meta" style="margin-bottom: var(--sp-5)">Metodología</p>
+    <h2 class="group-title" style="margin-bottom: var(--sp-7)">Aprender a mirar <em>antes</em> que a fotografiar</h2>
+    <div class="bio-prose">
       <p><strong>El ojo fotográfico:</strong> entrenar la atención y encontrar belleza en lo cotidiano.</p>
       <p><strong>Luz y atmósfera:</strong> cómo cambia una escena según la hora y la emoción.</p>
       <p><strong>Composición intuitiva:</strong> equilibrio, vacío, colores, líneas, texturas.</p>
@@ -90,25 +124,64 @@
     </div>
   </section>
 
-  <section class="block">
-    <p class="meta">Lo que aprenderás</p>
-    <div class="prose">
-      <p>✓ A usar el iPhone con intención creativa<br>✓ A encontrar belleza en lo cotidiano<br>✓ A componer imágenes con emoción<br>✓ A crear una narrativa visual propia<br>✓ A confiar en tu propia mirada</p>
+  <!-- Quote + CTA -->
+  <section class="quote-section" aria-label="Declaración">
+    <blockquote class="quote-lg reveal">
+      "Esta experiencia nace de la necesidad de volver<br>
+      a encontrar belleza en lo sencillo."
+    </blockquote>
+    <div style="margin-top: var(--sp-7); display: flex; gap: var(--sp-5); align-items: baseline; justify-content: center; flex-wrap: wrap">
+      <a class="btn btn-solid" href="contacto.html">Reservar plaza</a>
+      <a class="link-arrow" href="servicios.html"><span class="arr">←</span> Todos los servicios</a>
     </div>
-    <br>
-    <p class="quote">“Durante años he trabajado creando imágenes para revistas, espacios y marcas. Pero mi verdadera búsqueda siempre ha sido otra: aprender a mirar. Esta experiencia nace de la necesidad de volver a encontrar belleza en lo sencillo, de parar el ruido y descubrir historias en lugares donde aparentemente no ocurre nada.”</p>
-    <br><br>
-    <a class="btn btn-solid" href="contacto.html">Reservar plaza</a>
-    &nbsp;&nbsp;
-    <a class="link-quiet meta" href="servicios.html">← Todos los servicios</a>
   </section>
+
 </main>
 
-<div class="ticker">Volver a mirar · Próxima edición · Barcelona</div>
-<footer class="site">
-  <span class="meta">© Daniela Cavestany · Bali 2026</span>
-  <span class="foot-quote">“Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria.”</span>
-  <span class="meta"><a class="link-quiet" href="contacto.html">Contacto</a></span>
+<div class="footer-epigraph">
+  <p>"Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria."</p>
+</div>
+
+<footer class="site" role="contentinfo">
+  <div class="foot-left">
+    <a class="wordmark-foot" href="index.html">Daniela <em>Cavestany</em></a>
+    <p class="meta">© 2026</p>
+  </div>
+  <div class="foot-center">
+    <p>Volver a mirar · Próxima edición · Barcelona</p>
+  </div>
+  <div class="foot-right">
+    <a class="foot-link" href="contacto.html">Contacto</a>
+    <span class="langswitch"><strong>ES</strong> · <a href="taller-volver-a-mirar-en.html">EN</a></span>
+  </div>
 </footer>
+
+<script>
+(function() {
+  var h = document.getElementById('masthead');
+  window.addEventListener('scroll', function() {
+    h.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+})();
+(function() {
+  var toggle = document.getElementById('nav-toggle');
+  var nav    = document.getElementById('main-nav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function() {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav.classList.toggle('open', !expanded);
+    document.body.style.overflow = expanded ? '' : 'hidden';
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+    }
+  });
+})();
+</script>
 </body>
 </html>

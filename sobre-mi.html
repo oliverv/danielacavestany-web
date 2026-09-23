@@ -9,75 +9,170 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F5F3EE'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-style='italic' font-size='36' text-anchor='middle' fill='%23111'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="assets/site/portrait.jpg" fetchpriority="high">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="masthead">
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+<header class="masthead" id="masthead">
   <a class="wordmark" href="index.html">Daniela <em>Cavestany</em></a>
-  <nav class="mainnav">
-    <a href="portfolio.html">Portfolio</a>
-    <a href="sobre-mi.html" class="active">Sobre mí</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="notas.html">Notas</a>
-    <a href="contacto.html">Contacto</a>
-  </nav>
-  <span class="langswitch"><strong>ES</strong> · <a href="sobre-mi-en.html">EN</a></span>
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <div class="masthead-right" id="main-nav">
+    <nav class="mainnav" aria-label="Navegación principal">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="sobre-mi.html" class="active">Sobre mí</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="notas.html">Notas</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <span class="langswitch"><strong>ES</strong> · <a href="sobre-mi-en.html">EN</a></span>
+  </div>
 </header>
 
-<main>
+<main id="main-content">
+
+  <!-- ── Portrait: full-viewport major editorial moment ── -->
   <section class="stage-full" aria-label="Daniela Cavestany, retrato">
-    <img src="assets/site/portrait.jpg" alt="Daniela Cavestany, retrato en blanco y negro" width="1024" height="1536" loading="eager">
-    <div class="stage-label"><span class="t">Daniela Cavestany</span><span class="meta">Fotógrafa · Barcelona</span></div>
-  </section>
-
-<div class="wrap">
-  <section class="block">
-      <div class="prose">
-        <p class="meta">Fotógrafa · Dirección de Arte · Estilismo de Interiores</p>
-        <br>
-        <p>Diplomada en Dirección de Arte y Fotografía por el London College for the Applied Arts y formada en fotografía en GrisArt. Inició su trayectoria profesional en el ámbito de la dirección de arte y el diseño gráfico, colaborando con diversas agencias y estudios creativos. Más adelante orientó su carrera hacia el estilismo de decoración, trabajando para algunas de las principales revistas europeas de interiorismo y estilo de vida. Su inquietud por descubrir nuevas culturas la llevó a vivir varios años en Indonesia, principalmente en Bali, donde desarrolló una mirada fotográfica profundamente influenciada por el paisaje, la espiritualidad y la vida cotidiana de la isla.</p>
-        <p>Su trabajo busca capturar la belleza serena de los lugares, las personas y los pequeños detalles que revelan una historia. A través de la fotografía explora la relación entre luz, emoción y memoria, creando imágenes de carácter poético y atemporal.</p>
-      </div>
-  </section>
-
-  <section class="block">
-    <p class="meta">Biografía</p>
-    <h2 class="display">Mi <em>historia</em></h2>
-    <br>
-    <div class="prose">
-      <p>Mi historia está muy vinculada a mi madre y Asia. Nací en Barcelona, en una ciudad que en 1970 seguía regida por el franquismo. En una familia de la burguesía catalana, con muchas reglas, muy parca en palabras y afectos, y con un padre profundamente autoritario. Mi tío bisabuelo fue Enrique Sagnier y esa unión con la ciudad fue muy presente en mi familia. Estudiaba en un colegio de monjas y vivía en un mundo cerrado, constreñido. Pero yo era una niña de espíritu libre. Desde pequeña comprendí que pertenecía a otro lugar.</p>
-      <p>En mis raíces estaban las respuestas a mis inquietudes. Una parte de mí pertenecía a unas islas al otro lado del mundo: Filipinas. Mi madre había nacido allí, en una familia mestiza —españoles y filipinos— que llevaba generaciones entrelazando orígenes. Mi madre, su modo de ser, su espíritu, eran los de una niña de la época colonial en las islas.</p>
-      <p>Creo que tenía unos cinco años la primera vez que fui a Filipinas, y lo recuerdo como si fuera hoy. Dicen que es imposible conservar recuerdos tan nítidos a esa edad, pero yo creo que cuando algo te impacta profundamente, se queda grabado. El olor al bajar del avión —esa mezcla de humedad, calor y Asia— me acompaña desde entonces. Es un aroma que me evoca, me calma, me hace sentir en casa. No tiene por qué ser Filipinas: es Asia. Cada vez que salgo de un avión allí, respiro hondo y siento que pertenezco a ese lugar.</p>
-      <p>Descubrí frutas nuevas, flores desconocidas. Descubrí que mi pelo, en el otro lado del mundo, era oro, y que mi piel tan blanca era un tesoro. Descubrí las sonrisas, la serenidad, esa forma de estar que los asiáticos han cultivado durante generaciones. Y me sentí bien. Aquello marcó el resto de mi vida. Nada volvió a ser igual. Fue una liberación total, porque al regresar a lo que era mi mundo, ya sabía que podía escapar cuando quisiera. Sabía que existía otro lugar, y esa certeza dejó una huella en mí: la posibilidad del escape, la posibilidad de ser otra.</p>
-      <p>Esa idea me acompañó en mi infancia, en mi adolescencia y después, en mi juventud. Siempre estaba allí, Asia, como una promesa. Viajé muchas veces, una y otra vez, buscando en cada viaje esa sensación de libertad. Muchos años después, tras haber encontrado mi camino profesional, haber tenido hijos y haber cumplido con todo lo que socialmente se esperaba de mí, me escapé. Cogí a mis hijos y me fui a vivir unos años a Bali. Allí me sentí completamente libre. Todo me acompañaba: la naturaleza, las sonrisas, el ritmo de la vida.</p>
-      <p>Mis fotos nacen de allí, de esa vocación que me habita. Al final, creo que logré lo que siempre deseé desde niña: vivir en Asia, sentir allí lo que siempre había sentido, y que mis hijos pudieran experimentar lo mismo, educarse entre dos mundos, entre dos continentes. Cada una de mis fotos intenta captar la belleza de lo que encuentro allí, lo que me toca el alma, lo que atraviesa mi mirada y revela mi esencia. Los ojos de aquella gente, tan limpios, tan poco complicados; sus sonrisas naturales, los niños que viven en la naturaleza y nada necesitan más que ella para sentirse completos. Los templos, la religión, las palmeras, los mares, las aguas, las nubes, las lluvias, las vidas tan precarias y, a la vez, tan llenas.</p>
+    <img
+      src="assets/site/portrait.jpg"
+      alt="Daniela Cavestany, retrato en blanco y negro"
+      width="1024"
+      height="1536"
+      loading="eager"
+      fetchpriority="high">
+    <div class="nameplate">
+      <h1>DANIELA CAVESTANY</h1>
+      <p>Fotógrafa · Barcelona / Bali</p>
     </div>
-    <br>
-    <p class="quote">“Mi madre era Asia, y Asia es mi lugar.”</p>
   </section>
 
-  <section class="block single-narrow" style="text-align:center">
-    <p class="meta">Lo que me hace diferente</p>
-    <br>
-    <p class="quote">“No fotografío lo extraordinario. Fotografío aquello que solemos pasar por alto. Una mirada, una sonrisa, una flor, la luz sobre un paisaje. Pequeños instantes capaces de detenernos y recordarnos lo esencial.”</p>
-    <br>
-    <img class="firma" src="assets/site/firma-daniela-cavestany.png" alt="Firma de Daniela Cavestany" loading="lazy" style="margin:0 auto">
-  </section>
+  <div class="wrap">
 
-  <section class="block">
-    <table class="index">
-      <tr><th>Formación</th><th>Base</th><th>Idiomas</th></tr>
-      <tr><td>London College for the Applied Arts · GrisArt</td><td>Barcelona / Bali</td><td>ES / EN</td></tr>
-    </table>
-  </section>
-</div>
+    <!-- ── Intro split: credentials left, bio right ── -->
+    <div class="bio-intro-grid" id="main-content-anchor">
+      <div class="bio-intro-right">
+        <p class="bio-intro-role">Fotógrafa · Dirección de Arte · Estilismo de Interiores</p>
+        <div style="font-size: var(--type-body-lg); line-height: 1.72; color: var(--piedra);">
+          <p style="margin-bottom: 1.4em">Diplomada en Dirección de Arte y Fotografía por el London College for the Applied Arts y formada en fotografía en GrisArt. Inició su trayectoria profesional en el ámbito de la dirección de arte y el diseño gráfico, colaborando con diversas agencias y estudios creativos.</p>
+          <p>Su trabajo busca capturar la belleza serena de los lugares, las personas y los pequeños detalles que revelan una historia. A través de la fotografía explora la relación entre luz, emoción y memoria, creando imágenes de carácter poético y atemporal.</p>
+        </div>
+      </div>
+      <div class="bio-intro-left" style="display:flex; align-items:flex-end;">
+        <p class="meta" style="padding-bottom: 4px">Barcelona · Filipinas · Bali</p>
+      </div>
+    </div>
+
+    <!-- ── Long-form biography ── -->
+    <section class="bio-story" aria-labelledby="bio-heading">
+      <p class="bio-story-label">Biografía</p>
+      <h2 class="bio-story-title" id="bio-heading">Mi <em>historia</em></h2>
+
+      <div class="bio-prose">
+        <p>Mi historia está muy vinculada a mi madre y Asia. Nací en Barcelona, en una ciudad que en 1970 seguía regida por el franquismo. En una familia de la burguesía catalana, con muchas reglas, muy parca en palabras y afectos, y con un padre profundamente autoritario. Mi tío bisabuelo fue Enrique Sagnier y esa unión con la ciudad fue muy presente en mi familia. Estudiaba en un colegio de monjas y vivía en un mundo cerrado, constreñido. Pero yo era una niña de espíritu libre. Desde pequeña comprendí que pertenecía a otro lugar.</p>
+
+        <p>En mis raíces estaban las respuestas a mis inquietudes. Una parte de mí pertenecía a unas islas al otro lado del mundo: Filipinas. Mi madre había nacido allí, en una familia mestiza —españoles y filipinos— que llevaba generaciones entrelazando orígenes. Mi madre, su modo de ser, su espíritu, eran los de una niña de la época colonial en las islas.</p>
+
+        <p>Creo que tenía unos cinco años la primera vez que fui a Filipinas, y lo recuerdo como si fuera hoy. Dicen que es imposible conservar recuerdos tan nítidos a esa edad, pero yo creo que cuando algo te impacta profundamente, se queda grabado. El olor al bajar del avión —esa mezcla de humedad, calor y Asia— me acompaña desde entonces.</p>
+      </div>
+
+      <!-- Pull quote — first visual pause -->
+      <div class="pull-quote">
+        <blockquote>"Mi madre era Asia,<br>y Asia es mi lugar."</blockquote>
+      </div>
+
+      <div class="bio-prose">
+        <p>Descubrí frutas nuevas, flores desconocidas. Descubrí que mi pelo, en el otro lado del mundo, era oro, y que mi piel tan blanca era un tesoro. Descubrí las sonrisas, la serenidad, esa forma de estar que los asiáticos han cultivado durante generaciones. Y me sentí bien. Aquello marcó el resto de mi vida. Nada volvió a ser igual. Fue una liberación total, porque al regresar a lo que era mi mundo, ya sabía que podía escapar cuando quisiera. Sabía que existía otro lugar, y esa certeza dejó una huella en mí: la posibilidad del escape, la posibilidad de ser otra.</p>
+
+        <p>Esa idea me acompañó en mi infancia, en mi adolescencia y después, en mi juventud. Siempre estaba allí, Asia, como una promesa. Viajé muchas veces, una y otra vez, buscando en cada viaje esa sensación de libertad. Muchos años después, tras haber encontrado mi camino profesional, haber tenido hijos y haber cumplido con todo lo que socialmente se esperaba de mí, me escapé. Cogí a mis hijos y me fui a vivir unos años a Bali. Allí me sentí completamente libre. Todo me acompañaba: la naturaleza, las sonrisas, el ritmo de la vida.</p>
+
+        <p>Mis fotos nacen de allí, de esa vocación que me habita. Al final, creo que logré lo que siempre deseé desde niña: vivir en Asia, sentir allí lo que siempre había sentido, y que mis hijos pudieran experimentar lo mismo, educarse entre dos mundos, entre dos continentes. Cada una de mis fotos intenta captar la belleza de lo que encuentro allí, lo que me toca el alma, lo que atraviesa mi mirada y revela mi esencia. Los ojos de aquella gente, tan limpios, tan poco complicados; sus sonrisas naturales, los niños que viven en la naturaleza y nada necesitan más que ella para sentirse completos. Los templos, la religión, las palmeras, los mares, las aguas, las nubes, las lluvias, las vidas tan precarias y, a la vez, tan llenas.</p>
+      </div>
+    </section>
+
+    <!-- ── Manifesto: "Lo que me hace diferente" ── -->
+    <section class="manifesto-section" aria-labelledby="manifesto-heading">
+      <p class="meta" style="margin-bottom: var(--sp-5)" id="manifesto-heading">Lo que me hace diferente</p>
+      <blockquote class="quote-lg">
+        "No fotografío lo extraordinario.<br>
+        Fotografío aquello que solemos pasar por alto.<br>
+        Una mirada, una sonrisa, una flor,<br>
+        la luz sobre un paisaje."
+      </blockquote>
+      <img
+        class="firma"
+        src="assets/site/firma-daniela-cavestany.png"
+        alt="Firma de Daniela Cavestany"
+        loading="lazy">
+
+      <!-- Credentials: horizontal info grid -->
+      <dl class="credentials-grid">
+        <div class="credential-item">
+          <dt>Formación</dt>
+          <dd>London College for the Applied Arts<br>GrisArt · Barcelona</dd>
+        </div>
+        <div class="credential-item">
+          <dt>Base</dt>
+          <dd>Barcelona / Bali</dd>
+        </div>
+        <div class="credential-item">
+          <dt>Idiomas</dt>
+          <dd>ES / EN</dd>
+        </div>
+      </dl>
+    </section>
+
+  </div><!-- /wrap -->
 </main>
 
-<div class="ticker">Barcelona — Bali · Mi historia</div>
-<footer class="site">
-  <span class="meta">© Daniela Cavestany · Bali 2026</span>
-  <span class="foot-quote">“Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria.”</span>
-  <span class="meta"><a class="link-quiet" href="contacto.html">Contacto</a></span>
+<div class="footer-epigraph">
+  <p>"Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria."</p>
+</div>
+
+<footer class="site" role="contentinfo">
+  <div class="foot-left">
+    <a class="wordmark-foot" href="index.html">Daniela <em>Cavestany</em></a>
+    <p class="meta">© 2026</p>
+  </div>
+  <div class="foot-center">
+    <p>Barcelona — Bali</p>
+  </div>
+  <div class="foot-right">
+    <a class="foot-link" href="contacto.html">Contacto</a>
+    <span class="langswitch"><strong>ES</strong> · <a href="sobre-mi-en.html">EN</a></span>
+  </div>
 </footer>
+
+<script>
+(function() {
+  var h = document.getElementById('masthead');
+  window.addEventListener('scroll', function() {
+    h.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+})();
+(function() {
+  var toggle = document.getElementById('nav-toggle');
+  var nav    = document.getElementById('main-nav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function() {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav.classList.toggle('open', !expanded);
+    document.body.style.overflow = expanded ? '' : 'hidden';
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+    }
+  });
+})();
+</script>
 </body>
 </html>

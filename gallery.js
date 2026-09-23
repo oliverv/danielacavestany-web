@@ -3,7 +3,9 @@
 (function () {
   "use strict";
 
-  /* ---------- group filter ---------- */
+  var IS_EN = document.documentElement.lang === "en";
+
+  /* ---------- group filter (portfolio page) ---------- */
   var bar = document.getElementById("filterbar");
   var groups = ["g-retratos", "g-rito", "g-tierra"];
   if (bar) {
@@ -56,7 +58,6 @@
   }
 
   /* ---------- lightbox ---------- */
-  var IS_EN = document.documentElement.lang === "en";
   var lb = document.createElement("div");
   lb.id = "lightbox";
   lb.setAttribute("role", "dialog");
@@ -72,40 +73,62 @@
     (IS_EN ? "Enquire about this work →" : "Consultar sobre esta obra →") + '</a></div>';
   document.body.appendChild(lb);
 
-  var lbImg = lb.querySelector("#lb-img");
-  var lbTitle = lb.querySelector("#lb-title");
-  var lbMeta = lb.querySelector("#lb-meta");
-  var lbCat = lb.querySelector("#lb-cat");
+  var lbImg     = lb.querySelector("#lb-img");
+  var lbTitle   = lb.querySelector("#lb-title");
+  var lbMeta    = lb.querySelector("#lb-meta");
+  var lbCat     = lb.querySelector("#lb-cat");
   var lbConsult = lb.querySelector("#lb-consult");
-  var lbCount = lb.querySelector("#lb-count");
-  var current = [];
-  var idx = 0;
-  var opener = null;
+  var lbCount   = lb.querySelector("#lb-count");
+  var current   = [];
+  var idx       = 0;
+  var opener    = null;
 
   function visiblePlates() {
     return plates.filter(function (p) { return !p.classList.contains("hide"); });
   }
+
   function catOf(fig) {
-    var m = fig.querySelectorAll(".meta");
-    var txt = m.length ? m[m.length - 1].textContent : "";
-    var found = txt.match(/BALI-\d{2}/);
-    return found ? found[0] : "";
+    // Check within fig first, then in parent article (homepage obra layout)
+    var container = fig.closest("article") || fig;
+    var m = container.querySelectorAll(".meta, .obra-meta");
+    var txt = "";
+    m.forEach(function(el) { txt = el.textContent; }); // last match
+    var found = txt.match(/BALI[-—]\d{2}/i);
+    return found ? found[0].replace("—", "-").toUpperCase() : "";
   }
+
+  function titleOf(fig) {
+    var container = fig.closest("article") || fig;
+    var t = container.querySelector(".title, .obra-title");
+    return t ? t.textContent : "";
+  }
+
+  function metaOf(fig) {
+    var container = fig.closest("article") || fig;
+    var m = container.querySelectorAll(".meta, .obra-meta");
+    var txt = "";
+    m.forEach(function(el) { txt = el.textContent; });
+    return txt;
+  }
+
+  function imgOf(fig) {
+    return fig.querySelector("img");
+  }
+
   function openAt(list, i) {
-    current = list; idx = (i + list.length) % list.length;
+    current = list;
+    idx = (i + list.length) % list.length;
     var fig = current[idx];
-    var img = fig.querySelector("img");
-    lbImg.src = img.currentSrc || img.src;
-    lbImg.alt = img.alt || "";
-    var t = fig.querySelector(".title");
-    var m = fig.querySelectorAll(".meta");
-    lbTitle.textContent = t ? t.textContent : "";
-    lbMeta.textContent = m.length ? m[m.length - 1].textContent : "";
+    var img = imgOf(fig);
+    lbImg.src = img ? (img.currentSrc || img.src) : "";
+    lbImg.alt = img ? (img.alt || "") : "";
+    lbTitle.textContent = titleOf(fig);
+    lbMeta.textContent = metaOf(fig);
     var cat = catOf(fig);
     var sec = fig.closest("section[id]");
     var group = "";
     if (sec) {
-      var h = sec.querySelector("h2.display");
+      var h = sec.querySelector("h2.display, .group-title");
       group = h ? h.textContent.trim().replace(/\s+/g, " ") : "";
     }
     lbCat.textContent = group;
@@ -121,27 +144,42 @@
     document.body.style.overflow = "hidden";
     lb.querySelector("#lb-close").focus();
   }
+
   function close() {
     lb.classList.remove("open");
     document.body.style.overflow = "";
     if (opener && opener.focus) opener.focus();
   }
+
   function step(d) { openAt(current, idx + d); }
 
+  // Attach click to all .plate elements
   document.querySelectorAll("main .plate").forEach(function (fig) {
     fig.addEventListener("click", function () {
       var list = visiblePlates();
       openAt(list, list.indexOf(fig));
     });
+    // Keyboard activation for role=button elements (obra-img-wrap)
+    if (fig.getAttribute("role") === "button") {
+      fig.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          fig.click();
+        }
+      });
+    }
   });
+
   lb.querySelector("#lb-close").addEventListener("click", close);
   lb.querySelector("#lb-prev").addEventListener("click", function (e) { e.stopPropagation(); step(-1); });
   lb.querySelector("#lb-next").addEventListener("click", function (e) { e.stopPropagation(); step(1); });
   lb.addEventListener("click", function (e) { if (e.target === lb) close(); });
+
   document.addEventListener("keydown", function (e) {
     if (!lb.classList.contains("open")) return;
     if (e.key === "Escape") close();
     if (e.key === "ArrowLeft") step(-1);
     if (e.key === "ArrowRight") step(1);
   });
+
 })();

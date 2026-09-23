@@ -12,75 +12,132 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="masthead">
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+<header class="masthead" id="masthead">
   <a class="wordmark" href="index.html">Daniela <em>Cavestany</em></a>
-  <nav class="mainnav">
-    <a href="portfolio.html">Portfolio</a>
-    <a href="sobre-mi.html">Sobre mí</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="notas.html" class="active">Notas</a>
-    <a href="contacto.html">Contacto</a>
-  </nav>
-  <span class="langswitch"><strong>ES</strong> · <a href="notas-en.html">EN</a></span>
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <div class="masthead-right" id="main-nav">
+    <nav class="mainnav" aria-label="Navegación principal">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="notas.html" class="active">Notas</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <span class="langswitch"><strong>ES</strong> · <a href="notas-en.html">EN</a></span>
+  </div>
 </header>
 
-<main class="wrap">
-  <section class="block">
-    <p class="meta">Notas · Mirada fotográfica</p>
-    <h1 class="display">Cuaderno de <em>mirada</em></h1>
-    <br>
-    <p class="lede">Buscar lo sencillo, lo que emociona, la naturaleza, las personas, la espiritualidad y los detalles que otros no ven.</p>
+<main class="wrap" id="main-content">
+
+  <section style="padding-block: clamp(48px, 6vw, 96px)" aria-labelledby="notas-title">
+    <p class="meta" style="margin-bottom: var(--sp-5)">Notas · Mirada fotográfica</p>
+    <h1 class="group-title" id="notas-title">Cuaderno de <em>mirada</em></h1>
+    <p class="body-lg" style="margin-top: var(--sp-5); color: var(--piedra)">Buscar lo sencillo, lo que emociona, la naturaleza, las personas, la espiritualidad y los detalles que otros no ven.</p>
   </section>
 
-  <section class="block">
-    <p class="meta">Nota I</p>
-    <h2 class="display">Aprender a mirar <em>antes</em> que a fotografiar</h2>
-    <br>
-    <div class="prose">
+  <section style="padding-block: var(--section-gap); border-top: 1px solid var(--crema)" aria-labelledby="nota-1">
+    <p class="meta" style="margin-bottom: var(--sp-4)">Nota I</p>
+    <h2 class="group-title" id="nota-1" style="margin-bottom: var(--sp-6)">Aprender a mirar <em>antes</em> que a fotografiar</h2>
+    <div class="bio-prose">
       <p>Un curso creativo funciona mejor alrededor de una idea, no de botones del móvil. El ojo fotográfico: entrenar la atención y encontrar belleza en lo cotidiano. Luz y atmósfera: cómo cambia una escena según la hora y la emoción. Composición intuitiva: equilibrio, vacío, colores, líneas, texturas. Narrativa visual: crear una historia con 5–10 imágenes. Edición con sensibilidad: no transformar la realidad, sino potenciarla.</p>
       <p>Por mi trayectoria en dirección de arte, decoración y fotografía, mi valor diferencial no es enseñar técnica: es enseñar una forma de mirar.</p>
     </div>
-    <br>
-    <a class="link-quiet meta" href="taller-volver-a-mirar.html">El taller →</a>
+    <p style="margin-top: var(--sp-6)">
+      <a class="link-arrow" href="taller-volver-a-mirar.html">El taller <span class="arr">→</span></a>
+    </p>
   </section>
 
-  <section class="block">
-    <p class="meta">Nota II</p>
-    <h2 class="display">Paseos <em>fotográficos</em></h2>
-    <br>
-    <div class="prose">
+  <section style="padding-block: var(--section-gap); border-top: 1px solid var(--crema)" aria-labelledby="nota-2">
+    <p class="meta" style="margin-bottom: var(--sp-4)">Nota II</p>
+    <h2 class="group-title" id="nota-2" style="margin-bottom: var(--sp-6)">Paseos <em>fotográficos</em></h2>
+    <div class="bio-prose" style="margin-bottom: var(--sp-7)">
       <p><strong>Paseo «La belleza escondida».</strong> Dos horas caminando. Ejercicios: fotografiar una sombra. Encontrar tres texturas. Hacer un retrato sin pedir una pose. Captar un instante de silencio.</p>
       <p><strong>Paseo «Barcelona invisible».</strong> Mirar puertas, flores, paredes, reflejos, personas. Terminar con una pequeña selección de imágenes y una conversación sobre la mirada.</p>
       <p>Y una segunda línea muy mía: experiencias fotográficas en lugares especiales —Formentera, Bali, Capri— mezclando fotografía, naturaleza, calma y sensibilidad.</p>
     </div>
-    <br>
-    <figure class="plate offset-left">
-      <img width="1237" height="1600" src="assets/bali/IMG_4462.jpg" alt="Escalera sobre el agua frente a la selva" loading="lazy">
-      <figcaption><span class="title">Escalera al agua</span><span class="meta">BALI-23 · 2026</span></figcaption>
+    <figure class="plate plate-wide-left">
+      <img width="1237" height="1600"
+        src="assets/bali/IMG_4462.jpg"
+        alt="Escalera sobre el agua frente a la selva"
+        loading="lazy">
+      <figcaption>
+        <span class="title">Escalera al agua</span>
+        <span class="meta">BALI-23 · 2026</span>
+      </figcaption>
     </figure>
   </section>
 
-  <section class="block">
-    <p class="meta">Nota III</p>
-    <h2 class="display">Lo que me hace <em>diferente</em></h2>
-    <br>
-    <div class="prose">
+  <section style="padding-block: var(--section-gap); border-top: 1px solid var(--crema)" aria-labelledby="nota-3">
+    <p class="meta" style="margin-bottom: var(--sp-4)">Nota III</p>
+    <h2 class="group-title" id="nota-3" style="margin-bottom: var(--sp-6)">Lo que me hace <em>diferente</em></h2>
+    <div class="bio-prose" style="margin-bottom: var(--sp-7)">
       <p>Mis fotografías no buscan la perfección; buscan despertar algo en quien las mira. Me atrae la belleza de lo sencillo: una mirada, una sonrisa sincera, los pétalos de una flor, un paisaje en calma. Aquello que, por cotidiano, a menudo dejamos de ver.</p>
       <p>En un mundo lleno de ruido e imágenes fugaces, intento que mis fotografías sean una invitación a detenerse. Un espacio de paz, belleza y autenticidad que nos reconecte con lo esencial.</p>
     </div>
-    <br>
-    <figure class="plate offset-right">
-      <img width="1105" height="1600" src="assets/bali/IMG_4461.jpg" alt="Nenúfares vistos desde arriba" loading="lazy">
-      <figcaption><span class="title">Nenúfares</span><span class="meta">BALI-22 · 2026</span></figcaption>
+    <figure class="plate plate-wide-right">
+      <img width="1105" height="1600"
+        src="assets/bali/IMG_4461.jpg"
+        alt="Nenúfares vistos desde arriba"
+        loading="lazy">
+      <figcaption>
+        <span class="title">Nenúfares</span>
+        <span class="meta">BALI-22 · 2026</span>
+      </figcaption>
     </figure>
   </section>
+
 </main>
 
-<div class="ticker">Notas · Barcelona — Bali</div>
-<footer class="site">
-  <span class="meta">© Daniela Cavestany · Bali 2026</span>
-  <span class="foot-quote">“Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria.”</span>
-  <span class="meta"><a class="link-quiet" href="contacto.html">Contacto</a></span>
+<div class="footer-epigraph">
+  <p>"Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria."</p>
+</div>
+
+<footer class="site" role="contentinfo">
+  <div class="foot-left">
+    <a class="wordmark-foot" href="index.html">Daniela <em>Cavestany</em></a>
+    <p class="meta">© 2026</p>
+  </div>
+  <div class="foot-center">
+    <p>Notas · Barcelona — Bali</p>
+  </div>
+  <div class="foot-right">
+    <a class="foot-link" href="contacto.html">Contacto</a>
+    <span class="langswitch"><strong>ES</strong> · <a href="notas-en.html">EN</a></span>
+  </div>
 </footer>
+
+<script>
+(function() {
+  var h = document.getElementById('masthead');
+  window.addEventListener('scroll', function() {
+    h.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+})();
+(function() {
+  var toggle = document.getElementById('nav-toggle');
+  var nav    = document.getElementById('main-nav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function() {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav.classList.toggle('open', !expanded);
+    document.body.style.overflow = expanded ? '' : 'hidden';
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+    }
+  });
+})();
+</script>
 </body>
 </html>

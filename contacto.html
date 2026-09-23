@@ -10,69 +10,224 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F5F3EE'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-style='italic' font-size='36' text-anchor='middle' fill='%23111'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
+<style>
+  /* Contact page extras */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+    padding-block: var(--section-gap);
+  }
+  @media (max-width: 767px) {
+    .contact-grid { grid-template-columns: 1fr; row-gap: var(--sp-8); }
+  }
+  .contact-email-link {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--greige);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+  .contact-email-link:hover { border-color: var(--ink); }
+</style>
 </head>
 <body>
-<header class="masthead">
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+<header class="masthead" id="masthead">
   <a class="wordmark" href="index.html">Daniela <em>Cavestany</em></a>
-  <nav class="mainnav">
-    <a href="portfolio.html">Portfolio</a>
-    <a href="sobre-mi.html">Sobre mí</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="notas.html">Notas</a>
-    <a href="contacto.html" class="active">Contacto</a>
-  </nav>
-  <span class="langswitch"><strong>ES</strong> · <a href="contacto-en.html">EN</a></span>
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <div class="masthead-right" id="main-nav">
+    <nav class="mainnav" aria-label="Navegación principal">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="sobre-mi.html">Sobre mí</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="notas.html">Notas</a>
+      <a href="contacto.html" class="active">Contacto</a>
+    </nav>
+    <span class="langswitch"><strong>ES</strong> · <a href="contacto-en.html">EN</a></span>
+  </div>
 </header>
 
-<main class="wrap">
-  <section class="block">
-    <p class="meta">Contacto</p>
-    <h1 class="display"><em>Escríbeme.</em></h1>
-    <br>
-    <div class="grid-2" style="align-items:start">
-      <div class="prose">
+<main class="wrap" id="main-content">
+
+  <div style="padding-block: clamp(48px, 6vw, 80px) 0">
+    <p class="meta" style="margin-bottom: var(--sp-5)">Contacto</p>
+    <h1 class="hero-title"><span class="line"><span><em style="font-family:var(--font-display); font-style:italic">Escríbeme.</em></span></span></h1>
+  </div>
+
+  <div class="contact-grid">
+    <div>
+      <div class="prose" style="margin-bottom: var(--sp-7)">
         <p>Cada encargo, colaboración o experiencia comienza con una mirada atenta. Cuéntame sobre tu proyecto, espacio o idea.</p>
-        <p class="meta">Correo directo</p>
-        <p><a class="link-quiet serif" style="font-size:24px" href="mailto:daniela@danielacavestany.com">daniela@danielacavestany.com</a></p>
-        <p class="meta">Base</p>
-        <p>Barcelona — Bali</p>
-        <form class="contact" action="mailto:daniela@danielacavestany.com" method="post" enctype="text/plain">
-          <label for="nombre">Nombre</label>
-          <input id="nombre" name="nombre" type="text" required>
-          <label for="email">Correo electrónico</label>
-          <input id="email" name="email" type="email" required>
-          <label for="tipo">Naturaleza del encargo</label>
-          <select id="tipo" name="tipo">
-            <option>Sesión / Encargo fotográfico</option>
-            <option>Volver a mirar (taller iPhone)</option>
-            <option>Experiencia en lugar especial</option>
-            <option>Estilismo / Dirección de arte</option>
-            <option>Obra / Ediciones</option>
-            <option>Otro</option>
-          </select>
-          <label for="mensaje">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-          <br><br>
+      </div>
+
+      <p class="meta" style="margin-bottom: var(--sp-2)">Correo directo</p>
+      <p style="margin-bottom: var(--sp-6)">
+        <a class="contact-email-link" href="mailto:daniela@danielacavestany.com">daniela@danielacavestany.com</a>
+      </p>
+
+      <p class="meta" style="margin-bottom: var(--sp-2)">Base</p>
+      <p style="margin-bottom: var(--sp-7); font-size: var(--type-body); color: var(--piedra)">Barcelona — Bali · Respuesta en 24–48 h</p>
+
+      <form class="contact" id="contact-form" novalidate>
+        <div class="form-errors" id="form-errors" role="alert">
+          <strong>Por favor, corrige los siguientes errores:</strong>
+          <ul id="error-list"></ul>
+        </div>
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp">No rellenar</label>
+          <input id="hp" name="hp" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <label for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" required aria-required="true">
+        <span class="field-error" id="err-nombre" role="alert"></span>
+
+        <label for="email">Correo electrónico</label>
+        <input id="email" name="email" type="email" autocomplete="email" required aria-required="true">
+        <span class="field-error" id="err-email" role="alert"></span>
+
+        <label for="tipo">Naturaleza del encargo</label>
+        <select id="tipo" name="tipo">
+          <option>Sesión / Encargo fotográfico</option>
+          <option>Volver a mirar (taller iPhone)</option>
+          <option>Experiencia en lugar especial</option>
+          <option>Estilismo / Dirección de arte</option>
+          <option>Obra / Ediciones</option>
+          <option>Otro</option>
+        </select>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true"></textarea>
+        <span class="field-error" id="err-mensaje" role="alert"></span>
+
+        <div id="obra-notice" role="status"></div>
+
+        <div style="margin-top: var(--sp-6)">
           <button class="btn btn-solid" type="submit">Enviar mensaje</button>
-        </form>
-      </div>
-      <div>
-        <figure class="plate">
-          <img width="1129" height="1600" src="assets/bali/IMG_4491.jpg" alt="Dos palmeras con hamaca, Bali" loading="lazy">
-          <figcaption><span class="title">Descanso</span><span class="meta">BALI-29</span></figcaption>
-        </figure>
-        <p class="meta">Atención · Barcelona — Bali</p>
-        <p class="quote" style="font-size:18px">Respuesta en 24–48 horas laborables.</p>
-      </div>
+        </div>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
     </div>
-  </section>
+
+    <div>
+      <figure class="plate" style="margin-bottom: 0">
+        <img width="1129" height="1600"
+          src="assets/bali/IMG_4491.jpg"
+          alt="Dos palmeras con hamaca en un prado abierto, Bali"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Descanso</span>
+          <span class="meta">BALI-29 · 2026</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
 </main>
 
-<div class="ticker">Barcelona — Bali · Septiembre 2026</div>
-<footer class="site">
-  <span class="meta">© Daniela Cavestany · Bali 2026</span>
-  <span class="foot-quote">“Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria.”</span>
-  <span class="meta"><a class="link-quiet" href="index.html">Inicio</a></span>
+<div class="footer-epigraph">
+  <p>"Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria."</p>
+</div>
+
+<footer class="site" role="contentinfo">
+  <div class="foot-left">
+    <a class="wordmark-foot" href="index.html">Daniela <em>Cavestany</em></a>
+    <p class="meta">© 2026</p>
+  </div>
+  <div class="foot-center">
+    <p>Barcelona — Bali</p>
+  </div>
+  <div class="foot-right">
+    <a class="foot-link" href="index.html">Inicio</a>
+    <span class="langswitch"><strong>ES</strong> · <a href="contacto-en.html">EN</a></span>
+  </div>
 </footer>
+
+<script>
+(function() {
+  var h = document.getElementById('masthead');
+  window.addEventListener('scroll', function() {
+    h.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+})();
+(function() {
+  var toggle = document.getElementById('nav-toggle');
+  var nav    = document.getElementById('main-nav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', function() {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav.classList.toggle('open', !expanded);
+    document.body.style.overflow = expanded ? '' : 'hidden';
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      toggle.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+      document.body.style.overflow = '';
+      toggle.focus();
+    }
+  });
+})();
+// Pre-fill obra from URL param
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var obra = params.get('obra');
+  if (obra) {
+    var notice = document.getElementById('obra-notice');
+    if (notice) {
+      notice.textContent = 'Consulta sobre la obra ' + obra;
+      notice.classList.add('show');
+    }
+    var msg = document.getElementById('mensaje');
+    if (msg && !msg.value) msg.value = 'Me gustaría consultar sobre la obra ' + obra + '.';
+  }
+})();
+// Basic form validation
+(function() {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var errors = [];
+    ['nombre','email','mensaje'].forEach(function(id) {
+      var el = document.getElementById(id);
+      var err = document.getElementById('err-' + id);
+      el.removeAttribute('aria-invalid');
+      if (err) err.textContent = '';
+      if (!el.value.trim()) {
+        el.setAttribute('aria-invalid', 'true');
+        var label = form.querySelector('label[for="' + id + '"]');
+        var name = label ? label.textContent : id;
+        if (err) err.textContent = name + ' es obligatorio.';
+        errors.push(name + ' es obligatorio.');
+      }
+    });
+    var hp = document.getElementById('hp');
+    if (hp && hp.value) return; // honeypot
+    var errBox = document.getElementById('form-errors');
+    var errList = document.getElementById('error-list');
+    if (errors.length) {
+      errList.innerHTML = errors.map(function(e) { return '<li>' + e + '</li>'; }).join('');
+      errBox.classList.add('show');
+      errBox.focus();
+    } else {
+      errBox.classList.remove('show');
+      document.getElementById('form-status').textContent = 'Gracias por tu mensaje. Te responderé en 24–48 horas.';
+      form.reset();
+    }
+  });
+})();
+</script>
 </body>
 </html>
