@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F5F3EE'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-style='italic' font-size='36' text-anchor='middle' fill='%23111'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,6 +21,7 @@
     <a href="notas.html">Notas</a>
     <a href="contacto.html">Contacto</a>
   </nav>
+  <span class="langswitch"><strong>ES</strong> · <a href="portfolio-en.html">EN</a></span>
 </header>
 
 <main class="wrap">
@@ -30,7 +32,15 @@
     <p class="lede">Retratos íntimos, rituales de templo y paisajes de selva y mar. Cada imagen intenta captar la belleza de lo que encuentro allí: los ojos de aquella gente, tan limpios; sus sonrisas naturales; los templos, las palmeras, las lluvias; las vidas tan precarias y, a la vez, tan llenas.</p>
   </section>
 
-  <section class="block">
+  <div class="filterbar meta" id="filterbar">
+    <span>Filtrar:</span>
+    <button data-filter="all" class="on">Todas</button>
+    <button data-filter="g-retratos">Retratos</button>
+    <button data-filter="g-rito">Rito y Templo</button>
+    <button data-filter="g-tierra">Tierra y Mar</button>
+  </div>
+
+  <section class="block" id="g-retratos">
     <p class="meta">I · Retratos</p>
     <h2 class="display">La <em>gente</em></h2>
     <br>
@@ -67,7 +77,7 @@
     </div>
   </section>
 
-  <section class="block">
+  <section class="block" id="g-rito">
     <p class="meta">II · Rito y Templo</p>
     <h2 class="display">Lo <em>sagrado</em></h2>
     <br>
@@ -79,7 +89,7 @@
     <figure class="plate single-narrow"><img src="assets/bali/IMG_4494.jpg" alt="Buda cubierto de hojas" loading="lazy"><figcaption><span class="title">Buda entre hojas</span><span class="meta">BALI-21 · 2026</span></figcaption></figure>
   </section>
 
-  <section class="block">
+  <section class="block" id="g-tierra">
     <p class="meta">III · Tierra y Mar</p>
     <h2 class="display">El <em>lugar</em></h2>
     <br>
@@ -153,5 +163,6 @@
   <span class="foot-quote">“Observar no es apresar la luz, sino esperar a que los objetos consientan en revelar su memoria.”</span>
   <span class="meta"><a class="link-quiet" href="contacto.html">Contacto</a></span>
 </footer>
+<script src="gallery.js" defer></script>
 </body>
 </html>
