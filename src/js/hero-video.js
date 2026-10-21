@@ -18,6 +18,7 @@ export function initHeroVideo() {
 
   video.src = window.innerWidth >= 1280 ? video.dataset.srcHd : video.dataset.srcSd;
   video.muted = true;
+  video.load();
 
   const start = video.play();
   if (start && typeof start.catch === 'function') start.catch(() => {});
