@@ -82,6 +82,84 @@
   max-width: 46ch;
 }
 
+/* Hero con vídeo de fondo (servicios.html) */
+.servicios-hero--video {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(720px, calc(100svh - var(--header-h)), 960px);
+  overflow: hidden;
+  background: #1b1a18;
+  color: #F5F3EE;
+  padding-block: 0; /* el relleno lo lleva .servicios-hero-inner */
+}
+.servicios-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.servicios-hero-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Degradado oscuro suave: el texto se lee sobre cualquier fotograma */
+.servicios-hero--video::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to top,
+    rgba(10, 9, 8, 0.80) 0%,
+    rgba(10, 9, 8, 0.50) 40%,
+    rgba(10, 9, 8, 0.18) 72%,
+    rgba(10, 9, 8, 0.30) 100%
+  );
+}
+.servicios-hero--video .servicios-hero-inner {
+  width: min(calc(100% - (var(--page-x) * 2)), var(--page-max));
+  margin-inline: auto;
+  padding-block: clamp(48px, 5vw, 72px);
+}
+/* El vídeo lleva un rótulo ("framing time") en el centro del encuadre:
+   título más contenido y anclado abajo para no pisarlo */
+.servicios-hero--video .servicios-hero-title {
+  font-size: clamp(40px, 5.2vw, 76px);
+  max-width: 24ch;
+}
+.servicios-hero--video .servicios-hero-label,
+.servicios-hero--video .servicios-hero-lede {
+  color: rgba(245, 243, 238, 0.88);
+}
+.servicios-hero--video .servicios-hero-title,
+.servicios-hero--video .servicios-hero-lede {
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+}
+.hero-video-toggle {
+  position: absolute;
+  right: var(--page-x);
+  bottom: clamp(24px, 3vw, 40px);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(245, 243, 238, 0.55);
+  border-radius: 50%;
+  background: rgba(10, 9, 8, 0.35);
+  color: #F5F3EE;
+  font-size: 11px;
+  letter-spacing: 0;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.hero-video-toggle:hover,
+.hero-video-toggle:focus-visible {
+  background: rgba(10, 9, 8, 0.6);
+  border-color: #F5F3EE;
+}
+.hero-video-toggle[hidden] { display: none; }
+
 /* Service detail panels (on servicios.html) */
 .svc-panel {
   padding-block: clamp(48px, 6vw, 80px);

@@ -15,13 +15,26 @@
 <body>
 <!--#include file="components/header-en.html" -->
 
-<main class="wrap">
-  <section class="block">
-    <p class="meta">Services</p>
-    <h1 class="display">Learning to see<br>before <em>photographing</em>.</h1>
-    <br>
-    <p class="lede">I don't teach technique: I teach a way of seeing. The tool is the iPhone; the true camera is the gaze.</p>
+<main>
+  <!-- Hero: background video (looping cut, no audio) -->
+  <section class="servicios-hero servicios-hero--video" aria-labelledby="servicios-title" data-hero-video>
+    <div class="servicios-hero-media" aria-hidden="true">
+      <video muted loop playsinline preload="none"
+        poster="assets/video/servicios-hero-poster.jpg"
+        data-src-hd="assets/video/servicios-hero-1080.mp4"
+        data-src-sd="assets/video/servicios-hero-720.mp4"></video>
+    </div>
+    <div class="servicios-hero-inner">
+      <p class="servicios-hero-label">Services</p>
+      <h1 class="servicios-hero-title" id="servicios-title">Learning to see<br>before <em>photographing</em>.</h1>
+      <p class="servicios-hero-lede">I don't teach technique: I teach a way of seeing. The tool is the iPhone; the true camera is the gaze.</p>
+    </div>
+    <button class="hero-video-toggle" type="button" aria-label="Pause video" data-label-pause="Pause video" data-label-play="Play video" hidden>
+      <span aria-hidden="true">❚❚</span>
+    </button>
   </section>
+
+  <div class="wrap">
 
   <section class="block">
     <div class="service">
@@ -72,6 +85,7 @@
   <section class="block single-narrow" style="text-align:center">
     <p class="quote">"For years I have created images for magazines, spaces and brands. But my true search has always been another: learning to see."</p>
   </section>
+  </div><!-- /wrap -->
 </main>
 
 <!--#include file="components/footer-en.html" -->

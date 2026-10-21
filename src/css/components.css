@@ -5,8 +5,10 @@
 .plate img {
   width: 100%;
   height: auto;
+  aspect-ratio: var(--frame-ratio);
+  object-fit: cover;
   display: block;
-  background: var(--crema);
+  background: var(--papel);
 }
 .plate figcaption {
   display: flex;
@@ -22,6 +24,8 @@
   font-style: italic;
   font-size: 15px;
 }
+/* IMG_4462 es el único escaneo más ancho (0,77): se muestra entero sobre el papel */
+.plate img[src*="IMG_4462"] { object-fit: contain; }
 .plate.hide { display: none; }
 
 

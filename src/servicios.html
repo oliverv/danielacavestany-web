@@ -15,17 +15,30 @@
 <body>
 <!--#include file="components/header.html" -->
 
-<main class="wrap" id="main-content">
+<main id="main-content">
 
-  <!-- ── Hero: conceptual anchor ── -->
-  <section class="servicios-hero" aria-labelledby="servicios-title">
-    <p class="servicios-hero-label">Servicios</p>
-    <h1 class="servicios-hero-title" id="servicios-title">
-      Aprender a mirar<br>
-      antes que a <em>fotografiar.</em>
-    </h1>
-    <p class="servicios-hero-lede">No enseño técnica: enseño una forma de mirar. La herramienta es el iPhone; la verdadera cámara es la mirada.</p>
+  <!-- ── Hero: vídeo de fondo (corte en bucle, sin audio) ── -->
+  <section class="servicios-hero servicios-hero--video" aria-labelledby="servicios-title" data-hero-video>
+    <div class="servicios-hero-media" aria-hidden="true">
+      <video muted loop playsinline preload="none"
+        poster="assets/video/servicios-hero-poster.jpg"
+        data-src-hd="assets/video/servicios-hero-1080.mp4"
+        data-src-sd="assets/video/servicios-hero-720.mp4"></video>
+    </div>
+    <div class="servicios-hero-inner">
+      <p class="servicios-hero-label">Servicios</p>
+      <h1 class="servicios-hero-title" id="servicios-title">
+        Aprender a mirar<br>
+        antes que a <em>fotografiar.</em>
+      </h1>
+      <p class="servicios-hero-lede">No enseño técnica: enseño una forma de mirar. La herramienta es el iPhone; la verdadera cámara es la mirada.</p>
+    </div>
+    <button class="hero-video-toggle" type="button" aria-label="Pausar vídeo" data-label-pause="Pausar vídeo" data-label-play="Reproducir vídeo" hidden>
+      <span aria-hidden="true">❚❚</span>
+    </button>
   </section>
+
+  <div class="wrap">
 
   <!-- ════════════════════════════════════
        01 · Volver a mirar
@@ -144,6 +157,7 @@
     </blockquote>
   </section>
 
+  </div><!-- /wrap -->
 </main>
 
 <!--#include file="components/footer.html" -->

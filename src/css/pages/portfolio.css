@@ -43,6 +43,7 @@
   color: var(--piedra);
   max-width: 44ch;
 }
+.ph-desc p + p { margin-top: 1em; }
 
 /* Filters */
 .filterbar {
@@ -117,30 +118,33 @@ section.block.dim.showone { display: block; }
 .group-title em { font-style: italic; }
 
 /* Portfolio exhibition flow — offset grid for visual rhythm */
-.exhibit-flow { }
-
-/* Single-image offsets */
-.plate-wide-left  { max-width: 75%; }
-.plate-wide-right { max-width: 75%; margin-left: auto; }
-.plate-narrow     { max-width: 52%; margin-inline: auto; }
-.plate-full       { max-width: 100%; }
-
-/* Pair layout */
-.plate-pair {
+/* Todas las obras, mismo tamaño: rejilla uniforme de marcos --frame-w */
+.exhibit-flow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--frame-w)), var(--frame-w)));
+  justify-content: center;
   column-gap: clamp(24px, 3vw, 48px);
+  row-gap: clamp(40px, 5vw, 72px);
+}
+/* Los antiguos contenedores de pareja ya no maquetan: sus figuras entran en la rejilla */
+.plate-pair { display: contents; }
+
+/* Sin desplazamientos ni anchos distintos dentro del portfolio */
+.exhibit-flow .plate,
+.exhibit-flow .plate-wide-left,
+.exhibit-flow .plate-wide-right,
+.exhibit-flow .plate-narrow {
+  max-width: none;
+  margin: 0;
 }
 
-/* Vertical spacing between works */
-.plate { margin-bottom: clamp(56px, 7vw, 112px); }
-.plate:last-child { margin-bottom: 0; }
-
-/* Plate-pair acts as a work unit; the pair itself carries spacing */
-.plate-pair { margin-bottom: clamp(56px, 7vw, 112px); }
-.plate-pair:last-child { margin-bottom: 0; }
-/* Plates inside a pair don't need their own bottom spacing */
-.plate-pair .plate { margin-bottom: 0; }
+/* Figuras sueltas fuera del portfolio (Notas): mismo marco */
+.plate-wide-left,
+.plate-wide-right,
+.plate-narrow,
+.plate-full { max-width: min(100%, var(--frame-w)); }
+.plate-wide-right { margin-left: auto; }
+.plate-narrow { margin-inline: auto; }
 
 /* ─── 17. ARCHIVE TABLE ─────────────────────────────────────── */
 .archive-section {

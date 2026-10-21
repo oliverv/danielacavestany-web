@@ -11,6 +11,10 @@ import './gallery.js';
 import { initPortraitScale } from './portrait.js';
 initPortraitScale();
 
+// Hero video — only on pages that declare [data-hero-video]
+import { initHeroVideo } from './hero-video.js';
+initHeroVideo();
+
 // Contact form — only on contacto pages
 if (document.getElementById('contact-form')) {
   import('./contact.js');

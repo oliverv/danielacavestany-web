@@ -243,8 +243,10 @@
 .plate img {
   width: 100%;
   height: auto;
+  aspect-ratio: var(--frame-ratio);
+  object-fit: cover;
   display: block;
-  background: var(--crema);
+  background: var(--papel);
 }
 .plate figcaption {
   display: flex;
@@ -288,32 +290,14 @@
 */
 .obras-grid {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, var(--frame-w)));
+  justify-content: center;
   column-gap: var(--grid-gap);
-  row-gap: 0;
+  row-gap: clamp(56px, 7vw, 104px);
 }
 
-/* 01: dominant — 7 of 12 columns */
-.obra-01 {
-  grid-column: 1 / 9;
-  grid-row: 1;
-}
-
-/* 02: supporting — 4 columns, pushed well down so it reads
-       as a different vertical position, not a peer */
-.obra-02 {
-  grid-column: 9 / 13;
-  grid-row: 1;
-  margin-top: clamp(80px, 14vw, 200px);
-  align-self: end;
-}
-
-/* 03: closing wide — cols 2–11, generous breathing above */
-.obra-03 {
-  grid-column: 2 / 12;
-  grid-row: 2;
-  margin-top: clamp(80px, 10vw, 160px);
-}
+/* Todas las obras comparten el mismo marco (--frame-w, --frame-ratio) */
+.obra-01, .obra-02, .obra-03, .obra-04 { min-width: 0; }
 
 .obra-num {
   font-family: var(--font-display);
@@ -344,6 +328,9 @@
 .obra-img-wrap img {
   width: 100%;
   height: auto;
+  aspect-ratio: var(--frame-ratio);
+  object-fit: cover;
+  background: var(--papel);
   display: block;
   transition: transform 0.9s cubic-bezier(.22,1,.36,1), opacity 0.5s ease;
 }
@@ -414,8 +401,8 @@
   Acts as a visual threshold between obra and commerce.
 */
 .threshold-image {
-  /* Horizontal: page-x inset on both sides */
-  width: min(calc(100% - (var(--page-x) * 2)), var(--page-max));
+  /* Mismo marco que el resto de obras */
+  width: min(calc(100% - (var(--page-x) * 2)), var(--frame-w));
   margin-inline: auto;
   margin-block: 0;
   overflow: hidden;
@@ -423,11 +410,13 @@
 .threshold-image img {
   width: 100%;
   height: auto;
+  aspect-ratio: var(--frame-ratio);
+  object-fit: cover;
+  background: var(--papel);
   display: block;
-  /* Preserve natural aspect ratio — do not crop */
 }
 .threshold-caption {
-  width: min(calc(100% - (var(--page-x) * 2)), var(--page-max));
+  width: min(calc(100% - (var(--page-x) * 2)), var(--frame-w));
   margin-inline: auto;
   display: flex;
   justify-content: space-between;

@@ -96,11 +96,6 @@ section.block.flush { padding-block: 0; }
   }
   .foot-center { display: none; }
 
-  /* Obras stagger on tablet — keep hierarchy, reduce complexity */
-  .obra-01 { grid-column: 1 / 8; }
-  .obra-02 { grid-column: 8 / 13; margin-top: clamp(48px, 8vw, 96px); }
-  .obra-03 { grid-column: 1 / 13; }
-
   /* Workshop announce: shrink title slightly */
   .workshop-announce-title { font-size: clamp(26px, 3.5vw, 44px); }
 
@@ -146,13 +141,10 @@ section.block.flush { padding-block: 0; }
     object-position: center center;
   }
 
-  /* Threshold image: full bleed on mobile — no horizontal inset */
+  /* Threshold image: same inset and frame as every other plate */
   .threshold-image,
   .threshold-caption {
-    width: 100%;
-    padding-inline: var(--page-x);
-  }
-  .threshold-image {
+    width: calc(100% - (var(--page-x) * 2));
     padding-inline: 0;
   }
 
@@ -181,16 +173,13 @@ section.block.flush { padding-block: 0; }
   .obras-grid {
     grid-template-columns: 1fr;
   }
-  .obra-01, .obra-02, .obra-03 {
+  .obra-01, .obra-02, .obra-03, .obra-04 {
     grid-column: 1 / 2;
     grid-row: auto;
     margin-top: 0;
-    margin-bottom: var(--sp-7);
+    margin-bottom: 0;
   }
   .obras-cta { text-align: left; }
-
-  /* Obra 02 gets full width on mobile */
-  .obra-02 { margin-top: 0; }
 
   /* Service row — full stack */
   .service-row {

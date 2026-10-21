@@ -19,6 +19,12 @@
   --piedra:      #625D57;
   --carbon:      #2D2E31;
   --ink:         #111111;
+  /* Papel gris de las copias originales (tono medio de los escaneos) */
+  --papel:       #9e8f76;
+
+  /* Marco único de fotografía: mismo tamaño en todo el sitio */
+  --frame-w:     400px;
+  --frame-ratio: 7 / 10;
 
   /* Typography */
   --font-display: 'EB Garamond', Georgia, serif;
