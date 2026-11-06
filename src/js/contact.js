@@ -46,11 +46,24 @@ if (form) {
       errList.innerHTML = errors.map(e => `<li>${e}</li>`).join('');
       errBox.classList.add('show');
       errBox.focus();
-    } else {
-      errBox.classList.remove('show');
-      document.getElementById('form-status').textContent =
-        'Gracias por tu mensaje. Te responderé en 24–48 horas.';
-      form.reset();
+      return;
     }
+
+    errBox.classList.remove('show');
+
+    const nombreVal  = document.getElementById('nombre').value.trim();
+    const emailVal   = document.getElementById('email').value.trim();
+    const tipoVal    = document.getElementById('tipo')?.value || '';
+    const mensajeVal = document.getElementById('mensaje').value.trim();
+
+    const subject = encodeURIComponent(`Consulta de ${nombreVal}${tipoVal ? ` — ${tipoVal}` : ''}`);
+    const body    = encodeURIComponent(
+      `Nombre: ${nombreVal}\nEmail: ${emailVal}\nNaturaleza del encargo: ${tipoVal}\n\n${mensajeVal}`
+    );
+    window.location.href = `mailto:daniela@danielacavestany.com?subject=${subject}&body=${body}`;
+
+    document.getElementById('form-status').textContent =
+      'Se abrirá tu aplicación de correo para enviar el mensaje. Te responderé en 24–48 horas.';
+    form.reset();
   });
 }

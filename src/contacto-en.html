@@ -27,7 +27,7 @@
         <p><a class="link-quiet serif" style="font-size:24px" href="mailto:daniela@danielacavestany.com">daniela@danielacavestany.com</a></p>
         <p class="meta">Based in</p>
         <p>Bali — Formentera</p>
-        <form class="contact" action="mailto:daniela@danielacavestany.com" method="post" enctype="text/plain">
+        <form class="contact" id="contact-form-en" action="mailto:daniela@danielacavestany.com">
           <label for="nombre">Name</label>
           <input id="nombre" name="nombre" type="text" required>
           <label for="email">Email</label>
@@ -45,7 +45,27 @@
           <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
           <br><br>
           <button class="btn btn-solid" type="submit">Send message</button>
+          <p class="form-status" id="form-status-en" role="status"></p>
         </form>
+        <script type="module">
+          const formEn = document.getElementById('contact-form-en');
+          formEn.addEventListener('submit', e => {
+            if (!formEn.checkValidity()) return;
+            e.preventDefault();
+            const nombre  = document.getElementById('nombre').value.trim();
+            const email   = document.getElementById('email').value.trim();
+            const tipo    = document.getElementById('tipo')?.value || '';
+            const mensaje = document.getElementById('mensaje').value.trim();
+            const subject = encodeURIComponent(`Enquiry from ${nombre}${tipo ? ` — ${tipo}` : ''}`);
+            const body    = encodeURIComponent(
+              `Name: ${nombre}\nEmail: ${email}\nType of enquiry: ${tipo}\n\n${mensaje}`
+            );
+            window.location.href = `mailto:daniela@danielacavestany.com?subject=${subject}&body=${body}`;
+            document.getElementById('form-status-en').textContent =
+              'Your email app will open to send the message. I will reply within 24–48 hours.';
+            formEn.reset();
+          });
+        </script>
       </div>
       <div>
         <figure class="plate">
