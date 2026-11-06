@@ -9,7 +9,8 @@
   background: var(--crema);
 }
 
-.stage-full img {
+.stage-full img,
+.stage-full video {
   width: 100%;
   height: 100svh;
   object-fit: cover;

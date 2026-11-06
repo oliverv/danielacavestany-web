@@ -6,7 +6,7 @@
 export function initPortraitScale() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const portrait = document.querySelector('.stage-full:first-of-type img');
+  const portrait = document.querySelector('.stage-full:first-of-type img, .stage-full:first-of-type video');
   if (!portrait) return;
 
   const vh = window.innerHeight;

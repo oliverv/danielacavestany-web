@@ -98,7 +98,8 @@
 /* ─── 29. REDUCED MOTION ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   /* Portrait and nameplate: show immediately */
-  .stage-full img        { animation: none; opacity: 1; }
+  .stage-full img,
+  .stage-full video        { animation: none; opacity: 1; }
   .nameplate             { animation: none; opacity: 1; transform: none; }
   /* Hero text: show immediately */
   .hero-title .line > span { animation: none; transform: none; }

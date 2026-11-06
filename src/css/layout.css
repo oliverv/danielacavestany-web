@@ -46,7 +46,8 @@ section.block.flush { padding-block: 0; }
 /* ─── 29. REDUCED MOTION ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   /* Portrait and nameplate: show immediately */
-  .stage-full img        { animation: none; opacity: 1; }
+  .stage-full img,
+  .stage-full video        { animation: none; opacity: 1; }
   .nameplate             { animation: none; opacity: 1; transform: none; }
   /* Hero text: show immediately */
   .hero-title .line > span { animation: none; transform: none; }
@@ -130,7 +131,8 @@ section.block.flush { padding-block: 0; }
   }
 
   /* Stage portrait: eyes in upper-middle third on narrow screens */
-  .stage-full img {
+  .stage-full img,
+  .stage-full video {
     height: 88svh;
     /* Mobile crop: she looks better with face slightly higher */
     object-position: center 12%;
