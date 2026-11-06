@@ -21,14 +21,6 @@
   font-style: italic;
 }
 
-.firma {
-  display: block;
-  max-width: 200px;
-  height: auto;
-  margin: var(--sp-6) auto 0;
-  opacity: 0.85;
-}
-
 /* Credentials grid */
 .credentials-grid {
   display: grid;
