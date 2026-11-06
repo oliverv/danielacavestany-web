@@ -11,72 +11,111 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F5F3EE'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-style='italic' font-size='36' text-anchor='middle' fill='%23111'%3ED%3C/text%3E%3C/svg%3E">
 <script type="module" src="js/main.js"></script>
+<style>
+  /* Contact page extras */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+    padding-block: var(--section-gap);
+  }
+  @media (max-width: 767px) {
+    .contact-grid { grid-template-columns: 1fr; row-gap: var(--sp-8); }
+  }
+  .contact-email-link {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--greige);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+  .contact-email-link:hover { border-color: var(--ink); }
+</style>
 </head>
 <body>
 <!--#include file="components/header-en.html" -->
 
-<main class="wrap">
-  <section class="block">
-    <p class="meta">Contact</p>
-    <h1 class="display"><em>Write to me.</em></h1>
-    <br>
-    <div class="grid-2" style="align-items:start">
-      <div class="prose">
+<main class="wrap" id="main-content">
+
+  <div style="padding-block: clamp(48px, 6vw, 80px) 0">
+    <p class="meta" style="margin-bottom: var(--sp-5)">Contact</p>
+    <h1 class="hero-title"><span class="line"><span><em style="font-family:var(--font-display); font-style:italic">Write to me.</em></span></span></h1>
+  </div>
+
+  <div class="contact-grid">
+    <div>
+      <div class="prose" style="margin-bottom: var(--sp-7)">
         <p>Every commission, collaboration or experience begins with an attentive gaze. Tell me about your project, space or idea.</p>
-        <p class="meta">Direct email</p>
-        <p><a class="link-quiet serif" style="font-size:24px" href="mailto:daniela@danielacavestany.com">daniela@danielacavestany.com</a></p>
-        <p class="meta">Based in</p>
-        <p>Bali — Formentera</p>
-        <form class="contact" id="contact-form-en" action="mailto:daniela@danielacavestany.com">
-          <label for="nombre">Name</label>
-          <input id="nombre" name="nombre" type="text" required>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required>
-          <label for="tipo">Type of enquiry</label>
-          <select id="tipo" name="tipo">
-            <option>Photo session / Commission</option>
-            <option>Learning to see (iPhone workshop)</option>
-            <option>Experience in a special place</option>
-            <option>Styling / Art direction</option>
-            <option>Artwork / Editions</option>
-            <option>Other</option>
-          </select>
-          <label for="mensaje">Message</label>
-          <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-          <br><br>
+      </div>
+
+      <p class="meta" style="margin-bottom: var(--sp-2)">Direct email</p>
+      <p style="margin-bottom: var(--sp-6)">
+        <a class="contact-email-link" href="mailto:daniela@danielacavestany.com">daniela@danielacavestany.com</a>
+      </p>
+
+      <p class="meta" style="margin-bottom: var(--sp-2)">Based in</p>
+      <p style="margin-bottom: var(--sp-7); font-size: var(--type-body); color: var(--piedra)">Bali — Formentera · Reply within 24–48 h</p>
+
+      <form class="contact" id="contact-form" novalidate
+        action="mailto:daniela@danielacavestany.com" method="post" enctype="text/plain">
+        <div class="form-errors" id="form-errors" role="alert">
+          <strong>Please correct the following errors:</strong>
+          <ul id="error-list"></ul>
+        </div>
+        <div class="hp-field" aria-hidden="true">
+          <label for="hp">Leave blank</label>
+          <input id="hp" name="hp" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <label for="nombre">Name</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" required aria-required="true">
+        <span class="field-error" id="err-nombre" role="alert"></span>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" autocomplete="email" required aria-required="true">
+        <span class="field-error" id="err-email" role="alert"></span>
+
+        <label for="tipo">Type of enquiry</label>
+        <select id="tipo" name="tipo">
+          <option>Photo session / Commission</option>
+          <option>Learning to see (iPhone workshop)</option>
+          <option>Experience in a special place</option>
+          <option>Styling / Art direction</option>
+          <option>Artwork / Editions</option>
+          <option>Other</option>
+        </select>
+
+        <label for="mensaje">Message</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required aria-required="true"></textarea>
+        <span class="field-error" id="err-mensaje" role="alert"></span>
+
+        <div id="obra-notice" role="status"></div>
+
+        <div style="margin-top: var(--sp-6)">
           <button class="btn btn-solid" type="submit">Send message</button>
-          <p class="form-status" id="form-status-en" role="status"></p>
-        </form>
-        <script type="module">
-          const formEn = document.getElementById('contact-form-en');
-          formEn.addEventListener('submit', e => {
-            if (!formEn.checkValidity()) return;
-            e.preventDefault();
-            const nombre  = document.getElementById('nombre').value.trim();
-            const email   = document.getElementById('email').value.trim();
-            const tipo    = document.getElementById('tipo')?.value || '';
-            const mensaje = document.getElementById('mensaje').value.trim();
-            const subject = encodeURIComponent(`Enquiry from ${nombre}${tipo ? ` — ${tipo}` : ''}`);
-            const body    = encodeURIComponent(
-              `Name: ${nombre}\nEmail: ${email}\nType of enquiry: ${tipo}\n\n${mensaje}`
-            );
-            window.location.href = `mailto:daniela@danielacavestany.com?subject=${subject}&body=${body}`;
-            document.getElementById('form-status-en').textContent =
-              'Your email app will open to send the message. I will reply within 24–48 hours.';
-            formEn.reset();
-          });
-        </script>
-      </div>
-      <div>
-        <figure class="plate">
-          <img width="1129" height="1600" src="assets/bali/IMG_4491.jpg" alt="Two palm trees with a hammock, Bali" loading="lazy">
-          <figcaption><span class="title">Rest</span><span class="meta">BALI-29</span></figcaption>
-        </figure>
-        <p class="meta">Contact · Bali — Formentera</p>
-        <p class="quote" style="font-size:18px">Reply within 24–48 working hours.</p>
-      </div>
+        </div>
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
     </div>
-  </section>
+
+    <div>
+      <figure class="plate" style="margin-bottom: 0">
+        <img width="1129" height="1600"
+          src="assets/bali/IMG_4491.jpg"
+          alt="Two palm trees with a hammock in an open meadow, Bali"
+          loading="lazy">
+        <figcaption>
+          <span class="title">Rest</span>
+          <span class="meta">BALI-29 · 2026</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
 </main>
 
 <!--#include file="components/footer-en.html" -->
