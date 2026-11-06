@@ -4,8 +4,11 @@
  * Page-specific modules imported conditionally by page identifier.
  */
 import '../css/main.css';
+import { inject } from '@vercel/analytics';
 import './nav.js';
 import './gallery.js';
+
+inject();
 
 // Portrait scroll scale — only on pages that have the stage-full portrait
 import { initPortraitScale } from './portrait.js';
