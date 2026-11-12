@@ -15,20 +15,21 @@
 <body>
 <!--#include file="components/header-en.html" -->
 
-<main class="wrap" id="main-content">
+<main id="main-content">
 
-  <!-- ── Video: waterfall (Bali series) ── -->
-  <section style="padding-block: clamp(32px, 4vw, 56px) 0" aria-label="Video: Waterfall, Bali">
-    <figure class="video-tile">
-      <video controls preload="none" playsinline poster="assets/video/poster-waterfall.jpg">
-        <source src="assets/video/video-waterfall.mp4" type="video/mp4">
-      </video>
-      <figcaption class="video-caption">
-        <span class="video-caption-title">Waterfall</span>
-        <span class="video-caption-meta">Bali · 2026</span>
-      </figcaption>
-    </figure>
+  <!-- ── Video: waterfall (same embed as home) ── -->
+  <section class="stage-full" aria-label="Waterfall, Bali 2026" data-hero-video>
+    <video muted loop playsinline preload="none"
+      poster="assets/video/poster-waterfall.jpg"
+      data-src-hd="assets/video/video-waterfall.mp4"
+      data-src-sd="assets/video/video-waterfall.mp4"></video>
   </section>
+  <div class="stage-label">
+    <span class="t">Waterfall</span>
+    <span class="meta">Bali · 2026</span>
+  </div>
+
+  <div class="wrap">
 
   <!-- ── Portfolio header: editorial split ── -->
   <header class="portfolio-header" id="bali">
@@ -328,6 +329,7 @@
     </table>
   </section>
 
+  </div><!-- /wrap -->
 </main>
 
 <!--#include file="components/footer-en.html" -->
