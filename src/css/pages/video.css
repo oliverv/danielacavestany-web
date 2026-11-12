@@ -1,0 +1,50 @@
+/* ─── 22. VIDEO GALLERY (video.html) ─────────────────────────── */
+
+.video-hero {
+  padding-block: clamp(48px, 6vw, 96px);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: var(--grid-gap);
+  row-gap: clamp(56px, 7vw, 104px);
+}
+
+@media (max-width: 900px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
+
+.video-tile { cursor: default; }
+
+.video-tile video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--carbon);
+  display: block;
+}
+
+.video-caption {
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--crema);
+  margin-top: var(--sp-3);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-3);
+}
+
+.video-caption-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.video-caption-meta {
+  font-size: var(--type-caption);
+  letter-spacing: 0.08em;
+  color: var(--piedra);
+  white-space: nowrap;
+}
