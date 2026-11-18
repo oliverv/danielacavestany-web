@@ -14,20 +14,6 @@ let   plates = [...document.querySelectorAll('main .plate')];
 if (bar) {
   const btns = [...bar.querySelectorAll('button[data-filter]')];
 
-  // Live counts
-  btns.forEach(btn => {
-    const f = btn.dataset.filter;
-    const n = f === 'all'
-      ? document.querySelectorAll('main .plate').length
-      : document.querySelectorAll(`#${f} .plate`).length;
-    if (!btn.querySelector('.count')) {
-      const s = document.createElement('span');
-      s.className = 'count';
-      s.textContent = ` (${n})`;
-      btn.appendChild(s);
-    }
-  });
-
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       btns.forEach(x => x.classList.remove('on'));
@@ -37,11 +23,27 @@ if (bar) {
         const sec = document.getElementById(g);
         if (!sec) return;
         const show = f === 'all' || f === g;
-        sec.classList.toggle('dim', !show);
-        sec.querySelectorAll('.plate').forEach(p => p.classList.toggle('hide', !show));
+        sec.hidden = !show;
+        sec.querySelectorAll('.plate').forEach(p => {
+          p.classList.toggle('hide', !show);
+          if (show) p.classList.add('in');
+        });
       });
     });
   });
+  document.querySelectorAll('.serie-card').forEach(card => {
+    card.addEventListener('click', event => {
+      const id = card.hash.slice(1);
+      const button = btns.find(btn => btn.dataset.filter === id);
+      if (!button) return;
+      event.preventDefault();
+      history.replaceState(null, '', card.hash);
+      button.click();
+      bar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  const initial = btns.find(btn => btn.dataset.filter === location.hash.slice(1));
+  if (initial) initial.click();
 }
 
 // ─── Scroll reveal ────────────────────────────────────────────
@@ -145,7 +147,7 @@ function openAt(list, i) {
   } else {
     lbConsult.style.display = 'none';
   }
-  lbCount.textContent = `${idx + 1} / ${current.length}`;
+  lbCount.textContent = '';
   if (!lb.classList.contains('open')) opener = document.activeElement;
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';

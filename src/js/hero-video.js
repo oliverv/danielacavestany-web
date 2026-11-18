@@ -1,6 +1,6 @@
 /**
  * hero-video.js — vídeo de fondo del hero de Servicios.
- * - Solo se carga en pantallas ≥ 768 px, sin "reducir movimiento" ni ahorro de datos.
+ * - Se carga sin "reducir movimiento" ni ahorro de datos.
  * - En el resto de casos se queda el póster estático (no se descarga el vídeo).
  * - Botón de pausa accesible (WCAG 2.2.2).
  */
@@ -12,9 +12,8 @@ export function initHeroVideo() {
   if (!video) return;
 
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const narrow  = window.matchMedia('(max-width: 767px)').matches;
   const saving  = navigator.connection && navigator.connection.saveData;
-  if (reduced || narrow || saving) return;
+  if (reduced || saving) return;
 
   video.src = window.innerWidth >= 1280 ? video.dataset.srcHd : video.dataset.srcSd;
   video.muted = true;
