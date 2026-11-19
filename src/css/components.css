@@ -303,7 +303,7 @@
 .cta-big {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: var(--type-display-lg);
+  font-size: var(--type-display-md);
   line-height: 1.05;
   letter-spacing: -0.02em;
 }

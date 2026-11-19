@@ -72,13 +72,13 @@ function htmlPartials() {
   };
 }
 
-// Enumerate all HTML entry points in src/
-// Vite MPA: each HTML file is its own entry
+// Enumerate published HTML entry points in src/
+// Vite MPA: each listed HTML file is its own entry
 const pages = [
-  'index', 'portfolio', 'sobre-mi', 'servicios', 'contacto', 'notas', 'video',
+  'index', 'portfolio', 'sobre-mi', 'contacto', 'video',
   'taller-volver-a-mirar', 'muestra',
-  'index-en', 'portfolio-en', 'sobre-mi-en', 'servicios-en',
-  'contacto-en', 'notas-en', 'video-en', 'taller-volver-a-mirar-en',
+  'index-en', 'portfolio-en', 'sobre-mi-en',
+  'contacto-en', 'video-en', 'taller-volver-a-mirar-en',
 ];
 
 const input = Object.fromEntries(
