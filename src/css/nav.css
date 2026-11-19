@@ -123,11 +123,14 @@ nav.mainnav a:hover::after {
     gap: var(--sp-5);
     background: var(--blanco);
     transform: translateX(100%);
-    transition: transform 0.45s cubic-bezier(.22,1,.36,1);
+    visibility: hidden;
+    transition: transform 0.45s cubic-bezier(.22,1,.36,1), visibility 0s linear 0.45s;
     z-index: 49;
   }
   .masthead-right.open {
     transform: translateX(0);
+    visibility: visible;
+    transition-delay: 0s;
   }
 
   nav.mainnav {
@@ -136,6 +139,9 @@ nav.mainnav a:hover::after {
     text-align: center;
   }
   nav.mainnav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-size: 12px;
     letter-spacing: 0.18em;
   }

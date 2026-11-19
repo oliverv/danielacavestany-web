@@ -69,3 +69,10 @@ footer.site {
   color: var(--piedra);
   opacity: 0.7;
 }
+
+@media (max-width: 767px) {
+  footer.site { grid-template-columns: 1fr; align-items: start; }
+  .foot-center { display: block; text-align: left; }
+  .foot-right { align-items: flex-start; text-align: left; }
+  .foot-link { min-height: 44px; display: inline-flex; align-items: center; }
+}

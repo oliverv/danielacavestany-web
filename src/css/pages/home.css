@@ -517,3 +517,14 @@
   transition: background-size 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 .cta-big a:hover { background-size: 100% 1px; }
+
+@media (max-width: 767px) {
+  .stage-full { min-height: calc(100svh - var(--header-h)); }
+  .stage-full img,
+  .stage-full video {
+    height: calc(100svh - var(--header-h));
+    object-position: center 12%;
+  }
+  .stage-full.bali-image img { object-position: center; }
+  .nameplate { max-width: calc(100% - 2 * var(--page-x)); }
+}

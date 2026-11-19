@@ -30,4 +30,11 @@ if (navToggle && mainNav) {
       navToggle.focus();
     }
   });
+
+  window.matchMedia('(min-width: 768px)').addEventListener('change', (e) => {
+    if (!e.matches) return;
+    navToggle.setAttribute('aria-expanded', 'false');
+    mainNav.classList.remove('open');
+    document.body.style.overflow = '';
+  });
 }
