@@ -109,6 +109,7 @@ const visiblePlates = () => plates.filter(p => !p.classList.contains('hide'));
 
 function catOf(fig) {
   const c = fig.closest('article') || fig;
+  if (c.dataset.cat) return c.dataset.cat.toUpperCase();
   let txt = '';
   c.querySelectorAll('.meta, .obra-meta').forEach(el => { txt = el.textContent; });
   const m = txt.match(/BALI[-—]\d{2}/i);
